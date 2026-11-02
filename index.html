@@ -1,0 +1,906 @@
+<!-- Top Announcement Banner -->
+<div class="bg-black text-white text-xs sm:text-sm py-2 px-4 text-center font-medium">
+    <span><i class="fa-solid fa-truck-fast mr-2 text-orange-500"></i> Fresh Daily Deliveries Across Karachi | Cash on Delivery Available</span>
+</div>
+
+<!-- Sticky Header -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Brand Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="router.navigate('home')">
+            <div class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-bold text-xl">
+                M
+            </div>
+            <div>
+                <span class="text-xl font-bold tracking-tight text-black">FreshMeat</span>
+                <span class="block text-[10px] uppercase tracking-widest text-gray-500">Karachi Retail</span>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <button onclick="router.navigate('home')" class="nav-link text-gray-900 hover:text-orange-600 transition">Home</button>
+            <button onclick="router.navigate('collection', 'chicken')" class="nav-link text-gray-700 hover:text-orange-600 transition">Chicken</button>
+            <button onclick="router.navigate('collection', 'beef')" class="nav-link text-gray-700 hover:text-orange-600 transition">Beef</button>
+            <button onclick="router.navigate('collection', 'veal')" class="nav-link text-gray-700 hover:text-orange-600 transition">Veal</button>
+            <button onclick="router.navigate('collection', 'mutton')" class="nav-link text-gray-700 hover:text-orange-600 transition">Mutton</button>
+            <button onclick="router.navigate('collection', 'winter-feast')" class="nav-link text-gray-700 hover:text-orange-600 transition text-orange-600 font-semibold">Winter Feast</button>
+        </nav>
+
+        <!-- Right Actions (Cart Bag Icon) -->
+        <div class="flex items-center space-x-4">
+            <button onclick="toggleCartDrawer(true)" class="relative p-2 text-gray-800 hover:text-orange-600 transition focus:outline-none" aria-label="Shopping Bag">
+                <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                <span id="cart-badge" class="absolute -top-1 -right-1 bg-orange-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+            </button>
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-800 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
+        <button onclick="router.navigate('home'); toggleMobileMenu();" class="block w-full text-left font-medium py-1">Home</button>
+        <button onclick="router.navigate('collection', 'chicken'); toggleMobileMenu();" class="block w-full text-left font-medium py-1">Chicken</button>
+        <button onclick="router.navigate('collection', 'beef'); toggleMobileMenu();" class="block w-full text-left font-medium py-1">Beef</button>
+        <button onclick="router.navigate('collection', 'veal'); toggleMobileMenu();" class="block w-full text-left font-medium py-1">Veal</button>
+        <button onclick="router.navigate('collection', 'mutton'); toggleMobileMenu();" class="block w-full text-left font-medium py-1">Mutton</button>
+        <button onclick="router.navigate('collection', 'winter-feast'); toggleMobileMenu();" class="block w-full text-left font-semibold py-1 text-orange-600">Winter Feast</button>
+    </div>
+</header>
+
+<!-- Main Dynamic Application Container -->
+<main id="app-container" class="min-h-screen">
+    <!-- Views will be dynamically injected here via JS -->
+</main>
+
+<!-- Sliding Shopping Bag Drawer -->
+<div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div class="absolute inset-0 bg-black/50 transition-opacity" onclick="toggleCartDrawer(false)"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+            <!-- Drawer Header -->
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-orange-600"></i>
+                    <h2 class="text-lg font-bold text-gray-900">Your Shopping Bag</h2>
+                </div>
+                <button onclick="toggleCartDrawer(false)" class="text-gray-400 hover:text-gray-600 p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Drawer Body / Items -->
+            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-gray-100">
+                <!-- Cart items populated by JS -->
+            </div>
+
+            <!-- Drawer Footer -->
+            <div class="border-t border-gray-200 p-6 bg-gray-50 space-y-4">
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal" class="font-semibold text-gray-900">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Estimated Delivery</span>
+                        <span class="text-gray-900 font-medium">Calculated at Checkout</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
+                        <span>Estimated Total</span>
+                        <span id="cart-total" class="text-orange-600">Rs. 0</span>
+                    </div>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-black hover:bg-gray-800 text-white font-medium py-3.5 rounded-xl transition shadow-sm flex items-center justify-center space-x-2">
+                    <span>Proceed to Secure Checkout</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+                <p class="text-[11px] text-center text-gray-500">Cash on Delivery • Billed by actual packed weight</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Professional Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-lg">M</div>
+                <span class="text-lg font-bold tracking-tight">FreshMeat</span>
+            </div>
+            <p class="text-sm text-gray-400">Karachi's trusted premium retail meat shop, delivering farm-fresh halal chicken, beef, veal, and mutton directly to your doorstep.</p>
+            <div class="text-xs text-orange-500 font-medium flex items-center space-x-2">
+                <i class="fa-solid fa-shield-halal"></i>
+                <span>100% Halal & Hand-Slaughtered (Zabiha)</span>
+            </div>
+        </div>
+        <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-gray-300 mb-4">Quick Navigation</h4>
+            <ul class="space-y-2.5 text-sm text-gray-400">
+                <li><button onclick="router.navigate('home')" class="hover:text-orange-500 transition">Home</button></li>
+                <li><button onclick="router.navigate('collection', 'chicken')" class="hover:text-orange-500 transition">Chicken Collection</button></li>
+                <li><button onclick="router.navigate('collection', 'beef')" class="hover:text-orange-500 transition">Beef Collection</button></li>
+                <li><button onclick="router.navigate('collection', 'veal')" class="hover:text-orange-500 transition">Veal Collection</button></li>
+                <li><button onclick="router.navigate('collection', 'mutton')" class="hover:text-orange-500 transition">Mutton Collection</button></li>
+                <li><button onclick="router.navigate('collection', 'winter-feast')" class="hover:text-orange-500 transition">Winter Feast</button></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-gray-300 mb-4">Customer Support</h4>
+            <ul class="space-y-2.5 text-sm text-gray-400">
+                <li><button onclick="router.navigate('page', 'about')" class="hover:text-orange-500 transition">About Us</button></li>
+                <li><button onclick="router.navigate('page', 'contact')" class="hover:text-orange-500 transition">Contact Us & WhatsApp</button></li>
+                <li><button onclick="router.navigate('page', 'faqs')" class="hover:text-orange-500 transition">FAQs</button></li>
+                <li><button onclick="router.navigate('page', 'shipping')" class="hover:text-orange-500 transition">Shipping & Returns</button></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-gray-300 mb-4">Legal & Policies</h4>
+            <ul class="space-y-2.5 text-sm text-gray-400">
+                <li><button onclick="router.navigate('page', 'privacy')" class="hover:text-orange-500 transition">Privacy Policy</button></li>
+                <li><button onclick="router.navigate('page', 'terms')" class="hover:text-orange-500 transition">Terms & Conditions</button></li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-800 text-xs text-gray-500">
+                <p>Proposal Prototype v2.5</p>
+                <p class="mt-1">Designed for Karachi Retail Operations</p>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        &copy; 2026 FreshMeat Karachi. All rights reserved. Proposal prototype built for client review.
+    </div>
+</footer>
+
+<!-- Application JavaScript Logic -->
+<script>
+    /* --- MOCK DATABASE & PRODUCTS CATALOGUE --- */
+    const PRODUCTS = [
+        // Chicken
+        { id: 'ch-1', name: 'Fresh Whole Chicken', category: 'chicken', rate: 620, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&q=80', desc: 'Tender, farm-raised wholesome chicken cleaned and gutted to perfection.' },
+        { id: 'ch-2', name: 'Chicken Boneless (Breast & Thigh)', category: 'chicken', rate: 850, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=600&q=80', desc: 'Clean, skinless premium boneless chicken cuts ideal for grilling and stir-fry.' },
+        { id: 'ch-3', name: 'Chicken Drumsticks', category: 'chicken', rate: 680, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', desc: 'Juicy chicken drumsticks freshly packed for family meals and barbecues.' },
+        { id: 'ch-4', name: 'Chicken Qeema (Mince)', category: 'chicken', rate: 870, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80', desc: 'Finely ground fresh chicken mince prepared daily.' },
+        { id: 'ch-5', name: 'Chicken Wings', category: 'chicken', rate: 550, unit: 'kg', status: 'Sold Out', image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80', desc: 'Crispy wing portions perfect for appetizers.' },
+
+        // Beef
+        { id: 'bf-1', name: 'Beef with Bone (Regular Cut)', category: 'beef', rate: 1100, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=600&q=80', desc: 'Fresh local beef with bone cut into succulent pieces for traditional curries.' },
+        { id: 'bf-2', name: 'Beef Boneless (Curry Cut)', category: 'beef', rate: 1350, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', desc: 'Premium boneless beef cuts, lean and tender.' },
+        { id: 'bf-3', name: 'Beef Qeema (Machine Ground)', category: 'beef', rate: 1300, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80', desc: 'Double-minced lean beef prepared with strict hygiene.' },
+        { id: 'bf-4', name: 'Beef Nihari Special Cut', category: 'beef', rate: 1400, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1514944298352-f4d732115f2e?auto=format&fit=crop&w=600&q=80', desc: 'Shank meat specially selected for rich, slow-cooked nihari.' },
+
+        // Veal
+        { id: 'vl-1', name: 'Veal Boneless Tenderloin', category: 'veal', rate: 1650, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80', desc: 'Incredibly tender milk-fed veal cuts for premium dishes.' },
+        { id: 'vl-2', name: 'Veal Chops with Bone', category: 'veal', rate: 1550, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', desc: 'Juicy veal chops perfect for pan-searing or grilling.' },
+        { id: 'vl-3', name: 'Veal Qeema', category: 'veal', rate: 1600, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80', desc: 'Finely minced delicate veal meat.' },
+
+        // Mutton
+        { id: 'mt-1', name: 'Mutton Karahi Cut (Desi)', category: 'mutton', rate: 2400, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=600&q=80', desc: 'Fresh local goat/mutton cut into delicious pieces for karahis and kormas.' },
+        { id: 'mt-2', name: 'Mutton Chops', category: 'mutton', rate: 2600, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', desc: 'Tender rib chops expertly trimmed for barbecue.' },
+        { id: 'mt-3', name: 'Mutton Qeema', category: 'mutton', rate: 2500, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80', desc: 'Pure hand-cut and ground mutton mince.' },
+        { id: 'mt-4', name: 'Mutton Raan (Whole Leg)', category: 'mutton', rate: 2550, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=600&q=80', desc: 'Whole leg of mutton prepared for special feasts and roasts.' },
+
+        // Winter Feast
+        { id: 'wf-1', name: 'Marinated BBQ Chicken Tikka Cuts', category: 'winter-feast', rate: 920, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80', desc: 'Chef-marinated chicken pieces ready for winter bonfire grills.' },
+        { id: 'wf-2', name: 'Seasonal Spiced Mutton Ribs', category: 'winter-feast', rate: 2700, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', desc: 'Seasoned mutton ribs tailored for winter feasts.' },
+        { id: 'wf-3', name: 'Marinated Boneless Beef Skewers', category: 'winter-feast', rate: 1450, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80', desc: 'Ready-to-skew beef boti marinated in special spices.' }
+    ];
+
+    const DELIVERY_AREAS = [
+        { name: 'DHA Phase 1-8', fee: 150 },
+        { name: 'Clifton (All Blocks)', fee: 150 },
+        { name: 'PECHS / Tariq Road', fee: 200 },
+        { name: 'Gulshan-e-Iqbal', fee: 250 },
+        { name: 'North Nazimabad', fee: 300 },
+        { name: 'Bahria Town Karachi', fee: 400 }
+    ];
+
+    /* --- STATE MANAGEMENT --- */
+    let cart = JSON.parse(localStorage.getItem('freshmeat_cart')) || [];
+    let currentRoute = { view: 'home', param: null };
+    let selectedWeightOption = 1; // Default 1 kg
+
+    /* --- ROUTER SYSTEM --- */
+    const router = {
+        navigate: function(view, param = null) {
+            currentRoute = { view, param };
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            this.render();
+        },
+        render: function() {
+            const container = document.getElementById('app-container');
+            if (currentRoute.view === 'home') {
+                container.innerHTML = renderHomeView();
+            } else if (currentRoute.view === 'collection') {
+                container.innerHTML = renderCollectionView(currentRoute.param);
+                initCollectionListeners(currentRoute.param);
+            } else if (currentRoute.view === 'product') {
+                container.innerHTML = renderProductView(currentRoute.param);
+            } else if (currentRoute.view === 'checkout') {
+                container.innerHTML = renderCheckoutView();
+            } else if (currentRoute.view === 'confirmation') {
+                container.innerHTML = renderConfirmationView(currentRoute.param);
+            } else if (currentRoute.view === 'page') {
+                container.innerHTML = renderStaticPageView(currentRoute.param);
+            }
+            updateCartBadge();
+        }
+    };
+
+    /* --- VIEW RENDERERS --- */
+    function renderHomeView() {
+        return `
+            <!-- Hero Section -->
+            <section class="relative bg-black text-white py-20 lg:py-28 overflow-hidden">
+                <div class="absolute inset-0 opacity-45 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=1600&q=80')"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+                    <div class="max-w-2xl space-y-6">
+                        <span class="inline-block bg-orange-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Karachi's Premium Butchery</span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">Farm-Fresh Halal Meat Delivered to Your Door</h1>
+                        <p class="text-lg text-gray-300">Hand-slaughtered daily, strictly inspected for quality, and hygienically packed. Experience Karachi's finest retail meat shopping.</p>
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                            <button onclick="router.navigate('collection', 'chicken')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg">Explore Collections</button>
+                            <button onclick="router.navigate('collection', 'winter-feast')" class="bg-white hover:bg-gray-100 text-black font-bold px-8 py-4 rounded-xl transition">Winter Feast Specials</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shop By Category Section -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
+                    <p class="text-gray-500 mt-2">Select a category to browse our daily fresh cuts</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    ${renderCategoryCard('chicken', 'Chicken', 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=400&q=80')}
+                    ${renderCategoryCard('beef', 'Beef', 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=400&q=80')}
+                    ${renderCategoryCard('veal', 'Veal', 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80')}
+                    ${renderCategoryCard('mutton', 'Mutton', 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=400&q=80')}
+                    ${renderCategoryCard('winter-feast', 'Winter Feast', 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80', 'col-span-2 md:col-span-1')}
+                </div>
+            </section>
+
+            <!-- Today's Meat Rates Ticker / Banner -->
+            <section class="bg-gray-50 py-12 border-y border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Today's Market Rates per Kg</h3>
+                            <p class="text-sm text-gray-500">Updated daily at 6:00 AM according to market standards</p>
+                        </div>
+                        <span class="mt-4 md:mt-0 bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1.5 rounded-full"><i class="fa-solid fa-circle text-[8px] mr-1.5 text-orange-600 animate-pulse"></i> Live Rates Active</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                            <span class="text-xs text-gray-400 font-semibold uppercase">Chicken Whole</span>
+                            <div class="text-2xl font-extrabold text-black mt-1">Rs. 620 <span class="text-xs font-normal text-gray-500">/kg</span></div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                            <span class="text-xs text-gray-400 font-semibold uppercase">Beef with Bone</span>
+                            <div class="text-2xl font-extrabold text-black mt-1">Rs. 1,100 <span class="text-xs font-normal text-gray-500">/kg</span></div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                            <span class="text-xs text-gray-400 font-semibold uppercase">Veal Boneless</span>
+                            <div class="text-2xl font-extrabold text-black mt-1">Rs. 1,650 <span class="text-xs font-normal text-gray-500">/kg</span></div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                            <span class="text-xs text-gray-400 font-semibold uppercase">Mutton Karahi</span>
+                            <div class="text-2xl font-extrabold text-black mt-1">Rs. 2,400 <span class="text-xs font-normal text-gray-500">/kg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Featured Fresh Cuts</h2>
+                        <p class="text-sm text-gray-500">Handpicked popular items chosen by our master butchers</p>
+                    </div>
+                    <button onclick="router.navigate('collection', 'chicken')" class="text-sm font-semibold text-orange-600 hover:text-orange-700">View All Products &rarr;</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    ${PRODUCTS.slice(0, 4).map(p => renderProductCard(p)).join('')}
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
+            <section class="bg-gray-900 text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold">Why Karachi Chooses FreshMeat</h2>
+                        <p class="text-gray-400 mt-2">Uncompromising quality and hygiene standards</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                            <div class="w-12 h-12 bg-orange-600/20 text-orange-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                                <i class="fa-solid fa-shield-halal"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">100% Halal & Zabiha</h3>
+                            <p class="text-sm text-gray-400">Hand-slaughtered according to Islamic guidelines under expert supervision.</p>
+                        </div>
+                        <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                            <div class="w-12 h-12 bg-orange-600/20 text-orange-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                                <i class="fa-solid fa-temperature-low"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Cold-Chain Maintained</h3>
+                            <p class="text-sm text-gray-400">Temperature-controlled storage and delivery ensuring peak freshness.</p>
+                        </div>
+                        <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                            <div class="w-12 h-12 bg-orange-600/20 text-orange-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Precise Weighing</h3>
+                            <p class="text-sm text-gray-400">Accurate digital scaling with transparent packed-weight verification.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+    }
+
+    function renderCategoryCard(slug, title, image, extraClass = '') {
+        return `
+            <div onclick="router.navigate('collection', '${slug}')" class="group relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer aspect-[4/5] flex flex-col justify-end p-6 ${extraClass}">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('${image}')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="relative z-10 text-white">
+                    <h3 class="text-lg font-bold group-hover:text-orange-400 transition">${title}</h3>
+                    <p class="text-xs text-gray-300 mt-1">Explore Cuts &rarr;</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderProductCard(p) {
+        return `
+            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="relative aspect-square bg-gray-100 overflow-hidden cursor-pointer" onclick="router.navigate('product', '${p.id}')">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+                        ${p.status === 'Sold Out' ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase">Sold Out</span>' : '<span class="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-full capitalize">Fresh</span>'}
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[11px] font-semibold tracking-wider text-orange-600 uppercase">${p.category}</span>
+                        <h3 class="font-bold text-gray-900 text-base mt-1 cursor-pointer hover:text-orange-600 transition" onclick="router.navigate('product', '${p.id}')">${p.name}</h3>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">${p.desc}</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 flex items-center justify-between mt-auto">
+                    <div>
+                        <span class="text-xs text-gray-400">Daily Rate</span>
+                        <div class="text-lg font-extrabold text-black">Rs. ${p.rate} <span class="text-xs font-normal text-gray-500">/${p.unit}</span></div>
+                    </div>
+                    <button onclick="router.navigate('product', '${p.id}')" class="bg-black hover:bg-orange-600 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderCollectionView(categorySlug) {
+        const categoryTitle = categorySlug.replace('-', ' ').toUpperCase();
+        let filteredProducts = PRODUCTS.filter(p => p.category === categorySlug);
+
+        return `
+            <div class="bg-gray-50 py-12 border-b border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav class="text-xs text-gray-500 mb-3">
+                        <button onclick="router.navigate('home')" class="hover:text-orange-600">Home</button>
+                        <span class="mx-2">/</span>
+                        <span class="text-gray-900 font-semibold capitalize">${categorySlug.replace('-', ' ')} Collection</span>
+                    </nav>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 capitalize">${categorySlug.replace('-', ' ')} Collection</h1>
+                    <p class="text-sm text-gray-600 mt-2 max-w-2xl">Browse premium, freshly prepared ${categorySlug} cuts. Handled under strict hygiene standards and delivered chilled to your doorstep in Karachi.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <!-- Filters and Sorting Toolbar -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-4 rounded-2xl border border-gray-200 mb-8 gap-4">
+                    <div class="flex items-center space-x-4 text-sm text-gray-600">
+                        <span>Showing <strong class="text-gray-900" id="product-count">${filteredProducts.length}</strong> products</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                        <select id="sort-select" onchange="handleSortChange('${categorySlug}')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-orange-500">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-az">Alphabetically: A–Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="collection-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    ${filteredProducts.length > 0 ? filteredProducts.map(p => renderProductCard(p)).join('') : '<div class="col-span-4 text-center py-16 text-gray-500">No products available in this category at the moment.</div>'}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderProductView(productId) {
+        const product = PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
+        const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id);
+
+        return `
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <nav class="text-xs text-gray-500 mb-6">
+                    <button onclick="router.navigate('home')" class="hover:text-orange-600">Home</button>
+                    <span class="mx-2">/</span>
+                    <button onclick="router.navigate('collection', '${product.category}')" class="hover:text-orange-600 capitalize">${product.category}</button>
+                    <span class="mx-2">/</span>
+                    <span class="text-gray-900 font-semibold">${product.name}</span>
+                </nav>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <!-- Image Gallery -->
+                    <div class="space-y-4">
+                        <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-sm">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden border border-orange-500 cursor-pointer">
+                                <img src="${product.image}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden opacity-70 hover:opacity-100 cursor-pointer">
+                                <img src="${product.image}" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Information & Actions -->
+                    <div class="space-y-6">
+                        <div>
+                            <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">${product.category}</span>
+                            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-3">${product.name}</h1>
+                            <div class="flex items-center space-x-4 mt-3">
+                                <span class="text-3xl font-extrabold text-black">Rs. ${product.rate} <span class="text-sm font-normal text-gray-500">/${product.unit}</span></span>
+                                <span class="text-xs font-semibold px-3 py-1 rounded-full ${product.status === 'In Stock' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${product.status}</span>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 text-base leading-relaxed">${product.desc}</p>
+
+                        <!-- Predefined Weight Selection -->
+                        <div class="space-y-3 pt-4 border-t border-gray-200">
+                            <label class="block text-sm font-bold text-gray-900">Select Weight Option:</label>
+                            <div class="grid grid-cols-4 gap-3">
+                                <button onclick="selectWeight(0.5, this)" class="weight-btn py-3 rounded-xl border border-gray-300 text-sm font-bold hover:border-orange-600 transition text-center">500g</button>
+                                <button onclick="selectWeight(1, this)" class="weight-btn py-3 rounded-xl border-2 border-orange-600 bg-orange-50 text-orange-900 text-sm font-bold transition text-center">1 kg</button>
+                                <button onclick="selectWeight(2, this)" class="weight-btn py-3 rounded-xl border border-gray-300 text-sm font-bold hover:border-orange-600 transition text-center">2 kg</button>
+                                <button onclick="selectWeight(3, this)" class="weight-btn py-3 rounded-xl border border-gray-300 text-sm font-bold hover:border-orange-600 transition text-center">3 kg</button>
+                            </div>
+                        </div>
+
+                        <!-- Live Calculated Price Display -->
+                        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200 flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-600">Calculated Estimate:</span>
+                            <span id="live-calculated-price" class="text-2xl font-extrabold text-orange-600" data-rate="${product.rate}">Rs. ${product.rate}</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button onclick="addToCart('${product.id}')" class="flex-1 bg-white border-2 border-black hover:bg-gray-50 text-black font-bold py-4 rounded-xl transition shadow-sm flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                            <button onclick="buyNow('${product.id}')" class="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition shadow-sm flex items-center justify-center space-x-2">
+                                <span>Buy Now (COD)</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Quality Assurance Note -->
+                        <div class="text-xs text-gray-500 space-y-1 pt-4 border-t border-gray-200">
+                            <p><i class="fa-solid fa-check text-green-600 mr-2"></i> Packed hygienically in food-grade wrapping</p>
+                            <p><i class="fa-solid fa-check text-green-600 mr-2"></i> Final billing adjusted according to actual packed scale weight</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Products -->
+                ${related.length > 0 ? `
+                    <div class="mt-20 pt-12 border-t border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8">Related ${product.category} Cuts</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            ${related.slice(0, 3).map(p => renderProductCard(p)).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    function renderCheckoutView() {
+        if (cart.length === 0) {
+            return `
+                <div class="max-w-3xl mx-auto px-4 py-24 text-center space-y-6">
+                    <div class="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">Your cart is empty</h2>
+                    <p class="text-gray-500">Add products to your cart before proceeding to checkout.</p>
+                    <button onclick="router.navigate('home')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl">Return to Homepage</button>
+                </div>
+            `;
+        }
+
+        const subtotal = cart.reduce((acc, item) => acc + (item.rate * item.weight * item.qty), 0);
+
+        return `
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Secure Cash on Delivery Checkout</h1>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Customer Details Form -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-6">
+                            <h2 class="text-xl font-bold text-gray-900 flex items-center space-x-2">
+                                <i class="fa-solid fa-user-shield text-orange-600"></i>
+                                <span>Customer & Delivery Information</span>
+                            </h2>
+                            <form id="checkout-form" onsubmit="submitOrder(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Full Name *</label>
+                                        <input type="text" id="cust-name" required placeholder="Muhammad Ali" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Pakistan Mobile Number *</label>
+                                        <input type="tel" id="cust-phone" required placeholder="0300 1234567" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Complete Delivery Address *</label>
+                                    <textarea id="cust-address" required rows="2" placeholder="House #, Street #, Apartment name..." class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500"></textarea>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Delivery Area *</label>
+                                        <select id="cust-area" required onchange="updateCheckoutTotals()" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500">
+                                            <option value="">Select Delivery Area</option>
+                                            ${DELIVERY_AREAS.map(a => `<option value="${a.name}" data-fee="${a.fee}">${a.name} (Fee: Rs.${a.fee})</option>`).join('')}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Landmark (Optional)</label>
+                                        <input type="text" id="cust-landmark" placeholder="Near famous park/mosque" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Order Notes / Cutting Instructions (Optional)</label>
+                                    <input type="text" id="cust-notes" placeholder="e.g., Please cut into small bone pieces for biryani" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500">
+                                </div>
+
+                                <!-- Payment Method Box -->
+                                <div class="pt-6 border-t border-gray-200">
+                                    <label class="block text-xs font-bold text-gray-700 uppercase mb-3">Payment Method</label>
+                                    <div class="bg-orange-50 border-2 border-orange-500 p-4 rounded-xl flex items-start space-x-3">
+                                        <input type="radio" checked class="mt-1 accent-orange-600">
+                                        <div>
+                                            <span class="font-bold text-gray-900 text-sm block">Cash on Delivery (COD)</span>
+                                            <p class="text-xs text-gray-600 mt-0.5">Pay in cash when your order arrives. The final bill may change slightly according to the actual packed weight.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition shadow-lg mt-6">
+                                    Place Order Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary Sidebar -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 space-y-6">
+                            <h2 class="text-xl font-bold text-gray-900">Order Summary</h2>
+                            <div class="space-y-4 max-h-80 overflow-y-auto divide-y divide-gray-200">
+                                ${cart.map(item => `
+                                    py-3 flex justify-between items-center text-sm">
+                                        <div>
+                                            <span class="font-bold text-gray-900 block">${item.name}</span>
+                                            <span class="text-xs text-gray-500">${item.weight} kg × ${item.qty} (Rs.${item.rate}/kg)</span>
+                                        </div>
+                                        <span class="font-bold text-gray-900">Rs. ${item.rate * item.weight * item.qty}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="pt-4 border-t border-gray-200 space-y-2 text-sm">
+                                <div class="flex justify-between text-gray-600">
+                                    <span>Subtotal</span>
+                                    <span class="font-semibold text-gray-900">Rs. ${subtotal}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-600">
+                                    <span>Delivery Fee</span>
+                                    <span id="checkout-delivery-fee" class="font-semibold text-gray-900">Rs. 0</span>
+                                </div>
+                                <div class="flex justify-between text-lg font-extrabold text-gray-900 pt-3 border-t border-gray-200">
+                                    <span>Estimated Total</span>
+                                    <span id="checkout-grand-total" class="text-orange-600">Rs. ${subtotal}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderConfirmationView(orderData) {
+        return `
+            <div class="max-w-3xl mx-auto px-4 py-16 text-center space-y-6">
+                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="bg-green-100 text-green-800 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Order Successfully Placed</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Thank You, ${orderData.name}!</h1>
+                <p class="text-gray-600">Your order has been received and is being prepared by our master butchers.</p>
+
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-left max-w-xl mx-auto space-y-3">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Demo Order Number:</span>
+                        <span class="font-bold text-black">${orderData.orderNo}</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Delivery Area:</span>
+                        <span class="font-semibold text-black">${orderData.area}</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Delivery Address:</span>
+                        <span class="font-semibold text-black text-right">${orderData.address}</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Payment Method:</span>
+                        <span class="font-semibold text-orange-600">Cash on Delivery (COD)</span>
+                    </div>
+                    <div class="flex justify-between text-sm pt-3 border-t border-gray-200 font-bold">
+                        <span>Estimated Total:</span>
+                        <span>Rs. ${orderData.total}</span>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-500 max-w-md mx-auto">Note: Final bill is calculated using actual packed weight on shop scales prior to dispatch.</p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                    <button onclick="router.navigate('home')" class="bg-black hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-xl transition">Return to Homepage</button>
+                    <a href="https://wa.me/923001234567" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-xl transition flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderStaticPageView(pageKey) {
+        const pages = {
+            about: { title: 'About Us', content: 'FreshMeat Karachi is established to provide the highest quality halal meats across Karachi. Our mission is transparency, pristine hygiene, and farm-fresh daily delivery.' },
+            contact: { 
+                title: 'Contact Us & WhatsApp', 
+                content: `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                        <div class="space-y-4">
+                            <h3 class="font-bold text-lg">Get in Touch</h3>
+                            <p class="text-sm text-gray-600">Have questions about our cuts or delivery zones? Reach out to us directly.</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <p><i class="fa-solid fa-phone text-orange-600 mr-2"></i> +92 300 1234567 (Demo)</p>
+                                <p><i class="fa-brands fa-whatsapp text-green-600 mr-2"></i> +92 300 1234567 (WhatsApp Support)</p>
+                                <p><i class="fa-solid fa-envelope text-orange-600 mr-2"></i> support@freshmeatkarachi.demo</p>
+                                <p><i class="fa-solid fa-location-dot text-orange-600 mr-2"></i> Main Zamzama Commercial, DHA Phase 5, Karachi</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl h-64 flex items-center justify-center border border-gray-200">
+                            <span class="text-gray-500 font-medium text-sm"><i class="fa-solid fa-map-location-dot mr-2"></i> Karachi Shop Location Map Placeholder</span>
+                        </div>
+                    </div>
+                ` 
+            },
+            faqs: { title: 'Frequently Asked Questions', content: 'Find answers regarding daily rates, weight options, minimum order values, and Cash on Delivery rules in Karachi.' },
+            shipping: { title: 'Shipping & Return Policy', content: 'We deliver across major areas in Karachi. Because meat is a perishable food item, returns are only accepted at the time of delivery if quality or packaging is unsatisfactory.' },
+            privacy: { title: 'Privacy Policy', content: 'Your personal phone number and address are strictly used for order fulfillment and delivery coordination.' },
+            terms: { title: 'Terms & Conditions', content: 'All product prices and daily rates are subject to change according to Karachi wholesale market fluctuations.' }
+        };
+
+        const page = pages[pageKey] || pages.about;
+
+        return `
+            <div class="max-w-4xl mx-auto px-4 py-16 space-y-6">
+                <h1 class="text-4xl font-extrabold text-gray-900">${page.title}</h1>
+                <div class="text-gray-600 text-base leading-relaxed space-y-4">
+                    <p>${page.content}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    /* --- CART & INTERACTION LOGIC --- */
+    function selectWeight(weight, btnElement) {
+        selectedWeightOption = weight;
+        document.querySelectorAll('.weight-btn').forEach(b => {
+            b.classList.remove('border-2', 'border-orange-600', 'bg-orange-50', 'text-orange-900');
+            b.classList.add('border-gray-300');
+        });
+        btnElement.classList.add('border-2', 'border-orange-600', 'bg-orange-50', 'text-orange-900');
+        btnElement.classList.remove('border-gray-300');
+
+        const priceElem = document.getElementById('live-calculated-price');
+        if (priceElem) {
+            const rate = parseFloat(priceElem.getAttribute('data-rate'));
+            priceElem.innerText = `Rs. ${Math.round(rate * weight)}`;
+        }
+    }
+
+    function addToCart(productId) {
+        const product = PRODUCTS.find(p => p.id === productId);
+        if (!product || product.status === 'Sold Out') return;
+
+        const existingIndex = cart.findIndex(item => item.id === productId && item.weight === selectedWeightOption);
+        if (existingIndex > -1) {
+            cart[existingIndex].qty += 1;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                rate: product.rate,
+                weight: selectedWeightOption,
+                qty: 1,
+                image: product.image
+            });
+        }
+        saveCart();
+        toggleCartDrawer(true);
+    }
+
+    function buyNow(productId) {
+        addToCart(productId);
+        toggleCartDrawer(false);
+        router.navigate('checkout');
+    }
+
+    function updateCartQuantity(index, delta) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+        }
+        saveCart();
+        renderCartDrawerItems();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        saveCart();
+        renderCartDrawerItems();
+    }
+
+    function saveCart() {
+        localStorage.setItem('freshmeat_cart', JSON.stringify(cart));
+        updateCartBadge();
+    }
+
+    function updateCartBadge() {
+        const badge = document.getElementById('cart-badge');
+        if (badge) {
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            badge.innerText = totalItems;
+        }
+    }
+
+    function toggleCartDrawer(open) {
+        const drawer = document.getElementById('cart-drawer');
+        if (open) {
+            renderCartDrawerItems();
+            drawer.classList.remove('hidden');
+        } else {
+            drawer.classList.add('hidden');
+        }
+    }
+
+    function renderCartDrawerItems() {
+        const container = document.getElementById('cart-items-container');
+        const subtotalElem = document.getElementById('cart-subtotal');
+        const totalElem = document.getElementById('cart-total');
+
+        if (cart.length === 0) {
+            container.innerHTML = `<div class="text-center py-12 text-gray-500 text-sm">Your shopping bag is empty.</div>`;
+            subtotalElem.innerText = 'Rs. 0';
+            totalElem.innerText = 'Rs. 0';
+            return;
+        }
+
+        let subtotal = 0;
+        container.innerHTML = cart.map((item, idx) => {
+            const itemTotal = item.rate * item.weight * item.qty;
+            subtotal += itemTotal;
+            return `
+                <div class="py-4 flex items-center space-x-4">
+                    <img src="${item.image}" class="w-16 h-16 object-cover rounded-xl border border-gray-200">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-gray-900">${item.name}</h4>
+                        <p class="text-xs text-gray-500">${item.weight} kg @ Rs. ${item.rate}/kg</p>
+                        <div class="flex items-center space-x-3 mt-2">
+                            <button onclick="updateCartQuantity(${idx}, -1)" class="w-6 h-6 bg-gray-100 rounded-md font-bold text-xs">-</button>
+                            <span class="text-xs font-semibold">${item.qty}</span>
+                            <button onclick="updateCartQuantity(${idx}, 1)" class="w-6 h-6 bg-gray-100 rounded-md font-bold text-xs">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-bold text-sm text-gray-900">Rs. ${itemTotal}</span>
+                        <button onclick="removeFromCart(${idx})" class="block text-[11px] text-red-500 hover:text-red-700 mt-1">Remove</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        subtotalElem.innerText = `Rs. ${subtotal}`;
+        totalElem.innerText = `Rs. ${subtotal}`;
+    }
+
+    function proceedToCheckout() {
+        toggleCartDrawer(false);
+        router.navigate('checkout');
+    }
+
+    function updateCheckoutTotals() {
+        const areaSelect = document.getElementById('cust-area');
+        const selectedOption = areaSelect.options[areaSelect.selectedIndex];
+        const fee = selectedOption ? parseInt(selectedOption.getAttribute('data-fee')) || 0 : 0;
+        
+        const subtotal = cart.reduce((acc, item) => acc + (item.rate * item.weight * item.qty), 0);
+        
+        document.getElementById('checkout-delivery-fee').innerText = `Rs. ${fee}`;
+        document.getElementById('checkout-grand-total').innerText = `Rs. ${subtotal + fee}`;
+    }
+
+    function submitOrder(e) {
+        e.preventDefault();
+        const name = document.getElementById('cust-name').value;
+        const phone = document.getElementById('cust-phone').value;
+        const address = document.getElementById('cust-address').value;
+        const areaSelect = document.getElementById('cust-area');
+        const area = areaSelect.value;
+        const fee = parseInt(areaSelect.options[areaSelect.selectedIndex].getAttribute('data-fee')) || 0;
+        const subtotal = cart.reduce((acc, item) => acc + (item.rate * item.weight * item.qty), 0);
+
+        const orderNo = 'FM-' + Math.floor(100000 + Math.random() * 900000);
+        const total = subtotal + fee;
+
+        const orderData = { orderNo, name, phone, address, area, total };
+
+        // Clear cart
+        cart = [];
+        saveCart();
+
+        router.navigate('confirmation', orderData);
+    }
+
+    function handleSortChange(categorySlug) {
+        const sortVal = document.getElementById('sort-select').value;
+        let products = PRODUCTS.filter(p => p.category === categorySlug);
+
+        if (sortVal === 'price-low') {
+            products.sort((a, b) => a.rate - b.rate);
+        } else if (sortVal === 'price-high') {
+            products.sort((a, b) => b.rate - a.rate);
+        } else if (sortVal === 'name-az') {
+            products.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        const grid = document.getElementById('collection-grid');
+        grid.innerHTML = products.map(p => renderProductCard(p)).join('');
+    }
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    /* --- INITIALIZE APP --- */
+    window.addEventListener('DOMContentLoaded', () => {
+        router.navigate('home');
+    });
+</script>
