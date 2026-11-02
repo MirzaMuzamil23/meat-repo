@@ -52,7 +52,7 @@
 
 <!-- Main Dynamic Application Container -->
 <main id="app-container" class="min-h-screen">
-    <!-- Views will be dynamically injected here via JS -->
+    <!-- Dynamic Views Injected Here -->
 </main>
 
 <!-- Sliding Shopping Bag Drawer -->
@@ -102,7 +102,7 @@
     </div>
 </div>
 
-<!-- Professional Footer -->
+<!-- Professional Footer with Fully Detailed Informational Links -->
 <footer class="bg-gray-900 text-white pt-16 pb-12 border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
         <div class="space-y-4">
@@ -155,7 +155,7 @@
 
 <!-- Application JavaScript Logic -->
 <script>
-    /* --- MOCK DATABASE & PRODUCTS CATALOGUE --- */
+    /* --- MOCK DATABASE & PRODUCTS CATALOGUE (Each with Unsplash photography) --- */
     const PRODUCTS = [
         // Chicken
         { id: 'ch-1', name: 'Fresh Whole Chicken', category: 'chicken', rate: 620, unit: 'kg', status: 'In Stock', image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&q=80', desc: 'Tender, farm-raised wholesome chicken cleaned and gutted to perfection.' },
@@ -214,7 +214,6 @@
                 container.innerHTML = renderHomeView();
             } else if (currentRoute.view === 'collection') {
                 container.innerHTML = renderCollectionView(currentRoute.param);
-                initCollectionListeners(currentRoute.param);
             } else if (currentRoute.view === 'product') {
                 container.innerHTML = renderProductView(currentRoute.param);
             } else if (currentRoute.view === 'checkout') {
@@ -383,7 +382,6 @@
     }
 
     function renderCollectionView(categorySlug) {
-        const categoryTitle = categorySlug.replace('-', ' ').toUpperCase();
         let filteredProducts = PRODUCTS.filter(p => p.category === categorySlug);
 
         return `
@@ -601,7 +599,7 @@
                             <h2 class="text-xl font-bold text-gray-900">Order Summary</h2>
                             <div class="space-y-4 max-h-80 overflow-y-auto divide-y divide-gray-200">
                                 ${cart.map(item => `
-                                    py-3 flex justify-between items-center text-sm">
+                                    <div class="pt-3 flex justify-between items-center text-sm">
                                         <div>
                                             <span class="font-bold text-gray-900 block">${item.name}</span>
                                             <span class="text-xs text-gray-500">${item.weight} kg × ${item.qty} (Rs.${item.rate}/kg)</span>
@@ -677,42 +675,110 @@
         `;
     }
 
+    /* --- DETAILED STATIC INFORMATIONAL PAGES --- */
     function renderStaticPageView(pageKey) {
         const pages = {
-            about: { title: 'About Us', content: 'FreshMeat Karachi is established to provide the highest quality halal meats across Karachi. Our mission is transparency, pristine hygiene, and farm-fresh daily delivery.' },
-            contact: { 
-                title: 'Contact Us & WhatsApp', 
+            about: {
+                title: 'About FreshMeat Karachi',
                 content: `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                        <div class="space-y-4">
-                            <h3 class="font-bold text-lg">Get in Touch</h3>
-                            <p class="text-sm text-gray-600">Have questions about our cuts or delivery zones? Reach out to us directly.</p>
-                            <div class="space-y-2 text-sm text-gray-700">
-                                <p><i class="fa-solid fa-phone text-orange-600 mr-2"></i> +92 300 1234567 (Demo)</p>
-                                <p><i class="fa-brands fa-whatsapp text-green-600 mr-2"></i> +92 300 1234567 (WhatsApp Support)</p>
-                                <p><i class="fa-solid fa-envelope text-orange-600 mr-2"></i> support@freshmeatkarachi.demo</p>
-                                <p><i class="fa-solid fa-location-dot text-orange-600 mr-2"></i> Main Zamzama Commercial, DHA Phase 5, Karachi</p>
+                    <p class="mb-4">FreshMeat Karachi is established to provide the highest quality halal meats across Karachi. Our mission is transparency, pristine hygiene, and farm-fresh daily delivery directly to your kitchen.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-2">Our Quality Commitment</h3>
+                    <p class="mb-4">Every animal is hand-slaughtered daily (Zabiha halal) under expert supervision. We maintain an unbroken cold chain from processing plants to your doorstep to ensure absolute freshness and nutrient preservation.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-2">Hygienic Packaging</h3>
+                    <p>We pack all orders in food-grade, leak-proof vacuum and paper wrapping, weighing each item with precise digital scales so you get exactly what you pay for.</p>
+                `
+            },
+            contact: {
+                title: 'Contact Us & WhatsApp Support',
+                content: `
+                    <p class="mb-6">Have questions about our daily rates, special party cuts, or delivery zones? Reach out to our customer support team instantly.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
+                        <div class="space-y-4 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h3 class="font-bold text-lg text-gray-900">Direct Contact Channels</h3>
+                            <div class="space-y-3 text-sm text-gray-700">
+                                <p><i class="fa-solid fa-phone text-orange-600 mr-3"></i> +92 300 1234567 (Demo Support Line)</p>
+                                <p><i class="fa-brands fa-whatsapp text-green-600 mr-3"></i> +92 300 1234567 (WhatsApp Orders & Inquiries)</p>
+                                <p><i class="fa-solid fa-envelope text-orange-600 mr-3"></i> support@freshmeatkarachi.demo</p>
+                                <p><i class="fa-solid fa-location-dot text-orange-600 mr-3"></i> Main Zamzama Commercial, DHA Phase 5, Karachi</p>
+                            </div>
+                            <div class="pt-4">
+                                <a href="https://wa.me/923001234567" target="_blank" class="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    <span>Chat with us on WhatsApp</span>
+                                </a>
                             </div>
                         </div>
-                        <div class="bg-gray-100 rounded-2xl h-64 flex items-center justify-center border border-gray-200">
-                            <span class="text-gray-500 font-medium text-sm"><i class="fa-solid fa-map-location-dot mr-2"></i> Karachi Shop Location Map Placeholder</span>
+                        <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200 flex flex-col justify-center items-center text-center">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-orange-600 mb-3"></i>
+                            <h4 class="font-bold text-gray-900">Zamzama Flagship Butchery</h4>
+                            <p class="text-xs text-gray-500 mt-1">DHA Phase 5, Karachi, Pakistan</p>
+                            <span class="mt-4 bg-white text-gray-800 text-xs font-semibold px-3 py-1 rounded-full border border-gray-300">Open Daily: 7:00 AM – 10:00 PM</span>
                         </div>
                     </div>
-                ` 
+                `
             },
-            faqs: { title: 'Frequently Asked Questions', content: 'Find answers regarding daily rates, weight options, minimum order values, and Cash on Delivery rules in Karachi.' },
-            shipping: { title: 'Shipping & Return Policy', content: 'We deliver across major areas in Karachi. Because meat is a perishable food item, returns are only accepted at the time of delivery if quality or packaging is unsatisfactory.' },
-            privacy: { title: 'Privacy Policy', content: 'Your personal phone number and address are strictly used for order fulfillment and delivery coordination.' },
-            terms: { title: 'Terms & Conditions', content: 'All product prices and daily rates are subject to change according to Karachi wholesale market fluctuations.' }
+            faqs: {
+                title: 'Frequently Asked Questions',
+                content: `
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-base">1. Are all meats 100% Halal?</h4>
+                            <p class="text-sm text-gray-600 mt-2">Yes, all our chicken, beef, veal, and mutton are 100% hand-slaughtered (Zabiha) according to Islamic principles.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-base">2. Why does the final bill vary slightly?</h4>
+                            <p class="text-sm text-gray-600 mt-2">Meat is packed by weight on physical shop scales right before dispatch. Your final invoice is calculated precisely using the actual packed weight.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-base">3. What are the available payment methods?</h4>
+                            <p class="text-sm text-gray-600 mt-2">Currently, we support Cash on Delivery (COD) for all orders across Karachi to ensure complete customer convenience and trust.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-base">4. Which areas in Karachi do you deliver to?</h4>
+                            <p class="text-sm text-gray-600 mt-2">We deliver across DHA, Clifton, PECHS, Tariq Road, Gulshan-e-Iqbal, North Nazimabad, and Bahria Town.</p>
+                        </div>
+                    </div>
+                `
+            },
+            shipping: {
+                title: 'Shipping & Return Policy',
+                content: `
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Delivery Guidelines</h3>
+                    <p class="mb-4">Orders are dispatched via temperature-controlled delivery vehicles across Karachi. Delivery fees depend on your selected neighborhood zone ranging from Rs. 150 to Rs. 400.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Inspection & Returns</h3>
+                    <p>Because meat is a perishable food item, customers are requested to inspect their order upon delivery. If packaging or quality is unsatisfactory, returns or replacements are accepted immediately upon courier arrival.</p>
+                `
+            },
+            privacy: {
+                title: 'Privacy Policy',
+                content: `
+                    <p class="mb-4">At FreshMeat Karachi, your privacy is our priority. We collect your name, phone number, and delivery address solely for the purpose of fulfilling your meat orders and coordinating delivery.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Data Security</h3>
+                    <p>We do not share, sell, or distribute your personal contact information to any third parties under any circumstances.</p>
+                `
+            },
+            terms: {
+                title: 'Terms & Conditions',
+                content: `
+                    <p class="mb-4">By accessing and placing an order on FreshMeat Karachi, you agree to comply with our operational terms. All daily meat rates per kg fluctuate according to the Karachi wholesale market rates.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Order Modification</h3>
+                    <p>We reserve the right to verify orders via phone call or WhatsApp before dispatching. Unreachable phone numbers may result in order postponement or cancellation.</p>
+                `
+            }
         };
 
         const page = pages[pageKey] || pages.about;
 
         return `
             <div class="max-w-4xl mx-auto px-4 py-16 space-y-6">
-                <h1 class="text-4xl font-extrabold text-gray-900">${page.title}</h1>
-                <div class="text-gray-600 text-base leading-relaxed space-y-4">
-                    <p>${page.content}</p>
+                <nav class="text-xs text-gray-500 mb-4">
+                    <button onclick="router.navigate('home')" class="hover:text-orange-600">Home</button>
+                    <span class="mx-2">/</span>
+                    <span class="text-gray-900 font-semibold">${page.title}</span>
+                </nav>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">${page.title}</h1>
+                <div class="text-gray-600 text-base leading-relaxed space-y-4 pt-2">
+                    ${page.content}
                 </div>
             </div>
         `;
