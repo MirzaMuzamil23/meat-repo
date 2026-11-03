@@ -163,8 +163,82 @@ nav.desktop a.feast:hover{background:#ffe4e4}
 .pc-rate{font-size:.7rem;color:var(--gry);margin-bottom:10px}
 .pc-btn{width:100%;padding:9px 10px;border:1.5px solid var(--brd);border-radius:8px;font-size:.78rem;font-weight:700;background:#fff;color:var(--blk);transition:.18s;cursor:pointer;text-align:center}
 .pc-btn:hover{border-color:var(--blk);background:var(--blk);color:#fff}
-@media(max-width:720px){.pg{grid-template-columns:repeat(2,1fr);gap:12px}}
-@media(max-width:420px){.pg{grid-template-columns:repeat(2,1fr);gap:10px}}
+/* Arrow circle button — Image 1 style */
+.pc-arrow{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;border:none}
+.pc-arrow:hover{background:#a0100a;transform:scale(1.1)}
+
+/* ── MOBILE RESPONSIVE OVERHAUL ── */
+@media(max-width:1080px){
+  .catg{grid-template-columns:repeat(3,1fr)}
+  .nl-grid{grid-template-columns:1fr 1fr}
+  .co-layout{grid-template-columns:1fr}
+  .co-sidebar{position:static}
+  .done-grid{grid-template-columns:1fr}
+  .pdp{grid-template-columns:1fr;gap:24px}
+  .gal{position:static}
+  .hero{grid-template-columns:1fr;min-height:380px}
+  .hero-img{display:none}
+  .hero-txt{padding:52px 28px}
+  .slide-content{padding:48px 28px!important}
+}
+@media(max-width:720px){
+  :root{--hh:56px}
+  .catg{grid-template-columns:repeat(2,1fr);gap:10px}
+  nav.desktop{display:none}
+  .hamburger{display:flex}
+  .nl-grid{grid-template-columns:1fr;gap:22px}
+  .pg{grid-template-columns:repeat(2,1fr);gap:10px}
+  .bs-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .sec{padding:36px 0}
+  .sec-sm{padding:28px 0}
+  .frow{grid-template-columns:1fr}
+  .hero,.slide{min-height:320px!important}
+  .slide-content{padding:32px 20px!important}
+  .W{padding:0 14px}
+  /* force 2-col products on mobile */
+  .pg,.bs-row{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  /* product card compact on mobile */
+  .pc-body{padding:10px 11px 11px}
+  .pc-name{font-size:.8rem;margin-bottom:4px}
+  .pc-price{font-size:.82rem}
+  .pc-rate{font-size:.64rem}
+  .pc-arrow{width:30px;height:30px}
+  /* nav header compact */
+  .hd{height:54px;gap:10px}
+  .logo-name{font-size:1rem}
+  .logo-sub{display:none}
+  /* hero text compact */
+  .slide h1,[style*="FRESH CHICKEN"],[style*="PREMIUM BEEF"]{font-size:2rem!important}
+  /* category grid 2x3 on mobile */
+  .catg{grid-template-columns:repeat(2,1fr)!important}
+  /* rates grid 2 col */
+  [style*="repeat(auto-fill,minmax(160px"]{grid-template-columns:repeat(2,1fr)!important}
+  /* trust badges 1 col */
+  [style*="repeat(auto-fill,minmax(220px"]{grid-template-columns:1fr!important}
+  /* reviews 1 col */
+  .reviews-grid{grid-template-columns:1fr!important}
+  /* wa cta stacked */
+  .wa-cta,[style*="f0fdf4"]{flex-direction:column!important;padding:24px 18px!important}
+  /* footer cols 1 */
+  .fg{grid-template-columns:1fr!important;gap:20px!important}
+  /* pdp tabs scroll */
+  [id^="ptab"]{overflow-x:auto}
+  /* checkout */
+  .co-layout{padding:24px 0 48px}
+  /* done grid */
+  .done-grid{grid-template-columns:1fr!important}
+  /* dev bar compact */
+  .dev-bar-left span:not(.dev-tag){display:none}
+  .dev-bar-mid .dev-btn span{display:none}
+}
+@media(max-width:420px){
+  .pg,.bs-row{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .pc-body{padding:8px 9px 9px}
+  .pc-name{font-size:.76rem}
+  .slide-content{padding:24px 16px!important}
+  .catg{grid-template-columns:1fr 1fr!important}
+  .W{padding:0 12px}
+}
 
 /* ── BESTSELLER GRID ── */
 .bs-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}
@@ -839,21 +913,56 @@ function renderView(){
 // ══════════════════════════════════════
 // Hero slides — professional butchery & fresh meat backgrounds (like HalalHarvest / PrimeCuts screenshots)
 // Inline SVG hero backgrounds — beautiful dark gradients with meat illustrations
+// ── HERO BACKGROUNDS — Image 3 & 4 style: pure black + right red radial glow ──
+// Each slide: black left side (text area) + dark meat bg right + red radial glow right edge
 function heroSvg(type){
-  const svgs={
-    s1:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0808"/><stop offset="0.5" stop-color="#3d1410"/><stop offset="1" stop-color="#2a0e0c"/></linearGradient><radialGradient id="h1g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#5d1a14" stop-opacity="0.7"/><stop offset="1" stop-color="#1a0808" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h1)"/><rect width="1200" height="520" fill="url(#h1g)"/><g transform="translate(820,260)" opacity=".18"><ellipse rx="180" ry="120" fill="#e8c4a0"/><ellipse rx="140" ry="90" fill="#d4a882"/><ellipse cx="55" cy="-22" rx="70" ry="50" fill="#c49070"/></g><circle cx="900" cy="180" r="200" fill="#8b1a10" opacity=".12"/><circle cx="1050" cy="380" r="150" fill="#c0392b" opacity=".08"/></svg>`,
-    s2:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1a0d"/><stop offset="0.5" stop-color="#1f3d1a"/><stop offset="1" stop-color="#0a1a0a"/></linearGradient><radialGradient id="h2g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#2d5a1e" stop-opacity="0.6"/><stop offset="1" stop-color="#0d1a0d" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h2)"/><rect width="1200" height="520" fill="url(#h2g)"/><g transform="translate(820,260)" opacity=".18"><g transform="translate(-80,0)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="15" cy="-48" rx="16" ry="12" fill="#d2b48c"/></g><g transform="translate(20,0)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="15" cy="-46" rx="15" ry="11" fill="#d2b48c"/></g></g><circle cx="900" cy="200" r="180" fill="#2d5a1e" opacity=".15"/></svg>`,
-    s3:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0a05"/><stop offset="0.5" stop-color="#3d1f0a"/><stop offset="1" stop-color="#2a1205"/></linearGradient><radialGradient id="h3g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#7a2e14" stop-opacity="0.65"/><stop offset="1" stop-color="#1a0a05" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h3)"/><rect width="1200" height="520" fill="url(#h3g)"/><g transform="translate(820,260)" opacity=".2"><path d="M-78,-25 C-80,-48 -50,-62 0,-58 C50,-54 82,-42 80,-20 C78,6 50,38 0,42 C-50,44 -76,22 -78,-25Z" fill="#c0392b"/><path d="M-58,-18 C-60,-40 -36,-52 0,-49 C36,-46 60,-32 58,-14 C56,4 36,28 0,31 C-36,34 -58,14 -58,-18Z" fill="#e74c3c"/></g></svg>`,
-    s4:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e0a1a"/><stop offset="0.5" stop-color="#2a1a3d"/><stop offset="1" stop-color="#1a0e2a"/></linearGradient><radialGradient id="h4g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#4a1a6e" stop-opacity="0.55"/><stop offset="1" stop-color="#0e0a1a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h4)"/><rect width="1200" height="520" fill="url(#h4g)"/><g transform="translate(820,260)" opacity=".18"><path d="M-76,-22 C-78,-46 -46,-60 0,-57 C46,-54 78,-40 78,-18 C78,8 50,38 0,42 C-50,44 -74,20 -76,-22Z" fill="#e8a0a0"/><path d="M-60,-14 C-62,-36 -36,-50 0,-47 C36,-44 62,-30 60,-10 C58,10 36,30 0,34 C-36,37 -58,16 -60,-14Z" fill="#f0b8b8"/></g></svg>`
+  // All use same structure: #0d0d0d base, red radial glow top-right, meat SVG illustration right side
+  const meatIll={
+    s1:/* chicken peach shapes */`<g transform="translate(820,260)" opacity=".32"><ellipse rx="155" ry="105" fill="#c8a080"/><ellipse rx="118" ry="78" fill="#b08060"/><ellipse cx="50" cy="-18" rx="65" ry="45" fill="#a07050"/><ellipse cx="-60" cy="20" rx="48" ry="36" fill="#c09070"/><ellipse cx="20" cy="-25" rx="35" ry="28" fill="#b08868"/></g>`,
+    s2:/* beef dark red shapes */`<g transform="translate(820,260)" opacity=".35"><ellipse rx="150" ry="100" fill="#8b1a0a"/><ellipse rx="118" ry="78" fill="#a0201a"/><ellipse cx="0" cy="0" rx="80" ry="55" fill="#b83020" opacity=".7"/><path d="M-80,-25 C-82,-50 -50,-65 0,-62 C50,-59 82,-45 80,-22 C78,5 50,40 0,44 C-50,46 -78,22 -80,-25Z" fill="#c03828" opacity=".6"/></g>`,
+    s3:/* mutton red */`<g transform="translate(820,260)" opacity=".35"><ellipse rx="148" ry="98" fill="#6e1208"/><ellipse rx="115" ry="75" fill="#8b1a10"/><circle cx="-40" cy="-8" r="55" fill="#a02018" opacity=".7"/><circle cx="45" cy="15" r="48" fill="#7a1410" opacity=".7"/><circle cx="0" cy="38" r="38" fill="#922214" opacity=".6"/></g>`,
+    s4:/* veal/feast pink-brown */`<g transform="translate(820,260)" opacity=".32"><path d="M0,-44 C18,-60 42,-56 46,-38 C50,-20 40,12 30,44 C22,64 12,72 4,72 C-4,72 -12,60 -15,44 C-22,12 -18,-30 0,-44Z" fill="#8b4513" transform="translate(-80,0)"/><path d="M0,-42 C18,-58 42,-54 46,-36 C50,-18 40,14 30,46 C22,66 12,74 4,74 C-4,74 -12,62 -15,46 C-22,14 -18,-28 0,-42Z" fill="#a05020" transform="translate(20,0)"/><path d="M0,-40 C18,-56 42,-52 46,-34 C50,-16 40,16 30,48 C22,68 12,76 4,76 C-4,76 -12,64 -15,48 C-22,16 -18,-26 0,-40Z" fill="#8b4513" transform="translate(120,5)"/></g>`,
   };
-  return svgs[type]||svgs['s1'];
+  const meat=meatIll[type]||meatIll['s1'];
+  return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="rg_${type}" cx="0.85" cy="0.35" r="0.65">
+        <stop offset="0" stop-color="#c0392b" stop-opacity="0.75"/>
+        <stop offset="0.45" stop-color="#8b1a10" stop-opacity="0.4"/>
+        <stop offset="1" stop-color="#0d0d0d" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="520" fill="#0d0d0d"/>
+    <rect width="1200" height="520" fill="url(#rg_${type})"/>
+    ${meat}
+  </svg>`;
 }
 
 const SLIDES=[
-  {tag:'100% Zabiha Hand-Slaughtered',title:'Fresh & Halal Meat,<br>Delivered to Your Door.',desc:'Premium quality, ethically sourced fresh meat. Cut by expert butchers, weighed on certified digital scales and delivered across Karachi.',bgSvg:'s1',btn:'Shop Now',cat:'chicken'},
-  {tag:'Winter BBQ Feast — Specials',title:'Enjoy Rs.100 Cashback<br>on Winter Feast!',desc:'Order marinated BBQ cuts and seasonal specials for your winter gatherings. Use code WINTERFEST at checkout.',bgSvg:'s2',btn:'Shop Winter Feast',cat:'feast'},
-  {tag:'Premium Desi Mutton — Daily Fresh',title:'Authentic Karachi<br>Mutton Karahi Cut.',desc:'Fresh desi goat mutton cut by our expert butchers every morning. Order before noon for same-day delivery.',bgSvg:'s3',btn:'Shop Mutton',cat:'mutton'},
-  {tag:'Prime Beef — Zero Fat Trim',title:'Premium Halal Beef,<br>Next-Day Delivery.',desc:'Hand-selected prime beef — boneless, bone-in, and nihari cuts. Vacuum-sealed and delivered in cold-chain bags.',bgSvg:'s4',btn:'Shop Beef',cat:'beef'}
+  {
+    mainTitle:'FRESH CHICKEN',
+    subRed:'Premium Quality · 100% Halal',
+    subWht:'Farm Fresh Daily Delivered',
+    bgSvg:'s1', btn:'Shop Now →', cat:'chicken'
+  },
+  {
+    mainTitle:'PREMIUM BEEF',
+    subRed:'Quality Cuts · Tender & Fresh',
+    subWht:'Best Quality Guaranteed',
+    bgSvg:'s2', btn:'Order Now →', cat:'beef'
+  },
+  {
+    mainTitle:'DESI MUTTON',
+    subRed:'Farm Fresh · 100% Zabiha',
+    subWht:'Karachi\'s Favourite Karahi Cut',
+    bgSvg:'s3', btn:'Shop Now →', cat:'mutton'
+  },
+  {
+    mainTitle:'WINTER FEAST',
+    subRed:'Marinated & BBQ Ready',
+    subWht:'Seasonal Special Cuts',
+    bgSvg:'s4', btn:'Shop Feast →', cat:'feast'
+  }
 ];
 
 function startHero(){
@@ -881,16 +990,19 @@ function card(p){
   const minW=Math.min(...p.wts);
   const minP=cp(p.rate,minW);
   const origP=p.disc>0?Math.round(minP/(1-p.disc/100)):0;
-  const priceHTML=p.disc>0
-    ?`<span class="pc-price">From ${fmt(minP)} <s>${fmt(origP)}</s></span>`
-    :`<span class="pc-price">From ${fmt(minP)}</span>`;
+  // Arrow circle button — Image 1 style
+  const arrowBtn=!p.avail
+    ?`<div style="width:36px;height:36px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-ban" style="color:#999;font-size:.75rem"></i></div>`
+    :`<div class="pc-arrow" onclick="event.stopPropagation();nav('pdp','${p.id}')" title="View Product"><i class="fa-solid fa-arrow-right" style="font-size:.75rem"></i></div>`;
   return`<div class="pc" onclick="nav('pdp','${p.id}')">
     <div class="pc-img">${im(p.img,p.name)}${discTag}${soldOv}</div>
     <div class="pc-body">
       <div class="pc-name">${p.name}</div>
-      ${priceHTML}
-      <div class="pc-rate">${fmt(p.rate)}/kg <em style="font-size:.66rem;color:#bbb">(demo)</em></div>
-      <button class="pc-btn" onclick="event.stopPropagation();nav('pdp','${p.id}')">Select Weight</button>
+      <div class="pc-price">${p.disc>0?`From ${fmt(minP)} <s style="font-size:.77rem;color:#bbb;font-weight:400">${fmt(origP)}</s>`:`From ${fmt(minP)}`}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+        <div class="pc-rate">${fmt(p.rate)}/kg <em style="font-size:.63rem;color:#ddd">(demo)</em></div>
+        ${arrowBtn}
+      </div>
     </div>
   </div>`;
 }
@@ -984,24 +1096,21 @@ function pageHome(){
   <div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo Prototype — All prices are sample rates and do not represent actual market prices.</div>
 
   <!-- HERO SLIDER -->
-  <section class="hero" style="position:relative;min-height:480px">
-    <div id="hero-slides" style="position:relative;min-height:480px">
+  <section class="hero" style="position:relative;min-height:460px">
+    <div id="hero-slides" style="position:relative;min-height:460px">
       ${SLIDES.map((s,i)=>`<div class="slide${i===0?' active':''}">
         <div class="slide-bg" style="background-image:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(heroSvg(s.bgSvg))}')"></div>
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <div class="slide-tag"><i class="fa-solid fa-certificate" style="font-size:.8rem"></i>${s.tag}</div>
-          <h1 class="slide-title" style="font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.4rem);color:#fff;line-height:1.08;max-width:640px;margin-bottom:14px">${s.title}</h1>
-          <p style="color:rgba(255,255,255,.75);font-size:.9rem;max-width:480px;line-height:1.7;margin-bottom:26px">${s.desc}</p>
-          <div class="slide-btns">
-            <button class="btn btn-red btn-lg" onclick="nav('col','${s.cat}')">${s.btn} <i class="fa-solid fa-arrow-right" style="font-size:.8rem"></i></button>
-          </div>
+        <div class="slide-content" style="padding:60px 40px 60px 48px">
+          <h1 style="font-family:'Inter',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px">${s.mainTitle}</h1>
+          <div style="font-size:clamp(.82rem,1.6vw,1rem);font-weight:700;color:var(--red);margin-bottom:4px;letter-spacing:.01em">${s.subRed}</div>
+          <div style="font-size:clamp(.78rem,1.4vw,.92rem);color:rgba(255,255,255,.75);margin-bottom:28px">${s.subWht}</div>
+          <button class="btn btn-red" onclick="nav('col','${s.cat}')" style="padding:13px 28px;font-size:.88rem;font-weight:700;border-radius:6px">${s.btn}</button>
         </div>
       </div>`).join('')}
     </div>
     <button class="slide-arr prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
     <button class="slide-arr next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
-    <div class="slide-dots">${SLIDES.map((_,i)=>`<div class="sdot${i===0?' on':''}" onclick="goSlide(${i})"></div>`).join('')}</div>
+    <div class="slide-dots" style="bottom:16px">${SLIDES.map((_,i)=>`<div class="sdot${i===0?' on':''}" onclick="goSlide(${i})"></div>`).join('')}</div>
   </section>
 
   <!-- OFFER TICKERS -->
@@ -1025,28 +1134,7 @@ function pageHome(){
     </div>
   </section>
 
-  <!-- OUR SERVICES -->
-  <section class="sec sec-sm">
-    <div class="sec-hd center"><div class="sec-eye">What We Offer</div><h2>Our Services</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
-      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
-        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-wheat-awn" style="color:var(--red);font-size:1.25rem"></i></div>
-        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Aqiqah</div><p style="font-size:.82rem;line-height:1.6">Complete Aqiqah packages for newborns, prepared with care and Islamic tradition. Contact us for pricing.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Enquire Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
-        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-moon" style="color:var(--red);font-size:1.25rem"></i></div>
-        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Qurbani</div><p style="font-size:.82rem;line-height:1.6">Sunnah-compliant Qurbani services, ethically sourced and fairly distributed to deserving families.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Enquire Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
-        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-calendar-check" style="color:var(--red);font-size:1.25rem"></i></div>
-        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Monthly Subscription</div><p style="font-size:.82rem;line-height:1.6">Regular deliveries of premium meat cuts tailored to your family's monthly needs. Save time & money.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Subscribe Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
-        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-boxes-stacked" style="color:var(--red);font-size:1.25rem"></i></div>
-        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Bulk & Wholesale</div><p style="font-size:.82rem;line-height:1.6">Special pricing for restaurants, caterers & households ordering 5kg+. Contact us for custom rates.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#25D366;margin-top:8px"><i class="fa-brands fa-whatsapp"></i>WhatsApp Us</a></div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- TODAY'S RATES SECTION -->
   <section style="background:var(--blk);padding:44px 0" class="sec-sm">
@@ -1138,12 +1226,7 @@ function pageHome(){
     </div>
   </section>
 
-  <!-- DELIVERY AREAS -->
-  <section class="sec sec-sm" style="background:#111;margin:0 -22px;padding:52px 22px">
-    <div class="sec-hd"><div class="sec-eye" style="color:#faa">Delivery Zones</div><h2 style="color:#fff">We Deliver Across Karachi</h2><p style="color:rgba(255,255,255,.55)">Areas and charges below are demo placeholders. Confirmed zones updated before launch.</p></div>
-    <div class="areas">${AREAS.map(a=>`<div class="ac">${a.n}</div>`).join('')}</div>
-    <p style="margin-top:18px;font-size:.74rem;color:rgba(255,255,255,.3)">Delivery fee from Rs. 150. Minimum order Rs. 1,000. <button onclick="nav('pg','shipping')" style="color:rgba(255,255,255,.45);text-decoration:underline;background:none;border:none;cursor:pointer;font-size:.74rem">View Policy</button></p>
-  </section>
+
 
   <!-- WA CTA -->
   <section class="sec sec-sm">
