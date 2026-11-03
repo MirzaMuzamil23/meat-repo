@@ -6,7 +6,7 @@
 <title>Nabdullah Meat Hub | Premium Zabiha Meat — Karachi</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%A9%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ── RESET & BASE ── */
 *{box-sizing:border-box;margin:0;padding:0}
@@ -150,10 +150,9 @@ nav.desktop a.feast:hover{background:#ffe4e4}
 .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:22px}
 .pc{display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--brd)}
 .pc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
-.pc-img{position:relative;aspect-ratio:1;background:linear-gradient(135deg,#faf9f7 0%,#f3ede6 100%);overflow:hidden;border-bottom:1px solid var(--brd)}
-.pc-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s ease;display:block}
-.pc-img img[src=""]{display:none}
-.pc:hover .pc-img img{transform:scale(1.04)}
+.pc-img{position:relative;aspect-ratio:1;background:#fff;overflow:hidden;border-bottom:1px solid var(--brd)}
+.pc-img img{width:100%;height:100%;object-fit:contain;object-position:center;padding:8px;transition:transform .4s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
 .pc-disc{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:.68rem;font-weight:800;padding:4px 9px;border-radius:99px;z-index:2}
 .pc-sold-ov{position:absolute;inset:0;background:rgba(255,255,255,.78);display:flex;align-items:center;justify-content:center;z-index:2}
 .pc-sold-ov span{background:#555;color:#fff;font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:99px}
@@ -462,16 +461,16 @@ body.dro{overflow:hidden}
   </div>
   <div class="dev-bar-mid">
     <button class="dev-btn active" id="btn-desk" onclick="setView('desktop')">
-      <svg style="width:13px;height:13px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg> Laptop View
+      <i class="fa-solid fa-laptop" style="font-size:12px"></i> Laptop View
     </button>
     <button class="dev-btn" id="btn-mob" onclick="setView('mobile')">
-      <svg style="width:12px;height:12px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg> Mobile View
+      <i class="fa-solid fa-mobile-screen-button" style="font-size:12px"></i> Mobile View
     </button>
   </div>
   <div class="dev-bar-right">
-    <a href="https://wa.me/923348210348" target="_blank"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> 0334-8210348</a>
+    <a href="https://wa.me/923348210348" target="_blank"><i class="fa-brands fa-whatsapp"></i> 0334-8210348</a>
     <span style="color:#333">|</span>
-    <span style="color:#f59e0b;font-weight:700">🚚 Cash on Delivery</span>
+    <span style="color:#f59e0b;font-weight:700"><i class="fa-solid fa-truck-fast" style="margin-right:4px"></i>Cash on Delivery</span>
   </div>
 </div>
 
@@ -480,9 +479,9 @@ body.dro{overflow:hidden}
 
   <!-- ANN BAR -->
   <div class="ann-bar">
-    ✓
+    <i class="fa-solid fa-circle-check" style="font-size:13px"></i>
     <span>We Deliver Fresh, We Deliver Next Day &nbsp;·&nbsp; <strong>Free Delivery on orders above Rs. 3,000</strong></span>
-    ✓
+    <i class="fa-solid fa-circle-check" style="font-size:13px"></i>
   </div>
 
   <!-- HEADER -->
@@ -503,7 +502,7 @@ body.dro{overflow:hidden}
       <a onclick="nav('col','beef')" id="n-beef">Beef</a>
       <a onclick="nav('col','veal')" id="n-veal">Veal</a>
       <a onclick="nav('col','mutton')" id="n-mutton">Mutton</a>
-      <a onclick="nav('col','feast')" id="n-feast" class="feast">🔥 Winter Feast</a>
+      <a onclick="nav('col','feast')" id="n-feast" class="feast"><i class="fa-solid fa-fire" style="font-size:10px"></i> Winter Feast</a>
     </nav>
     <div class="hd-right">
       <div class="hamburger" onclick="openMobNav()"><span></span><span></span><span></span></div>
@@ -518,15 +517,15 @@ body.dro{overflow:hidden}
         <div class="logo-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
         <div class="logo-txt"><div class="logo-name">Nabdullah Meat Hub</div></div>
       </div>
-      <div class="mob-x" onclick="closeMobNav()"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+      <div class="mob-x" onclick="closeMobNav()"><i class="fa-solid fa-xmark"></i></div>
     </div>
     <a onclick="nav('home');closeMobNav()">Home</a>
     <a onclick="nav('col','chicken');closeMobNav()">Chicken</a>
     <a onclick="nav('col','beef');closeMobNav()">Beef</a>
     <a onclick="nav('col','veal');closeMobNav()">Veal</a>
     <a onclick="nav('col','mutton');closeMobNav()">Mutton</a>
-    <a onclick="nav('col','feast');closeMobNav()" style="color:var(--red)">🔥 Winter Feast</a>
-    <a onclick="openDr();closeMobNav()" style="display:flex;justify-content:space-between;align-items:center"><span>🛍 My Bag</span><span id="mob-cart-count" style="background:var(--red);color:#fff;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:99px;display:none"></span></a>
+    <a onclick="nav('col','feast');closeMobNav()" style="color:var(--red)"><i class="fa-solid fa-fire" style="margin-right:5px"></i>Winter Feast</a>
+    <a onclick="openDr();closeMobNav()" style="display:flex;justify-content:space-between;align-items:center"><span><i class="fa-solid fa-bag-shopping" style="margin-right:8px;color:var(--red)"></i>My Bag</span><span id="mob-cart-count" style="background:var(--red);color:#fff;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:99px;display:none"></span></a>
     <a onclick="nav('pg','about');closeMobNav()">About Us</a>
     <a onclick="nav('pg','contact');closeMobNav()">Contact</a>
     <a onclick="nav('pg','faqs');closeMobNav()">FAQs</a>
@@ -536,12 +535,12 @@ body.dro{overflow:hidden}
   <div class="ov" id="ov" onclick="closeDr()"></div>
   <aside id="cart-dr">
     <div class="dr-head">
-      <h3><svg style="width:17px;height:17px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2zm2-4c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm4 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2z"/></svg> Shopping Bag</h3>
-      <div class="dr-x" onclick="closeDr()"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+      <h3><i class="fa-solid fa-bag-shopping"></i> Shopping Bag</h3>
+      <div class="dr-x" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></div>
     </div>
     <div class="dr-body" id="dr-body"></div>
     <div class="dr-foot" id="dr-foot" style="display:none">
-      <div class="dr-note">ℹ Final bill is based on actual packed scale weight at dispatch.</div>
+      <div class="dr-note"><i class="fa-solid fa-circle-info" style="margin-right:5px"></i>Final bill is based on actual packed scale weight at dispatch.</div>
       <div class="tt"><span>Subtotal</span><span id="dr-sub">—</span></div>
       <div class="tt"><span>Delivery</span><span>Calculated at checkout</span></div>
       <div class="tt grand"><span>Estimated Total</span><span id="dr-tot">—</span></div>
@@ -549,7 +548,7 @@ body.dro{overflow:hidden}
         <button class="btn btn-red btn-full" onclick="nav('checkout');closeDr()">Proceed to Checkout</button>
         <button class="btn btn-out btn-full" onclick="closeDr()">Continue Shopping</button>
       </div>
-      <div class="min-alert" id="dr-min">⚠<span>Minimum order is Rs. 1,000</span></div>
+      <div class="min-alert" id="dr-min"><i class="fa-solid fa-triangle-exclamation"></i><span>Minimum order is Rs. 1,000</span></div>
     </div>
   </aside>
 
@@ -571,57 +570,89 @@ const cp=(r,g)=>Math.round(r*g/1000);
 // Professional category-matched product images (light/white background, black plate style like Tawaqqo)
 // ─── PROFESSIONAL WHITE-BACKGROUND PRODUCT IMAGES (like HalalHarvest / PrimeCuts screenshots) ───
 // All images: clean white/cream background, product clearly visible, professional food photography
-const IMGS={
-  // ── CHICKEN ── white background clean tray shots
-  ch1:'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=700&q=80',   // whole raw chicken on white
-  ch2:'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=700&q=80',   // chicken breast fillets white bg
-  ch3:'https://images.unsplash.com/photo-1574672281240-6bed3842e375?w=700&q=80',   // chicken drumsticks on white
-  ch4:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=700&q=90&auto=format&fit=crop',   // chicken mince/qeema
-  ch5:'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=700&q=80',   // whole chicken
-  ch6:'https://images.unsplash.com/photo-1574672281240-6bed3842e375?w=700&q=80',   // chicken thigh pieces
-  ch7:'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=700&q=80',   // karahi cut chicken
-  ch8:'https://images.unsplash.com/photo-1574672281240-6bed3842e375?w=700&q=80',   // chicken wings
-  // ── BEEF ── premium red beef on white/cream
-  bf1:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=700&q=80',   // prime beef tenderloin white bg
-  bf2:'https://images.unsplash.com/photo-1588347785102-2944afe28d28?w=700&q=80',   // beef with bone
-  bf3:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=700&q=90&auto=format&fit=crop',   // beef mince/qeema
-  bf4:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=700&q=80',   // beef nihari cut
-  // ── MUTTON ── fresh red mutton/lamb cuts on white
-  mt1:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=700&q=80',   // mutton karahi cut on white
-  mt2:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=700&q=80',   // mutton boneless
-  mt3:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=700&q=90&auto=format&fit=crop',   // mutton qeema mince
-  mt4:'https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80',   // mutton chops/lamb chops
-  // ── VEAL ── pale pink tender veal on white
-  vl1:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=700&q=80',   // veal boneless pale pink
-  vl2:'https://images.unsplash.com/photo-1588347785102-2944afe28d28?w=700&q=80',   // veal with bone
-  // ── WINTER FEAST ── marinated & BBQ ready
-  wf1:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80',   // BBQ marinated chicken
-  wf2:'https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80',   // BBQ mutton chops
+// ─── INLINE SVG MEAT ILLUSTRATIONS ───
+// 100% guaranteed to work everywhere — no external network needed
+function svgImg(type){
+  const svgs={
+    // CHICKEN — peach/cream tones on white tray
+    chicken_whole:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="18" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115) rotate(-15)"><ellipse rx="68" ry="48" fill="#e8c4a0"/><ellipse rx="54" ry="36" fill="#d4a882"/><ellipse cx="22" cy="-8" rx="28" ry="20" fill="#c49070"/><ellipse cx="-28" cy="8" rx="22" ry="16" fill="#dab898"/></g><ellipse cx="195" cy="82" rx="14" ry="10" fill="#c49070"/><ellipse cx="95" cy="95" rx="12" ry="8" fill="#d4a882"/><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Whole Chicken</text></svg>`,
+    chicken_breast:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="100" ry="16" fill="rgba(0,0,0,.07)"/><path d="M90,160 C80,140 85,100 110,85 C135,70 175,72 195,90 C215,108 210,150 190,162 C170,174 100,175 90,160Z" fill="#e8c4a0"/><path d="M100,150 C95,130 100,100 120,88 C140,77 170,80 185,95 C198,110 192,145 175,156 C158,167 105,168 100,150Z" fill="#d4a882"/><path d="M120,100 Q150,88 172,102" stroke="#c49070" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M108,128 Q148,115 182,126" stroke="#c49070" stroke-width="2" fill="none" stroke-linecap="round"/><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Breast</text></svg>`,
+    chicken_leg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="95" ry="15" fill="rgba(0,0,0,.07)"/><g transform="translate(148,118)"><path d="M-25,-55 C-30,-70 -20,-78 0,-75 C20,-72 30,-60 28,-45 C26,-30 10,0 5,20 C0,40 -5,52 -8,55 C-12,55 -15,40 -18,20 C-22,0 -20,-40 -25,-55Z" fill="#d4a882"/><ellipse cx="0" cy="-65" rx="18" ry="14" fill="#c49070"/><rect x="-4" y="52" width="8" height="22" rx="3" fill="#e8d5c0"/><ellipse cx="0" cy="75" rx="8" ry="5" fill="#d4c4b0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Leg / Tikka</text></svg>`,
+    chicken_wings:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="105" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(90,115)"><path d="M0,0 C-10,-30 10,-55 35,-52 C50,-50 55,-30 48,-10 C40,10 20,22 0,18 C-15,15 -8,25 0,0Z" fill="#d4a882"/><path d="M0,18 C8,35 25,42 38,35 C52,28 55,12 48,-10" fill="#c49070" opacity=".6"/></g><g transform="translate(190,110)"><path d="M0,0 C10,-28 -5,-52 -32,-50 C-48,-48 -55,-28 -47,-10 C-38,10 -18,22 0,18 C15,15 8,25 0,0Z" fill="#d4a882"/><path d="M0,18 C-8,35 -25,42 -38,35 C-52,28 -55,12 -47,-10" fill="#c49070" opacity=".6"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Wings</text></svg>`,
+    chicken_cut:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-50,-30 C-55,-50 -30,-62 0,-60 C30,-58 55,-48 55,-28 C55,-8 35,25 10,32 C-15,38 -45,28 -55,8 C-60,-5 -47,-15 -50,-30Z" fill="#e0ba95"/><path d="M-20,-15 C-10,-35 15,-40 35,-30 C48,-22 45,5 25,18 C5,30 -25,24 -30,8 C-35,-5 -28,-2 -20,-15Z" fill="#c8956b"/><circle cx="-30" cy="5" r="10" fill="#b87d55"/><circle cx="20" cy="-10" r="9" fill="#c8956b"/><circle cx="-5" cy="20" r="11" fill="#b87d55"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Karahi Cut</text></svg>`,
+    // BEEF — rich deep red on white
+    beef_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-78,-22 C-80,-45 -50,-58 0,-55 C50,-52 82,-40 80,-18 C78,5 50,35 0,38 C-50,40 -76,20 -78,-22Z" fill="#c0392b"/><path d="M-65,-18 C-66,-38 -42,-50 0,-47 C42,-44 66,-32 65,-14 C64,5 42,30 0,33 C-42,35 -64,16 -65,-18Z" fill="#e74c3c"/><path d="M-45,-5 C-20,-20 20,-22 45,-8" stroke="#ff8080" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-55,10 C-25,-5 25,-7 52,8" stroke="#ff9090" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-35,-15 C-10,-28 12,-26 35,-14" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".2"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Prime Beef Boneless</text></svg>`,
+    beef_bone:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-72,-28 C-75,-50 -45,-65 0,-62 C45,-59 76,-45 75,-24 C74,-3 48,32 0,36 C-48,40 -70,18 -72,-28Z" fill="#a93226"/><path d="M-58,-22 C-60,-42 -35,-55 0,-52 C35,-49 60,-36 58,-18 C56,2 36,28 0,32 C-36,35 -56,14 -58,-22Z" fill="#c0392b"/><path d="M-42,-8 C-18,-22 18,-24 42,-10" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/><rect x="-15" y="-32" width="30" height="15" rx="5" fill="#d4c8b8"/><ellipse cx="0" cy="-34" rx="12" ry="5" fill="#e8ddd0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef with Bone</text></svg>`,
+    beef_mince:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-80,-15 C-82,-38 -50,-55 0,-52 C50,-49 82,-33 82,-12 C82,10 55,40 0,43 C-55,45 -78,22 -80,-15Z" fill="#922b21"/><g opacity=".9">${Array.from({length:40},(_,i)=>{const x=Math.sin(i*2.3)*62*(0.5+i%3*0.17),y=Math.cos(i*1.7)*32*(0.4+i%4*0.15),r=2.5+i%3*1.2;return`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${['#c0392b','#a93226','#e74c3c','#8e1f14'][i%4]}"/>`}).join('')}</g></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef / Mutton Qeema</text></svg>`,
+    beef_nihari:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-65,-38 C-40,-58 40,-58 65,-38 C80,-22 78,10 60,30 C40,50 -40,50 -60,30 C-78,10 -82,-18 -65,-38Z" fill="#a93226"/><path d="M-50,-28 C-28,-46 28,-46 50,-28 C65,-14 62,12 46,28 C28,44 -28,44 -46,28 C-62,12 -62,-12 -50,-28Z" fill="#c0392b"/><ellipse cx="0" cy="0" rx="30" ry="20" fill="#922b21" opacity=".5"/><rect x="-8" y="-42" width="16" height="30" rx="6" fill="#d4c0a8"/><ellipse cx="0" cy="-44" rx="10" ry="6" fill="#e8d8c5"/><path d="M-35,-10 C-10,-22 10,-20 35,-8" stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef Nihari Bong Cut</text></svg>`,
+    // MUTTON — deep red goat meat
+    mutton_karahi:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-55,-20 C-45,-48 45,-50 58,-22 C68,-2 55,30 25,40 C0,48 -30,42 -48,22 C-60,8 -62,-5 -55,-20Z" fill="#8e1f14"/><path d="M-42,-14 C-32,-40 32,-42 46,-16 C56,2 44,28 18,38 C-5,46 -28,38 -42,20 C-52,6 -50,-2 -42,-14Z" fill="#a93226"/><circle cx="-15" cy="-5" r="16" fill="#922b21"/><circle cx="18" cy="8" r="14" fill="#8e1f14"/><circle cx="-2" cy="22" r="12" fill="#a93226"/><circle cx="28" cy="-12" r="10" fill="#7a1810"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Karahi Cut</text></svg>`,
+    mutton_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-75,-18 C-78,-42 -45,-58 0,-55 C45,-52 78,-38 78,-15 C78,10 50,38 0,42 C-50,45 -72,20 -75,-18Z" fill="#a93226"/><path d="M-60,-12 C-62,-34 -34,-48 0,-45 C34,-42 62,-28 60,-8 C58,14 36,34 0,37 C-36,40 -58,18 -60,-12Z" fill="#c0392b"/><path d="M-42,-2 C-18,-18 18,-20 42,-5" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-52,12 C-22,-4 22,-6 52,10" stroke="#e55345" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-38,-12 C-12,-26 14,-24 38,-12" stroke="#fff" stroke-width="2" fill="none" opacity=".15"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Boneless Mix</text></svg>`,
+    mutton_chops:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(88,118)"><path d="M0,-42 C12,-55 28,-52 32,-38 C36,-24 28,0 22,28 C18,45 10,52 4,52 C-2,52 -8,42 -10,28 C-15,8 -12,-28 0,-42Z" fill="#a93226"/><ellipse cx="14" cy="-46" rx="16" ry="12" fill="#d4c0a8"/><rect x="10" y="-52" width="8" height="18" rx="3" fill="#e8d5c0"/></g><g transform="translate(148,112)"><path d="M0,-40 C12,-54 28,-50 32,-36 C36,-22 28,5 22,30 C18,48 10,54 4,54 C-2,54 -8,44 -10,30 C-15,8 -12,-26 0,-40Z" fill="#8e1f14"/><ellipse cx="14" cy="-44" rx="15" ry="11" fill="#d4c0a8"/><rect x="10" y="-50" width="8" height="16" rx="3" fill="#e8d5c0"/></g><g transform="translate(208,118)"><path d="M0,-38 C12,-52 26,-48 30,-34 C34,-20 26,8 20,32 C16,48 8,54 2,54 C-4,54 -8,42 -10,28 C-14,6 -12,-24 0,-38Z" fill="#c0392b"/><ellipse cx="12" cy="-42" rx="14" ry="10" fill="#d4c0a8"/><rect x="8" y="-48" width="8" height="16" rx="3" fill="#e8d5c0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Chops</text></svg>`,
+    // VEAL — pale pink tender
+    veal_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-76,-20 C-78,-45 -46,-60 0,-58 C46,-56 78,-42 78,-18 C78,8 50,38 0,42 C-50,45 -74,22 -76,-20Z" fill="#e8a0a0"/><path d="M-62,-14 C-64,-38 -38,-52 0,-50 C38,-48 64,-34 62,-12 C60,10 38,32 0,36 C-38,38 -60,16 -62,-14Z" fill="#f0b8b8"/><path d="M-44,-4 C-18,-20 18,-22 44,-8" stroke="#e88888" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-55,12 C-24,-4 24,-6 55,10" stroke="#e89898" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-38,-14 C-12,-28 14,-26 38,-14" stroke="#fff" stroke-width="2" fill="none" opacity=".2"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Veal Boneless</text></svg>`,
+    veal_bone:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-68,-30 C-42,-58 42,-60 68,-30 C82,-14 80,14 62,32 C42,52 -42,52 -62,32 C-80,14 -82,-10 -68,-30Z" fill="#e8a0a0"/><path d="M-52,-22 C-30,-48 30,-50 52,-22 C65,-8 62,16 46,30 C28,46 -28,46 -46,30 C-62,16 -64,-8 -52,-22Z" fill="#f0b8b8"/><ellipse cx="0" cy="0" rx="28" ry="18" fill="#e8a0a0" opacity=".5"/><rect x="-8" y="-44" width="16" height="28" rx="6" fill="#d4c0a8"/><ellipse cx="0" cy="-46" rx="10" ry="6" fill="#e8d8c5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Veal with Bone</text></svg>`,
+    // WINTER FEAST — BBQ golden/charred
+    bbq_chicken:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,112)"><path d="M-55,-30 C-40,-58 40,-60 58,-32 C70,-12 60,25 30,42 C8,54 -25,48 -45,28 C-62,12 -68,-8 -55,-30Z" fill="#8b4513"/><path d="M-42,-22 C-28,-48 28,-50 45,-24 C56,-8 48,22 22,38 C-2,52 -28,44 -42,26 C-54,10 -54,-6 -42,-22Z" fill="#b5651d"/><path d="M-28,-12 C-8,-28 12,-26 28,-14" stroke="#d2691e" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-38,8 C-12,-8 12,-10 38,5" stroke="#cd853f" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-22,22 C0,12 22,14 35,22" stroke="#daa520" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">BBQ Chicken Tikka</text></svg>`,
+    bbq_mutton:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(100,118)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="16" cy="-48" rx="17" ry="13" fill="#d2b48c"/><rect x="12" y="-56" width="9" height="20" rx="3" fill="#e8d0b0"/><path d="M2,-28 C8,-40 20,-38 28,-26" stroke="#cd853f" stroke-width="2.5" fill="none" stroke-linecap="round"/></g><g transform="translate(158,110)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="16" cy="-46" rx="16" ry="12" fill="#d2b48c"/><rect x="12" y="-54" width="9" height="18" rx="3" fill="#e8d0b0"/></g><g transform="translate(210,118)"><path d="M0,-40 C14,-54 28,-50 32,-35 C36,-20 28,6 22,30 C18,48 8,54 2,54 C-4,54 -8,42 -10,28 C-15,6 -14,-26 0,-40Z" fill="#8b4513"/><ellipse cx="14" cy="-44" rx="15" ry="11" fill="#d2b48c"/><rect x="10" y="-52" width="8" height="18" rx="3" fill="#e8d0b0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Seasoned BBQ Chops</text></svg>`,
+  };
+  return svgs[type]||svgs['chicken_whole'];
+}
+
+// Convert SVG to data URL for use as img src
+function svgUrl(type){
+  const svg=svgImg(type);
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+// Map product ids to their SVG types
+const SVG_MAP={
+  ch1:'chicken_whole', ch2:'chicken_breast', ch3:'chicken_leg',
+  ch4:'beef_mince',    ch5:'chicken_whole',  ch6:'chicken_leg',
+  ch7:'chicken_cut',   ch8:'chicken_wings',
+  bf1:'beef_boneless', bf2:'beef_bone',      bf3:'beef_mince',  bf4:'beef_nihari',
+  mt1:'mutton_karahi', mt2:'mutton_boneless',mt3:'beef_mince',  mt4:'mutton_chops',
+  vl1:'veal_boneless', vl2:'veal_bone',
+  wf1:'bbq_chicken',   wf2:'bbq_mutton',
 };
-// Fallback
-const FB='https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&q=70';
-const im=(src,alt)=>`<img src="${src}" alt="${alt||''}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${FB}'" style="width:100%;height:100%;object-fit:cover;display:block">`;
+
+// Build IMGS from SVGs
+const IMGS={};
+Object.keys(SVG_MAP).forEach(id=>{ IMGS[id]=svgUrl(SVG_MAP[id]); });
+
+// Hero backgrounds — dark gradients (no external images needed)
+const HERO_BKGS=[
+  'linear-gradient(135deg,#1a0a08 0%,#3d1410 50%,#2a0e0c 100%)',
+  'linear-gradient(135deg,#0d1a0d 0%,#1f3d1a 50%,#0a1a0a 100%)',
+  'linear-gradient(135deg,#0e0a1a 0%,#2a1a3d 50%,#1a0e2a 100%)',
+  'linear-gradient(135deg,#1a0808 0%,#3d1a1a 50%,#2a0808 100%)',
+];
+
+const FB=svgUrl('chicken_whole');
+const im=(src,alt)=>`<img src="${src}" alt="${alt||''}" style="width:100%;height:100%;object-fit:contain;padding:8px">`;
 
 const CATS={
-  chicken:{name:'Chicken',desc:'Farm-fresh whole chicken and specialty cuts — sourced and prepared daily. 100% Zabiha hand-slaughtered.',
-    img:'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=1100&q=80'},
-  beef:{name:'Beef',desc:'Hand-selected prime beef in traditional and modern cuts. Bone-in, boneless, qeema, nihari and more.',
-    img:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=1100&q=80'},
-  veal:{name:'Veal',desc:'Tender milk-fed veal — a premium separate category with its own inventory. Delicate flavour, zero tough fiber.',
-    img:'https://images.unsplash.com/photo-1588347785102-2944afe28d28?w=1100&q=80'},
-  mutton:{name:'Mutton',desc:'Full range of traditional desi goat mutton cuts for karahi, biryani, and BBQ — cut fresh daily.',
-    img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1100&q=80'},
-  feast:{name:'Winter Feast',desc:'Seasonal marinated and BBQ-ready cuts for winter gatherings and celebrations. Limited availability.',
-    img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1100&q=80',seasonal:true}
+  chicken:{name:'Chicken',desc:'Farm-fresh whole chicken and specialty cuts — sourced and prepared daily. 100% Zabiha hand-slaughtered.',img:null},
+  beef:{name:'Beef',desc:'Hand-selected prime beef in traditional and modern cuts. Bone-in, boneless, qeema, nihari and more.',img:null},
+  veal:{name:'Veal',desc:'Tender milk-fed veal — a premium separate category with its own inventory. Delicate flavour, zero tough fiber.',img:null},
+  mutton:{name:'Mutton',desc:'Full range of traditional desi goat mutton cuts for karahi, biryani, and BBQ — cut fresh daily.',img:null},
+  feast:{name:'Winter Feast',desc:'Seasonal marinated and BBQ-ready cuts for winter gatherings and celebrations. Limited availability.',img:null,seasonal:true}
 };
 
+// Category card SVGs — beautiful illustrated meat icons on gradient bg
+const CATSVG={
+  chicken:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3e0"/><stop offset="1" stop-color="#ffe0b2"/></linearGradient></defs><rect width="240" height="320" fill="url(#cg)"/><g transform="translate(120,155)"><ellipse rx="70" ry="52" fill="#e8c4a0"/><ellipse rx="56" ry="40" fill="#d4a882"/><ellipse cx="24" cy="-10" rx="30" ry="22" fill="#c49070"/><ellipse cx="-30" cy="10" rx="24" ry="18" fill="#dab898"/><ellipse cx="0" cy="-8" rx="16" ry="12" fill="#c49070"/></g><ellipse cx="185" cy="92" rx="16" ry="12" fill="#c49070"/><ellipse cx="58" cy="105" rx="14" ry="10" fill="#d4a882"/><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#5d3a1a">Chicken</text></svg>`,
+  beef:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fce4e4"/><stop offset="1" stop-color="#ffcdd2"/></linearGradient></defs><rect width="240" height="320" fill="url(#bg2)"/><g transform="translate(120,155)"><path d="M-78,-25 C-80,-48 -50,-62 0,-58 C50,-54 82,-42 80,-20 C78,6 50,38 0,42 C-50,44 -76,22 -78,-25Z" fill="#c0392b"/><path d="M-63,-18 C-64,-40 -38,-52 0,-49 C38,-46 64,-34 62,-16 C60,4 38,30 0,33 C-38,36 -62,16 -63,-18Z" fill="#e74c3c"/><path d="M-42,-5 C-18,-22 18,-24 42,-10" stroke="#ff8080" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#7b241c">Beef</text></svg>`,
+  veal:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fce4ec"/><stop offset="1" stop-color="#f8bbd0"/></linearGradient></defs><rect width="240" height="320" fill="url(#vg)"/><g transform="translate(120,155)"><path d="M-76,-22 C-78,-46 -46,-60 0,-57 C46,-54 78,-40 78,-18 C78,8 50,38 0,42 C-50,44 -74,20 -76,-22Z" fill="#e8a0a0"/><path d="M-60,-14 C-62,-36 -36,-50 0,-47 C36,-44 62,-30 60,-10 C58,10 36,30 0,34 C-36,37 -58,16 -60,-14Z" fill="#f0b8b8"/><path d="M-42,-4 C-18,-20 18,-22 42,-8" stroke="#e88888" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#880e4f">Veal</text></svg>`,
+  mutton:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efebe9"/><stop offset="1" stop-color="#d7ccc8"/></linearGradient></defs><rect width="240" height="320" fill="url(#mg)"/><g transform="translate(120,155)"><path d="M-58,-22 C-48,-50 48,-52 60,-24 C70,-4 58,32 28,42 C2,50 -32,44 -50,24 C-64,8 -66,-6 -58,-22Z" fill="#8e1f14"/><path d="M-44,-14 C-34,-42 34,-44 48,-18 C58,2 46,30 20,40 C-4,48 -30,40 -44,22 C-56,8 -54,-2 -44,-14Z" fill="#a93226"/><circle cx="-16" cy="-5" r="14" fill="#922b21"/><circle cx="18" cy="8" r="12" fill="#8e1f14"/><circle cx="-2" cy="20" r="10" fill="#a93226"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#4a0e0a">Mutton</text></svg>`,
+  feast:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e1"/><stop offset="1" stop-color="#ffecb3"/></linearGradient></defs><rect width="240" height="320" fill="url(#fg)"/><g transform="translate(80,148)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="15" cy="-48" rx="16" ry="12" fill="#d2b48c"/><rect x="11" y="-56" width="9" height="20" rx="3" fill="#e8d0b0"/></g><g transform="translate(138,140)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="15" cy="-46" rx="15" ry="11" fill="#d2b48c"/><rect x="11" y="-54" width="9" height="18" rx="3" fill="#e8d0b0"/></g><g transform="translate(192,148)"><path d="M0,-40 C14,-54 28,-50 32,-35 C36,-20 28,6 22,30 C18,48 8,54 2,54 C-4,54 -8,42 -10,28 C-15,6 -14,-26 0,-40Z" fill="#8b4513"/><ellipse cx="13" cy="-44" rx="14" ry="10" fill="#d2b48c"/><rect x="9" y="-52" width="8" height="18" rx="3" fill="#e8d0b0"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#5d2e0a">Winter Feast</text></svg>`,
+};
 const CATIMGS={
-  // Category cards — proper food photography, clean & professional
-  chicken:'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&q=80',
-  beef:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600&q=80',
-  veal:'https://images.unsplash.com/photo-1588347785102-2944afe28d28?w=600&q=80',
-  mutton:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80',
-  feast:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+  chicken:svgUrl?svgUrl('chicken_whole'):'',
+  beef:svgUrl?svgUrl('beef_boneless'):'',
+  veal:svgUrl?svgUrl('veal_boneless'):'',
+  mutton:svgUrl?svgUrl('mutton_karahi'):'',
+  feast:svgUrl?svgUrl('bbq_chicken'):''
 };
 
 const P=[
@@ -739,7 +770,7 @@ function renderDr(){
   const foot=document.getElementById('dr-foot');
   if(!body)return;
   if(!cart.length){
-    body.innerHTML=`<div class="empty-cart"><svg style="width:17px;height:17px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2zm2-4c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm4 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2z"/></svg><p style="font-size:.85rem;color:#aaa">Your bag is empty</p><button class="btn btn-out btn-sm" onclick="closeDr()">Continue Shopping</button></div>`;
+    body.innerHTML=`<div class="empty-cart"><i class="fa-solid fa-bag-shopping"></i><p style="font-size:.85rem;color:#aaa">Your bag is empty</p><button class="btn btn-out btn-sm" onclick="closeDr()">Continue Shopping</button></div>`;
     foot.style.display='none';return;
   }
   foot.style.display='block';
@@ -763,7 +794,7 @@ function rmCart(i){cart.splice(i,1);save();updBadge();renderDr()}
 // ══════════════════════════════════════
 function toast(msg,type=''){
   const el=document.getElementById('toast');
-  el.innerHTML=(type==='ok'?'✓ ':'⚠ ')+msg;
+  el.innerHTML=`<i class="fa-solid fa-${type==='ok'?'check':'circle-exclamation'}"></i>${msg}`;
   el.className=type?'show '+type:'show';
   clearTimeout(toast._t);
   toast._t=setTimeout(()=>el.className='',2800);
@@ -807,35 +838,22 @@ function renderView(){
 //  HERO SLIDER
 // ══════════════════════════════════════
 // Hero slides — professional butchery & fresh meat backgrounds (like HalalHarvest / PrimeCuts screenshots)
+// Inline SVG hero backgrounds — beautiful dark gradients with meat illustrations
+function heroSvg(type){
+  const svgs={
+    s1:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0808"/><stop offset="0.5" stop-color="#3d1410"/><stop offset="1" stop-color="#2a0e0c"/></linearGradient><radialGradient id="h1g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#5d1a14" stop-opacity="0.7"/><stop offset="1" stop-color="#1a0808" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h1)"/><rect width="1200" height="520" fill="url(#h1g)"/><g transform="translate(820,260)" opacity=".18"><ellipse rx="180" ry="120" fill="#e8c4a0"/><ellipse rx="140" ry="90" fill="#d4a882"/><ellipse cx="55" cy="-22" rx="70" ry="50" fill="#c49070"/></g><circle cx="900" cy="180" r="200" fill="#8b1a10" opacity=".12"/><circle cx="1050" cy="380" r="150" fill="#c0392b" opacity=".08"/></svg>`,
+    s2:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1a0d"/><stop offset="0.5" stop-color="#1f3d1a"/><stop offset="1" stop-color="#0a1a0a"/></linearGradient><radialGradient id="h2g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#2d5a1e" stop-opacity="0.6"/><stop offset="1" stop-color="#0d1a0d" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h2)"/><rect width="1200" height="520" fill="url(#h2g)"/><g transform="translate(820,260)" opacity=".18"><g transform="translate(-80,0)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="15" cy="-48" rx="16" ry="12" fill="#d2b48c"/></g><g transform="translate(20,0)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="15" cy="-46" rx="15" ry="11" fill="#d2b48c"/></g></g><circle cx="900" cy="200" r="180" fill="#2d5a1e" opacity=".15"/></svg>`,
+    s3:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0a05"/><stop offset="0.5" stop-color="#3d1f0a"/><stop offset="1" stop-color="#2a1205"/></linearGradient><radialGradient id="h3g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#7a2e14" stop-opacity="0.65"/><stop offset="1" stop-color="#1a0a05" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h3)"/><rect width="1200" height="520" fill="url(#h3g)"/><g transform="translate(820,260)" opacity=".2"><path d="M-78,-25 C-80,-48 -50,-62 0,-58 C50,-54 82,-42 80,-20 C78,6 50,38 0,42 C-50,44 -76,22 -78,-25Z" fill="#c0392b"/><path d="M-58,-18 C-60,-40 -36,-52 0,-49 C36,-46 60,-32 58,-14 C56,4 36,28 0,31 C-36,34 -58,14 -58,-18Z" fill="#e74c3c"/></g></svg>`,
+    s4:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="h4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e0a1a"/><stop offset="0.5" stop-color="#2a1a3d"/><stop offset="1" stop-color="#1a0e2a"/></linearGradient><radialGradient id="h4g" cx="0.75" cy="0.5" r="0.55"><stop offset="0" stop-color="#4a1a6e" stop-opacity="0.55"/><stop offset="1" stop-color="#0e0a1a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="520" fill="url(#h4)"/><rect width="1200" height="520" fill="url(#h4g)"/><g transform="translate(820,260)" opacity=".18"><path d="M-76,-22 C-78,-46 -46,-60 0,-57 C46,-54 78,-40 78,-18 C78,8 50,38 0,42 C-50,44 -74,20 -76,-22Z" fill="#e8a0a0"/><path d="M-60,-14 C-62,-36 -36,-50 0,-47 C36,-44 62,-30 60,-10 C58,10 36,30 0,34 C-36,37 -58,16 -60,-14Z" fill="#f0b8b8"/></g></svg>`
+  };
+  return svgs[type]||svgs['s1'];
+}
+
 const SLIDES=[
-  {
-    tag:'100% Zabiha Hand-Slaughtered',
-    title:'Fresh & Halal Meat,<br>Delivered to Your Door.',
-    desc:'Premium quality, ethically sourced fresh meat. Cut by expert butchers, weighed on certified digital scales and delivered across Karachi.',
-    bg:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=1600&q=80',
-    btn:'Shop Now', cat:'chicken'
-  },
-  {
-    tag:'Winter BBQ Feast — Specials',
-    title:'Enjoy Rs.100 Cashback<br>on Winter Feast!',
-    desc:'Order marinated BBQ cuts and seasonal specials for your winter gatherings. Use code WINTERFEST at checkout.',
-    bg:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80',
-    btn:'Shop Winter Feast', cat:'feast'
-  },
-  {
-    tag:'Premium Desi Mutton — Daily Fresh',
-    title:'Authentic Karachi<br>Mutton Karahi Cut.',
-    desc:'Fresh desi goat mutton cut by our expert butchers every morning. Order before noon for same-day delivery.',
-    bg:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1600&q=80',
-    btn:'Shop Mutton', cat:'mutton'
-  },
-  {
-    tag:'Prime Beef — Zero Fat Trim',
-    title:'Premium Halal Beef,<br>Next-Day Delivery.',
-    desc:'Hand-selected prime beef — boneless, bone-in, and nihari cuts. Vacuum-sealed and delivered in cold-chain bags.',
-    bg:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=1600&q=80',
-    btn:'Shop Beef', cat:'beef'
-  }
+  {tag:'100% Zabiha Hand-Slaughtered',title:'Fresh & Halal Meat,<br>Delivered to Your Door.',desc:'Premium quality, ethically sourced fresh meat. Cut by expert butchers, weighed on certified digital scales and delivered across Karachi.',bgSvg:'s1',btn:'Shop Now',cat:'chicken'},
+  {tag:'Winter BBQ Feast — Specials',title:'Enjoy Rs.100 Cashback<br>on Winter Feast!',desc:'Order marinated BBQ cuts and seasonal specials for your winter gatherings. Use code WINTERFEST at checkout.',bgSvg:'s2',btn:'Shop Winter Feast',cat:'feast'},
+  {tag:'Premium Desi Mutton — Daily Fresh',title:'Authentic Karachi<br>Mutton Karahi Cut.',desc:'Fresh desi goat mutton cut by our expert butchers every morning. Order before noon for same-day delivery.',bgSvg:'s3',btn:'Shop Mutton',cat:'mutton'},
+  {tag:'Prime Beef — Zero Fat Trim',title:'Premium Halal Beef,<br>Next-Day Delivery.',desc:'Hand-selected prime beef — boneless, bone-in, and nihari cuts. Vacuum-sealed and delivered in cold-chain bags.',bgSvg:'s4',btn:'Shop Beef',cat:'beef'}
 ];
 
 function startHero(){
@@ -894,10 +912,10 @@ function footer(){
         <button class="nl-btn" onclick="nlSub()">Subscribe now</button>
       </div>
       <div class="socials" style="margin-top:18px">
-        <div class="soc"><svg style="width:14px;height:14px;fill:#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
-        <div class="soc"><svg style="width:14px;height:14px;fill:#fff" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
-        <div class="soc"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-        <div class="soc"><svg style="width:14px;height:14px;fill:#fff" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+        <div class="soc"><i class="fa-brands fa-facebook-f"></i></div>
+        <div class="soc"><i class="fa-brands fa-instagram"></i></div>
+        <div class="soc"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="soc"><i class="fa-brands fa-tiktok"></i></div>
       </div>
     </div>
     <div class="nl-col">
@@ -912,17 +930,17 @@ function footer(){
     </div>
     <div class="nl-col">
       <h4>Contact Us</h4>
-      <div class="ct-row"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
-      <div class="ct-row">📞<span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
-      <div class="ct-row">✉<span>Email: <a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></span></div>
-      <div class="ct-row">📍<span>[Shop Address, Karachi — Placeholder]</span></div>
-      <div class="ct-row">🕐<span>Daily 7:00 AM – 9:00 PM</span></div>
+      <div class="ct-row"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-phone"></i><span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-envelope"></i><span>Email: <a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-location-dot"></i><span>[Shop Address, Karachi — Placeholder]</span></div>
+      <div class="ct-row"><i class="fa-solid fa-clock"></i><span>Daily 7:00 AM – 9:00 PM</span></div>
     </div>
     <div class="nl-col">
       <h4>Bulk Order</h4>
-      <div class="ct-row"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
-      <div class="ct-row">📞<span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
-      <div class="ct-row">✉<span><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></span></div>
+      <div class="ct-row"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-phone"></i><span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-envelope"></i><span><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></span></div>
       <div style="margin-top:16px">
         <h4>Meat Collections</h4>
         <ul>
@@ -963,26 +981,26 @@ function pageHome(){
     {txt:'Superb service. I called via WhatsApp for a custom cut and they accommodated within the same day order. Truly premium meat shop.',name:'Ali B.',loc:'North Nazimabad',init:'AB',stars:5}
   ];
   return`
-  <div class="demo-notice">ℹ Demo Prototype — All prices are sample rates and do not represent actual market prices.</div>
+  <div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo Prototype — All prices are sample rates and do not represent actual market prices.</div>
 
   <!-- HERO SLIDER -->
   <section class="hero" style="position:relative;min-height:480px">
     <div id="hero-slides" style="position:relative;min-height:480px">
       ${SLIDES.map((s,i)=>`<div class="slide${i===0?' active':''}">
-        <div class="slide-bg" style="background-image:url('${s.bg}')"></div>
+        <div class="slide-bg" style="background-image:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(heroSvg(s.bgSvg))}')"></div>
         <div class="slide-overlay"></div>
         <div class="slide-content">
-          <div class="slide-tag">✦ ${s.tag}</div>
+          <div class="slide-tag"><i class="fa-solid fa-certificate" style="font-size:.8rem"></i>${s.tag}</div>
           <h1 class="slide-title" style="font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.4rem);color:#fff;line-height:1.08;max-width:640px;margin-bottom:14px">${s.title}</h1>
           <p style="color:rgba(255,255,255,.75);font-size:.9rem;max-width:480px;line-height:1.7;margin-bottom:26px">${s.desc}</p>
           <div class="slide-btns">
-            <button class="btn btn-red btn-lg" onclick="nav('col','${s.cat}')">${s.btn} →</button>
+            <button class="btn btn-red btn-lg" onclick="nav('col','${s.cat}')">${s.btn} <i class="fa-solid fa-arrow-right" style="font-size:.8rem"></i></button>
           </div>
         </div>
       </div>`).join('')}
     </div>
-    <button class="slide-arr prev" onclick="prevSlide()">‹</button>
-    <button class="slide-arr next" onclick="nextSlide()">›</button>
+    <button class="slide-arr prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slide-arr next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
     <div class="slide-dots">${SLIDES.map((_,i)=>`<div class="sdot${i===0?' on':''}" onclick="goSlide(${i})"></div>`).join('')}</div>
   </section>
 
@@ -1030,10 +1048,10 @@ function pageHome(){
   <section class="sec sec-sm">
     <div class="sec-hd"><div class="sec-eye">Browse by Type</div><h2>Shop by Category</h2></div>
     <div class="catg">${['chicken','beef','veal','mutton','feast'].map(c=>`<div class="cat-card" onclick="nav('col','${c}')" style="cursor:pointer">
-      <img src="${CATIMGS[c]}" alt="${CATS[c].name}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onerror="this.src='${FB}'" loading="lazy" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="width:100%;height:100%;position:absolute;inset:0">${CATSVG[c]}</div>
       <div class="cat-ov"></div>
       <div class="cat-lbl"><b>${CATS[c].name}</b><small>${P.filter(p=>p.cat===c).length} products</small></div>
-      ${CATS[c].seasonal?'<div style="position:absolute;top:10px;right:10px"><span class="bdg bdg-sea">❄ Seasonal</span></div>':''}
+      ${CATS[c].seasonal?'<div style="position:absolute;top:10px;right:10px"><span class="bdg bdg-sea"><i class=\"fa-solid fa-snowflake\" style=\"margin-right:4px\"></i>Seasonal</span></div>':''}
     </div>`).join('')}</div>
   </section>
 
@@ -1041,7 +1059,7 @@ function pageHome(){
   <section class="sec">
     <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
       <div><div class="sec-eye">Most Ordered</div><h2>Best Sellers</h2></div>
-      <button class="btn btn-out btn-sm" onclick="nav('col','chicken')">View All →</button>
+      <button class="btn btn-out btn-sm" onclick="nav('col','chicken')">View All <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></button>
     </div>
     <div class="bs-row">${bs.map(card).join('')}</div>
   </section>
@@ -1050,12 +1068,12 @@ function pageHome(){
   <section class="sec sec-sm" style="background:var(--lgry);margin:0 -22px;padding:44px 22px;border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)">
     <div class="sec-hd center"><div class="sec-eye">Why Choose Us</div><h2>The Nabdullah Difference</h2></div>
     <div class="why-grid">
-      <div class="wi"><div class="wi-ico"><svg style="width:20px;height:20px;fill:var(--red)" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z"/></svg></div><h4>100% Zabiha Guarantee</h4><p>Every animal is 100% hand-slaughtered as per Islamic Zabiha standards. Certificate available on request.</p></div>
-      <div class="wi"><div class="wi-ico">⚖</div><h4>Digital Scale Billing</h4><p>Your order is weighed on a certified digital scale at dispatch. Final bill reflects actual packed weight — no estimates.</p></div>
-      <div class="wi"><div class="wi-ico">❄</div><h4>Cold Chain Delivery</h4><p>Orders are packed in temperature-controlled bags and delivered in refrigerated conditions to maintain freshness.</p></div>
-      <div class="wi"><div class="wi-ico">🚫</div><h4>Zero Frozen Stock</h4><p>We never sell frozen or defrosted meat. Every order is prepared fresh the same day from our butchery floor.</p></div>
-      <div class="wi"><div class="wi-ico">🚚</div><h4>Next-Day Delivery</h4><p>Order today, receive tomorrow — guaranteed next-day delivery across all major Karachi sectors.</p></div>
-      <div class="wi"><div class="wi-ico"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><h4>WhatsApp Support</h4><p>Our team is available 7AM to 9PM on WhatsApp for custom cuts, bulk orders, and delivery queries.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-shield-halved"></i></div><h4>100% Zabiha Guarantee</h4><p>Every animal is 100% hand-slaughtered as per Islamic Zabiha standards. Certificate available on request.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-scale-balanced"></i></div><h4>Digital Scale Billing</h4><p>Your order is weighed on a certified digital scale at dispatch. Final bill reflects actual packed weight — no estimates.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-snowflake"></i></div><h4>Cold Chain Delivery</h4><p>Orders are packed in temperature-controlled bags and delivered in refrigerated conditions to maintain freshness.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-ban"></i></div><h4>Zero Frozen Stock</h4><p>We never sell frozen or defrosted meat. Every order is prepared fresh the same day from our butchery floor.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-truck-fast"></i></div><h4>Next-Day Delivery</h4><p>Order today, receive tomorrow — guaranteed next-day delivery across all major Karachi sectors.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-brands fa-whatsapp"></i></div><h4>WhatsApp Support</h4><p>Our team is available 7AM to 9PM on WhatsApp for custom cuts, bulk orders, and delivery queries.</p></div>
     </div>
   </section>
 
@@ -1076,7 +1094,7 @@ function pageHome(){
   <section class="sec">
     <div class="sec-hd"><div class="sec-eye">Handpicked</div><h2>Featured Products</h2></div>
     <div class="pg">${feat.map(card).join('')}</div>
-    <div style="text-align:center;margin-top:32px"><button class="btn btn-out" onclick="nav('col','chicken')">Browse All Products →</button></div>
+    <div style="text-align:center;margin-top:32px"><button class="btn btn-out" onclick="nav('col','chicken')">Browse All Products <i class="fa-solid fa-arrow-right" style="font-size:.8rem"></i></button></div>
   </section>
 
   <!-- CUSTOMER REVIEWS -->
@@ -1088,7 +1106,7 @@ function pageHome(){
         <p class="rv-text">"${r.txt}"</p>
         <div class="rv-author">
           <div class="rv-ava">${r.init}</div>
-          <div><div class="rv-name">${r.name}</div><div class="rv-loc">📍${r.loc}</div></div>
+          <div><div class="rv-name">${r.name}</div><div class="rv-loc"><i class="fa-solid fa-location-dot" style="font-size:.65rem;color:var(--red);margin-right:3px"></i>${r.loc}</div></div>
         </div>
       </div>`).join('')}
     </div>
@@ -1105,7 +1123,7 @@ function pageHome(){
   <section class="sec sec-sm">
     <div style="background:#f0fdf4;border:2px solid #bbf7d0;border-radius:18px;padding:44px 52px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap">
       <div><div class="sec-eye">Need Help?</div><h2 style="margin-bottom:8px">Contact us on WhatsApp</h2><p style="max-width:420px">Our team is available daily 7AM to 9PM for custom cuts, bulk orders, and delivery queries. Fast response guaranteed.</p></div>
-      <a href="https://wa.me/923348210348" class="btn btn-wa btn-lg" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+      <a href="https://wa.me/923348210348" class="btn btn-wa btn-lg" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="font-size:1.1rem"></i>Chat on WhatsApp</a>
     </div>
   </section>
 
@@ -1133,13 +1151,13 @@ function pageCol(catId){
   function updCol(f,s){const x=cs(catId);if(f!==null)x.f=f;if(s!==null)x.s=s;nav('col',catId)}
   window._updCol=updCol;
   return`<div class="col-bn">
-    <div class="col-bg"><img src="${cat.img}" alt="${cat.name}" onerror="this.src='${FB}'"></div>
+    <div class="col-bg">${CATSVG[catId]||''}</div>
     <div class="W col-inn">
       <div class="crumb" style="color:rgba(255,255,255,.55)"><span onclick="nav('home')" style="cursor:pointer;color:rgba(255,255,255,.55)">Home</span><span>›</span><span style="color:#fff">${cat.name}</span></div>
       <div class="col-eye">Fresh Daily</div>
       <h1>${cat.name}</h1>
       <p>${cat.desc}</p>
-      ${cat.seasonal?'<div style="margin-top:12px"><span class="bdg bdg-sea">❄ Seasonal Collection</span></div>':''}
+      ${cat.seasonal?'<div style="margin-top:12px"><span class="bdg bdg-sea"><i class="fa-solid fa-snowflake" style="margin-right:4px"></i>Seasonal Collection</span></div>':''}
     </div>
   </div>
   <div class="W">
@@ -1160,8 +1178,8 @@ function pageCol(catId){
       <span class="fcnt">Showing <strong>${vis.length}</strong> of <strong>${prods.length}</strong></span>
     </div>
   </div>
-  ${vis.length===0?`<div style="text-align:center;padding:56px;color:#aaa"><div style="font-size:2rem;margin-bottom:12px">🔍</div><p>No products match this filter.</p><button class="btn btn-out btn-sm" style="margin-top:12px" onclick="_updCol('all',null)">Clear Filter</button></div>`:`<div class="pg">${vis.map(card).join('')}</div>`}
-  ${prods.length>state.n?`<div style="text-align:center;margin:32px 0"><button class="btn btn-out" onclick="cs('${catId}').n+=8;nav('col','${catId}')">Load More ↓</button></div>`:''}
+  ${vis.length===0?`<div style="text-align:center;padding:56px;color:#aaa"><i class="fa-solid fa-magnifying-glass" style="font-size:2rem;margin-bottom:12px;display:block;color:#ddd"></i><p>No products match this filter.</p><button class="btn btn-out btn-sm" style="margin-top:12px" onclick="_updCol('all',null)">Clear Filter</button></div>`:`<div class="pg">${vis.map(card).join('')}</div>`}
+  ${prods.length>state.n?`<div style="text-align:center;margin:32px 0"><button class="btn btn-out" onclick="cs('${catId}').n+=8;nav('col','${catId}')">Load More <i class="fa-solid fa-chevron-down" style="font-size:.75rem"></i></button></div>`:''}
   <div style="background:var(--lgry);border:1px solid var(--brd);border-radius:12px;padding:22px;margin:36px 0 0">
     <h3 style="font-family:var(--serif);font-size:1rem;margin-bottom:8px">About Our ${cat.name}</h3>
     <p style="font-size:.85rem;color:#555">${cat.desc} All products are 100% Zabiha hand-slaughtered, weighed on a certified digital scale at dispatch, and packed fresh the same day. Final billing is based on actual packed weight.</p>
@@ -1183,7 +1201,7 @@ function pagePDP(id){
   const imgs=p.imgs||[p.img];
   const related=P.filter(x=>x.cat===p.cat&&x.id!==id&&x.avail).slice(0,5);
   const qty=1;
-  return`<div class="demo-notice">ℹ Demo prototype — prices shown are sample rates only.</div>
+  return`<div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo prototype — prices shown are sample rates only.</div>
   <div class="W"><div class="crumb"><span onclick="nav('home')" style="cursor:pointer">Home</span><span>›</span><span onclick="nav('col','${p.cat}')" style="cursor:pointer">${cat.name}</span><span>›</span><span>${p.name}</span></div>
   <div class="pdp">
     <!-- GALLERY -->
@@ -1196,9 +1214,9 @@ function pagePDP(id){
       <div class="pi-cat">${cat.name}</div>
       <h1>${p.name}</h1>
       <div class="pi-badges">
-        ${p.avail?'<span class="bdg bdg-stk">✓ In Stock</span>':'<span class="bdg bdg-out">Sold Out</span>'}
+        ${p.avail?'<span class="bdg bdg-stk"><i class="fa-solid fa-circle-check" style="margin-right:4px;font-size:.7rem"></i>In Stock</span>':'<span class="bdg bdg-out">Sold Out</span>'}
         ${p.best?'<span class="bdg bdg-best">Best Seller</span>':''}
-        ${p.cat==='feast'?'<span class="bdg bdg-sea">❄ Seasonal</span>':''}
+        ${p.cat==='feast'?'<span class="bdg bdg-sea"><i class="fa-solid fa-snowflake" style="margin-right:4px"></i>Seasonal</span>':''}
       </div>
       <div class="pi-rate"><span class="pi-price">${fmt(p.rate)}</span><span class="pi-per">/kg · <em style="font-size:.7rem">(demo rate)</em></span></div>
       ${p.avail?`
@@ -1207,36 +1225,36 @@ function pagePDP(id){
       <div class="pcalc"><small>Estimated Price</small><div class="pamt" id="pp_${id}">${fmt(ep)}</div><div class="pnote" id="pn_${id}">Based on ${wl(w)} at ${fmt(p.rate)}/kg</div></div>
       <div class="qty-row"><span class="qty-lbl">Quantity:</span><div class="qty-ctrl"><button class="qb" onclick="adjPDPQty(-1,'${id}')">−</button><span class="qn" id="pdp-qty-${id}">${qty}</span><button class="qb" onclick="adjPDPQty(1,'${id}')">+</button></div></div>
       <div class="pi-acts">
-        <button class="btn btn-red btn-full btn-lg" onclick="pdpAdd('${id}')"><svg style="width:17px;height:17px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2zm2-4c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm4 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2z"/></svg> Add to cart</button>
+        <button class="btn btn-red btn-full btn-lg" onclick="pdpAdd('${id}')"><i class="fa-solid fa-bag-shopping"></i> Add to cart</button>
         <button class="btn btn-blk btn-full btn-lg" onclick="pdpBuy('${id}')">Buy it now</button>
       </div>
-      <div style="font-size:.75rem;color:#aaa;text-align:center;margin-bottom:4px">🔒 100% Zabiha · Cash on Delivery · Scale-Weighed Billing</div>
-      `:`<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px;margin-bottom:22px"><strong style="color:#991b1b;display:block;margin-bottom:4px">✗ Currently Unavailable</strong><p style="font-size:.82rem;color:#555">Temporarily out of stock. Check back tomorrow or browse <span onclick="nav('col','${p.cat}')" style="color:var(--red);cursor:pointer">${cat.name}</span> for alternatives.</p></div>`}
+      <div style="font-size:.75rem;color:#aaa;text-align:center;margin-bottom:4px"><i class="fa-solid fa-lock" style="margin-right:4px;color:var(--red)"></i>100% Zabiha · Cash on Delivery · Scale-Weighed Billing</div>
+      `:`<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px;margin-bottom:22px"><strong style="color:#991b1b;display:block;margin-bottom:4px"><i class="fa-solid fa-circle-xmark" style="margin-right:5px"></i>Currently Unavailable</strong><p style="font-size:.82rem;color:#555">Temporarily out of stock. Check back tomorrow or browse <span onclick="nav('col','${p.cat}')" style="color:var(--red);cursor:pointer">${cat.name}</span> for alternatives.</p></div>`}
       <div class="pi-desc"><h4>About This Product</h4><p style="font-size:.85rem;color:#555;line-height:1.75">${p.desc}</p></div>
       <div class="pi-acc">
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*Half Kg Pack: 450g Net Weight Approx. <svg style="width:14px;height:14px;fill:#aaa;transition:transform .22s;flex-shrink:0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*Half Kg Pack: 450g Net Weight Approx. <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
         <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">The Half Kg Pack contains approximately 450 grams of net weight. Actual weight may vary slightly based on the cut and the digital scale reading at dispatch.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*1 Kg Pack: 900g Net Weight Approx. <svg style="width:14px;height:14px;fill:#aaa;transition:transform .22s;flex-shrink:0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*1 Kg Pack: 900g Net Weight Approx. <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
         <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">The 1 Kg Pack contains approximately 900 grams of net weight. Actual weight is recorded on the shop's certified digital scale at the time of packing.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Estimated Delivery: Next Day <svg style="width:14px;height:14px;fill:#aaa;transition:transform .22s;flex-shrink:0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Estimated Delivery: Next Day <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
         <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">Orders placed before 3 PM are dispatched the same day and delivered next day across Karachi in our temperature-controlled bags. Delivery timings are demo placeholders.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Storage Instructions <svg style="width:14px;height:14px;fill:#aaa;transition:transform .22s;flex-shrink:0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Storage Instructions <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
         <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">Refrigerate immediately upon receipt. Use within 24 hours for best freshness. If storing longer, freeze immediately and use within 3 months. Do not refreeze defrosted meat.</p></div>
       </div>
       <div class="pi-trust">
-        <span>✓ 100% Zabiha hand-slaughtered</span>
-        <span>✓ Weighed on certified digital scale</span>
-        <span>✓ Cash on Delivery only</span>
-        <span>✓ Zero frozen stock</span>
+        <span><i class="fa-solid fa-circle-check"></i> 100% Zabiha hand-slaughtered</span>
+        <span><i class="fa-solid fa-circle-check"></i> Weighed on certified digital scale</span>
+        <span><i class="fa-solid fa-circle-check"></i> Cash on Delivery only</span>
+        <span><i class="fa-solid fa-circle-check"></i> Zero frozen stock</span>
       </div>
-      <div class="pi-note">ℹ Final bill may differ slightly from estimate — based on actual packed scale weight at dispatch. This is standard practice for all fresh meat orders.</div>
+      <div class="pi-note"><i class="fa-solid fa-circle-info" style="margin-right:5px"></i>Final bill may differ slightly from estimate — based on actual packed scale weight at dispatch. This is standard practice for all fresh meat orders.</div>
     </div>
   </div>
   <!-- Ask a question -->
   <div style="border-top:1px solid var(--brd);padding:22px 0;display:flex;align-items:center;gap:10px;font-size:.84rem">
-    ?
+    <i class="fa-solid fa-circle-question" style="color:#aaa;font-size:1rem"></i>
     <span style="color:#555">Ask a question</span>
-    <a href="https://wa.me/923348210348" target="_blank" class="btn btn-wa btn-sm" style="margin-left:auto"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Us</a>
+    <a href="https://wa.me/923348210348" target="_blank" class="btn btn-wa btn-sm" style="margin-left:auto"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
   </div>
   ${related.length>0?`<section class="sec" style="padding-top:0"><div class="sec-hd"><h2 style="font-size:1.5rem">You Might Also Like</h2></div><div class="bs-row">${related.map(card).join('')}</div></section>`:''}
   ${getRV().filter(rid=>rid!==id&&prod(rid)&&prod(rid).cat!==p.cat).slice(0,4).map(rid=>prod(rid)).filter(Boolean).length>0?`<div class="rv-sec"><h3>Recently Viewed Products</h3><div class="bs-row">${getRV().filter(rid=>rid!==id&&prod(rid)&&prod(rid).cat!==p.cat).slice(0,4).map(rid=>prod(rid)).filter(Boolean).map(card).join('')}</div></div>`:''}
@@ -1281,12 +1299,12 @@ function pageCheckout(){
   const items=cart.map(i=>{const p=prod(i.id);if(!p)return'';return`<div class="os-item"><div><div class="os-n">${p.name}</div><div class="os-d">${wl(i.wt)} × ${i.qty}</div></div><div class="os-p">${fmt(cp(p.rate,i.wt)*i.qty)}</div></div>`}).join('');
   const aOpts=AREAS.map(a=>`<option value="${a.id}" ${F.area===a.id?'selected':''}>${a.n} — Rs. ${a.fee} delivery (demo)</option>`).join('');
   const sOpts=SLOTS.map(s=>`<option value="${s}" ${F.slot===s?'selected':''}>${s}</option>`).join('');
-  return`<div class="demo-notice">ℹ Demo — placing an order here does not submit to any real business.</div>
+  return`<div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo — placing an order here does not submit to any real business.</div>
   <div class="W"><div class="crumb"><span onclick="nav('home')" style="cursor:pointer">Home</span><span>›</span><span>Checkout</span></div>
   <div class="co-layout">
     <div class="co-form">
       <div><h1 style="font-family:var(--serif);font-size:1.85rem;margin-bottom:5px">Checkout</h1><p style="font-size:.87rem;color:#aaa">Complete your delivery details to place your order.</p></div>
-      <div class="co-block"><h3>📍 Delivery Information</h3>
+      <div class="co-block"><h3><i class="fa-solid fa-location-dot" style="color:var(--red);margin-right:8px"></i>Delivery Information</h3>
         <div class="frow">
           <div class="ff full"><label class="flbl">Full Name <span>*</span></label><input class="fi" id="fN" placeholder="Your full name" value="${(F.name||'')}"><div class="ferr" id="eN">Please enter your full name.</div></div>
           <div class="ff full"><label class="flbl">Pakistan Mobile Number <span>*</span></label><input class="fi" id="fP" type="tel" placeholder="03XX-XXXXXXX" value="${(F.phone||'')}"><div class="ferr" id="eP">Enter a valid Pakistani mobile number.</div></div>
@@ -1297,11 +1315,11 @@ function pageCheckout(){
           <div class="ff full"><label class="flbl">Order Notes <span style="color:#aaa;font-weight:400">(Optional)</span></label><textarea class="fi" id="fNo" rows="2" placeholder="Special cut instructions, preparation notes...">${(F.notes||'')}</textarea></div>
         </div>
       </div>
-      <div class="co-block"><h3>💳 Payment Method</h3>
-        <div class="pay-opt"><div class="pay-ico">💵</div><div><div class="pay-lbl">Cash on Delivery (COD)</div><div class="pay-sub">Pay in cash when your order arrives. No card or advance payment required. Final bill based on actual packed scale weight at dispatch.</div></div></div>
+      <div class="co-block"><h3><i class="fa-solid fa-credit-card" style="color:var(--red);margin-right:8px"></i>Payment Method</h3>
+        <div class="pay-opt"><div class="pay-ico"><i class="fa-solid fa-money-bill-wave"></i></div><div><div class="pay-lbl">Cash on Delivery (COD)</div><div class="pay-sub">Pay in cash when your order arrives. No card or advance payment required. Final bill based on actual packed scale weight at dispatch.</div></div></div>
       </div>
-      <div class="min-err" id="minErr">⚠<span></span></div>
-      <button class="btn btn-red btn-full btn-lg" id="placeBtn" onclick="placeOrder()">✓ Place Order — Cash on Delivery</button>
+      <div class="min-err" id="minErr"><i class="fa-solid fa-triangle-exclamation"></i><span></span></div>
+      <button class="btn btn-red btn-full btn-lg" id="placeBtn" onclick="placeOrder()"><i class="fa-solid fa-check"></i> Place Order — Cash on Delivery</button>
       <p style="font-size:.7rem;color:#aaa;text-align:center;margin-top:7px">By placing your order you agree to our <span onclick="nav('pg','terms')" style="color:#555;cursor:pointer;text-decoration:underline">Terms</span> and <span onclick="nav('pg','privacy')" style="color:#555;cursor:pointer;text-decoration:underline">Privacy Policy</span>.</p>
     </div>
     <div class="co-sidebar">
@@ -1346,7 +1364,7 @@ function placeOrder(){
   });
   if(!ok){toast('Please check the highlighted fields.','err');document.querySelector('.fi.bad')?.scrollIntoView({behavior:'smooth',block:'center'});return}
   if(sub()<MINO){chkMin();return}
-  const btn=document.getElementById('placeBtn');btn.disabled=true;btn.innerHTML='⏳ Placing Order…';
+  const btn=document.getElementById('placeBtn');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Placing Order…';
   const aObj=AREAS.find(a=>a.id===F.area);
   const s=sub(),fee=dfee(F.area);
   const ord={no:'FB-'+(100000+Math.random()*899999|0),ts:new Date().toISOString(),customer:{name:F.name,phone:F.phone,area:aObj?.n||F.area,addr:F.addr,land:F.land,slot:F.slot,notes:F.notes},items:cart.map(i=>{const p=prod(i.id);return{name:p?.name,wt:i.wt,qty:i.qty,rate:p?.rate,lp:cp(p?.rate||0,i.wt)*i.qty}}),sub:s,fee,total:s+fee,payment:'Cash on Delivery'};
@@ -1363,7 +1381,7 @@ function pageConfirm(){
   const o=lastOrd;
   const d=new Date(o.ts);
   const items=(o.items||[]).map(i=>`<div class="drow"><span class="dl">${i.name} (${wl(i.wt)} × ${i.qty})</span><span class="dv">${fmt(i.lp)}</span></div>`).join('');
-  return`<div class="done"><div class="done-ico">✓</div><h1 style="font-family:var(--serif);font-size:2rem">Order Placed!</h1><p style="max-width:460px;margin:8px auto;color:#555">Thank you for your order. Our team will confirm shortly and prepare your fresh meat for delivery.</p><div class="done-no">Order ${o.no}</div></div>
+  return`<div class="done"><div class="done-ico"><i class="fa-solid fa-circle-check"></i></div><h1 style="font-family:var(--serif);font-size:2rem">Order Placed!</h1><p style="max-width:460px;margin:8px auto;color:#555">Thank you for your order. Our team will confirm shortly and prepare your fresh meat for delivery.</p><div class="done-no">Order ${o.no}</div></div>
   <div class="W"><div class="done-grid">
     <div>
       <div class="dblock"><h4>Items Ordered</h4>${items}
@@ -1371,8 +1389,8 @@ function pageConfirm(){
         <div class="drow"><span class="dl">Delivery Fee</span><span class="dv">${fmt(o.fee)} (demo)</span></div>
         <div class="drow" style="font-weight:800"><span>Estimated Total</span><span class="dv" style="font-size:1.1rem;color:var(--red)">${fmt(o.total)}</span></div>
       </div>
-      <div class="dblock" style="background:#fff5f5;border-color:#fcc"><h4 style="color:var(--red)">💵 Cash on Delivery</h4><p style="font-size:.84rem;color:#555">Please have cash ready when your order arrives. The final amount is based on the actual packed scale weight recorded at dispatch, which may differ slightly from the estimate above.</p></div>
-      <div class="dblock"><h4>🚚 Expected Delivery</h4><p style="font-size:.84rem;color:#555">Our team will contact you on WhatsApp to confirm delivery timing. Typical next-day delivery across Karachi.</p><div style="background:var(--lgry);border-radius:8px;padding:9px 12px;font-size:.73rem;color:#aaa;margin-top:9px">ℹ Delivery timings are demo placeholders — not confirmed by any business.</div></div>
+      <div class="dblock" style="background:#fff5f5;border-color:#fcc"><h4 style="color:var(--red)"><i class="fa-solid fa-money-bill-wave" style="margin-right:6px"></i>Cash on Delivery</h4><p style="font-size:.84rem;color:#555">Please have cash ready when your order arrives. The final amount is based on the actual packed scale weight recorded at dispatch, which may differ slightly from the estimate above.</p></div>
+      <div class="dblock"><h4><i class="fa-solid fa-truck-fast" style="color:var(--red);margin-right:6px"></i>Expected Delivery</h4><p style="font-size:.84rem;color:#555">Our team will contact you on WhatsApp to confirm delivery timing. Typical next-day delivery across Karachi.</p><div style="background:var(--lgry);border-radius:8px;padding:9px 12px;font-size:.73rem;color:#aaa;margin-top:9px"><i class="fa-solid fa-circle-info" style="margin-right:4px"></i>Delivery timings are demo placeholders — not confirmed by any business.</div></div>
     </div>
     <div>
       <div class="dblock"><h4>Order Details</h4>
@@ -1390,7 +1408,7 @@ function pageConfirm(){
         ${o.customer.notes?`<div class="drow"><span class="dl">Notes</span><span class="dv">${o.customer.notes}</span></div>`:''}
       </div>
       <div style="display:flex;flex-direction:column;gap:9px">
-        <a href="https://wa.me/923348210348?text=My order number is ${o.no}" target="_blank" class="btn btn-wa btn-full btn-lg">💬 Contact on WhatsApp</a>
+        <a href="https://wa.me/923348210348?text=My order number is ${o.no}" target="_blank" class="btn btn-wa btn-full btn-lg"><i class="fa-brands fa-whatsapp" style="font-size:1.1rem"></i>Contact on WhatsApp</a>
         <button class="btn btn-out btn-full" onclick="nav('home')">Continue Shopping</button>
       </div>
     </div>
@@ -1401,7 +1419,7 @@ function pageConfirm(){
 //  STATIC PAGES
 // ══════════════════════════════════════
 const PAGES={
-  about:{title:'About Us',sub:'Karachi\'s premium Zabiha meat shop — serving fresh cuts every day.',body:`<div class="ph">ℹ Placeholder content for demo. Final business info will be added before launch.</div>
+  about:{title:'About Us',sub:'Karachi\'s premium Zabiha meat shop — serving fresh cuts every day.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Placeholder content for demo. Final business info will be added before launch.</div>
 <h2>Our Story</h2><p>Nabdullah Meat Hub was founded on one belief: every family in Karachi deserves access to premium quality Zabiha fresh meat — sourced responsibly, cut expertly, and delivered reliably. What began as a traditional neighbourhood butchery has grown into a trusted online meat delivery service.</p>
 <p>We combine the trust of a traditional Karachi butcher shop with the convenience of modern online ordering. Our expert butchers bring decades of experience to every cut, ensuring every product meets the highest standards of freshness, Zabiha compliance, and quality.</p>
 <h2>Our Promise</h2><ul><li>100% Zabiha hand-slaughtered — certificate available on request</li><li>Zero frozen stock — all meat prepared fresh daily</li><li>Digital scale billing — final bill based on certified scale weight, not estimates</li><li>Cold-chain delivery — temperature-controlled bags for every order</li><li>Cash on Delivery only — no advance payment required</li><li>WhatsApp support 7AM to 9PM daily</li></ul>
@@ -1423,37 +1441,37 @@ const PAGES={
 ['Is Veal different from Beef?','Yes. Veal comes from young milk-fed cattle and is completely separate from our beef category — different animals, different inventory, and different pricing. Veal is lighter in colour, more tender, and has a more delicate flavour.'],
 ['What is Winter Feast?','Our seasonal collection of marinated BBQ-ready meats for winter gatherings. Limited availability during peak winter season.'],
 ['Can I place a bulk order?','Yes — contact us on WhatsApp at 0334-8210348 or email marketing@freshbutcher.pk for bulk or catering orders. Special pricing available for 5kg+.']
-].map((f,i)=>`<div class="faq" id="fq${i}"><button class="faq-q" onclick="ftgl(${i})">${f[0]}↓</button><div class="faq-a">${f[1]}</div></div>`).join('')}
+].map((f,i)=>`<div class="faq" id="fq${i}"><button class="faq-q" onclick="ftgl(${i})">${f[0]}<i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">${f[1]}</div></div>`).join('')}
 <div style="text-align:center;margin-top:44px;background:var(--lgry);border:1px solid var(--brd);border-radius:14px;padding:32px">
 <h3 style="font-family:var(--serif);margin-bottom:8px">Still have a question?</h3>
 <p style="margin-bottom:18px;font-size:.87rem;color:#555">Our team responds on WhatsApp within minutes.</p>
-<a href="https://wa.me/923348210348" class="btn btn-wa" target="_blank">💬Chat on WhatsApp</a>
+<a href="https://wa.me/923348210348" class="btn btn-wa" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:1rem"></i>Chat on WhatsApp</a>
 </div></div>`},
 
-  contact:{title:'Contact Us',sub:'Get in touch with our team for orders, queries, and bulk requests.',body:`<div class="ph">ℹ Contact details are demo placeholders. Actual business info will be confirmed before launch.</div>
+  contact:{title:'Contact Us',sub:'Get in touch with our team for orders, queries, and bulk requests.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Contact details are demo placeholders. Actual business info will be confirmed before launch.</div>
 <div class="ct-grid">
 <div class="ct-items">
 <h2 style="font-family:var(--serif);margin-bottom:18px">Get in Touch</h2>
-<div class="ct-item"><div class="ct-ico"><svg style="width:14px;height:14px;vertical-align:middle;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div><div class="ct-lbl">WhatsApp (Orders & Support)</div><div class="ct-val"><a href="https://wa.me/923348210348">0334-8210348</a></div></div></div>
-<div class="ct-item"><div class="ct-ico">📞</div><div><div class="ct-lbl">UAN (Bulk Orders)</div><div class="ct-val"><a href="tel:03332987295">0333-2987295</a></div></div></div>
-<div class="ct-item"><div class="ct-ico">✉</div><div><div class="ct-lbl">Orders Email</div><div class="ct-val"><a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></div></div></div>
-<div class="ct-item"><div class="ct-ico">💼</div><div><div class="ct-lbl">Bulk / Marketing</div><div class="ct-val"><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></div></div></div>
-<div class="ct-item"><div class="ct-ico">📍</div><div><div class="ct-lbl">Shop Address</div><div class="ct-val">[Shop Address, Karachi — Placeholder]</div></div></div>
-<div class="map-ph">📍<p style="text-align:center;max-width:200px">Google Map embedded here once shop address is confirmed.</p></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-brands fa-whatsapp"></i></div><div><div class="ct-lbl">WhatsApp (Orders & Support)</div><div class="ct-val"><a href="https://wa.me/923348210348">0334-8210348</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-phone"></i></div><div><div class="ct-lbl">UAN (Bulk Orders)</div><div class="ct-val"><a href="tel:03332987295">0333-2987295</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="ct-lbl">Orders Email</div><div class="ct-val"><a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-briefcase"></i></div><div><div class="ct-lbl">Bulk / Marketing</div><div class="ct-val"><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-location-dot"></i></div><div><div class="ct-lbl">Shop Address</div><div class="ct-val">[Shop Address, Karachi — Placeholder]</div></div></div>
+<div class="map-ph"><i class="fa-solid fa-location-dot"></i><p style="text-align:center;max-width:200px">Google Map embedded here once shop address is confirmed.</p></div>
 </div>
 <div>
 <div class="co-block">
-<h3>✉ Send a Message</h3>
+<h3><i class="fa-solid fa-paper-plane" style="color:var(--red);margin-right:8px"></i>Send a Message</h3>
 <div style="display:flex;flex-direction:column;gap:13px">
 <div class="ff"><label class="flbl">Your Name</label><input class="fi" id="ctN" placeholder="Full name"></div>
 <div class="ff"><label class="flbl">Mobile / Email</label><input class="fi" id="ctC" placeholder="03XX-XXXXXXX or email"></div>
 <div class="ff"><label class="flbl">Subject</label><select class="fi" id="ctS"><option>Order query</option><option>Delivery issue</option><option>Bulk / wholesale order</option><option>Product availability</option><option>Custom cut request</option><option>Feedback</option><option>Other</option></select></div>
 <div class="ff"><label class="flbl">Message</label><textarea class="fi" id="ctM" rows="5" placeholder="How can we help you today?"></textarea></div>
-<button class="btn btn-red btn-full" onclick="ctSend()">✉ Send Message</button>
+<button class="btn btn-red btn-full" onclick="ctSend()"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
 <p style="font-size:.7rem;color:#aaa;text-align:center">Demo — messages are not actually sent in this prototype.</p>
 </div></div></div></div>`},
 
-  privacy:{title:'Privacy Policy',sub:'How we collect, use, and protect your personal information.',body:`<div class="ph">ℹ Sample privacy policy for demo purposes only. Final legal policy will be reviewed by counsel before launch.</div>
+  privacy:{title:'Privacy Policy',sub:'How we collect, use, and protect your personal information.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Sample privacy policy for demo purposes only. Final legal policy will be reviewed by counsel before launch.</div>
 <p><strong>Last updated:</strong> [Date to be confirmed]</p>
 <h2>1. Information We Collect</h2><p>When you place an order, we collect:</p><ul><li>Full name</li><li>Pakistan mobile number</li><li>Delivery address and Karachi zone</li><li>Order details (products, weights, quantities)</li><li>Optional: landmark, preferred time slot, order notes</li></ul><p>We do not collect payment information as all orders are Cash on Delivery.</p>
 <h2>2. How We Use Your Information</h2><p>We use collected information only to:</p><ul><li>Process and fulfil your order</li><li>Contact you regarding order status, confirmation, and delivery timing via WhatsApp</li><li>Respond to queries submitted via our website or WhatsApp</li></ul>
@@ -1465,7 +1483,7 @@ const PAGES={
 <h2>8. Changes</h2><p>We may update this policy periodically. Changes will be posted on this page with an updated date.</p>
 <h2>9. Contact</h2><p>For privacy queries: <a href="mailto:hello@freshbutcher.pk" style="color:var(--red)">hello@freshbutcher.pk</a> or WhatsApp 0334-8210348.</p>`},
 
-  terms:{title:'Terms & Conditions',sub:'Please read these terms carefully before using our service.',body:`<div class="ph">ℹ Sample terms for demo purposes only. Final legal terms will be reviewed by counsel before launch.</div>
+  terms:{title:'Terms & Conditions',sub:'Please read these terms carefully before using our service.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Sample terms for demo purposes only. Final legal terms will be reviewed by counsel before launch.</div>
 <p><strong>Last updated:</strong> [Date to be confirmed]</p>
 <h2>1. Acceptance</h2><p>By using this website to browse or place an order, you accept these Terms and Conditions. If you do not agree, please do not use this website.</p>
 <h2>2. Products & Availability</h2><p>All products are subject to daily availability. We reserve the right to discontinue, modify, or limit any product at any time. Sold Out status is updated as daily stock is exhausted.</p>
@@ -1480,7 +1498,7 @@ const PAGES={
 <h2>11. Limitation of Liability</h2><p>Nabdullah Meat Hub shall not be liable for indirect, incidental, or consequential damages. Total liability shall not exceed the value of the specific order in question.</p>
 <h2>12. Governing Law</h2><p>These Terms are governed by the laws of Pakistan. Disputes are subject to the jurisdiction of courts in Karachi.</p>`},
 
-  shipping:{title:'Shipping & Return Policy',sub:'Delivery information and our policy on returns and order issues.',body:`<div class="ph">ℹ All figures below are demo placeholders. Final values confirmed before launch.</div>
+  shipping:{title:'Shipping & Return Policy',sub:'Delivery information and our policy on returns and order issues.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>All figures below are demo placeholders. Final values confirmed before launch.</div>
 <h2>Delivery Coverage</h2><p>We deliver to selected zones across Karachi including DHA, Clifton, PECHS, Gulshan, Johar, North Nazimabad, Bahadurabad, Nazimabad, FB Area, Federal B Area, KCHS, Defence, Bahria Town, Malir Cantt, and Karachi South. Select your zone at checkout to see the delivery charge.</p>
 <h2>Delivery Charges</h2><p>Charges range from Rs. 150 (Clifton, DHA, Defence) to Rs. 450 (Bahria Town) per order. All charges shown at checkout are demo placeholders. Orders above Rs. 3,000 qualify for a free temperature bag.</p>
 <h2>Delivery Timings</h2><p>Orders placed before 3:00 PM are dispatched same day and delivered next day. Orders after 3:00 PM are dispatched next morning for next-afternoon delivery. Our team confirms timing via WhatsApp after order placement. All timings are demo placeholders.</p>
