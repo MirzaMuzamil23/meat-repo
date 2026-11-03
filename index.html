@@ -1013,35 +1013,61 @@ function pageHome(){
 
   <div class="W">
 
-  <!-- TOP OFFERS -->
+  <!-- TRUST BADGES -->
+  <section style="padding:22px 0;border-bottom:1px solid var(--brd)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;background:var(--brd)">
+      ${[
+        {ico:'fa-certificate',title:'100% Zabiha',sub:'Hand-slaughtered & certified'},
+        {ico:'fa-truck-fast',title:'Same Day Dispatch',sub:'Order by 3 PM, out today'},
+        {ico:'fa-scale-balanced',title:'Scale-Weighed Billing',sub:'Pay for exact packed weight'},
+        {ico:'fa-headset',title:'24/7 WhatsApp Support',sub:'Always available for you'},
+      ].map(t=>`<div style="background:#fff;padding:20px 22px;display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:50%;background:#fff5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid ${t.ico}" style="color:var(--red);font-size:1rem"></i></div><div><div style="font-size:.84rem;font-weight:700;color:var(--blk)">${t.title}</div><div style="font-size:.73rem;color:var(--gry)">${t.sub}</div></div></div>`).join('')}
+    </div>
+  </section>
+
+  <!-- OUR SERVICES -->
   <section class="sec sec-sm">
-    <div class="sec-hd center"><div class="sec-eye">Limited Time Deals</div><h2>Top Offers Today</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
-      <div style="background:linear-gradient(135deg,#e8192c,#c8101f);border-radius:16px;padding:24px 22px;color:#fff;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.8">Flash Deal</div>
-        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.2">Free Temp Bag<br>Orders Above Rs. 3,000</div>
-        <div style="font-size:.8rem;opacity:.85">All orders above Rs. 3,000 receive a free temperature-controlled delivery bag.</div>
-        <button class="btn btn-wt btn-sm" onclick="nav('col','chicken')" style="align-self:flex-start;margin-top:6px">Shop Now</button>
+    <div class="sec-hd center"><div class="sec-eye">What We Offer</div><h2>Our Services</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
+      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
+        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-wheat-awn" style="color:var(--red);font-size:1.25rem"></i></div>
+        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Aqiqah</div><p style="font-size:.82rem;line-height:1.6">Complete Aqiqah packages for newborns, prepared with care and Islamic tradition. Contact us for pricing.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Enquire Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
       </div>
-      <div style="background:linear-gradient(135deg,#1a1a1a,#333);border-radius:16px;padding:24px 22px;color:#fff;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#f59e0b">Winter Special</div>
-        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.2">Rs. 100 Cashback<br>on Winter Feast</div>
-        <div style="font-size:.8rem;opacity:.7">Use code <strong style="color:#f59e0b">WINTERFEST</strong> at checkout. Valid on Winter Feast products only.</div>
-        <button class="btn btn-wt btn-sm" onclick="nav('col','feast')" style="align-self:flex-start;margin-top:6px;background:var(--red);color:#fff;border-color:var(--red)">Shop Feast</button>
+      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
+        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-moon" style="color:var(--red);font-size:1.25rem"></i></div>
+        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Qurbani</div><p style="font-size:.82rem;line-height:1.6">Sunnah-compliant Qurbani services, ethically sourced and fairly distributed to deserving families.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Enquire Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
       </div>
-      <div style="background:#fff5f5;border:2px solid #fcc;border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red)">First Order</div>
-        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.2;color:var(--blk)">10% OFF<br>Your First Order</div>
-        <div style="font-size:.8rem;color:var(--gry)">Subscribe to our newsletter below and receive your 10% welcome discount code instantly.</div>
-        <button class="btn btn-red btn-sm" onclick="document.getElementById('nl-email')?.scrollIntoView({behavior:'smooth',block:'center'})" style="align-self:flex-start;margin-top:6px">Subscribe & Save</button>
+      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
+        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-calendar-check" style="color:var(--red);font-size:1.25rem"></i></div>
+        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Monthly Subscription</div><p style="font-size:.82rem;line-height:1.6">Regular deliveries of premium meat cuts tailored to your family's monthly needs. Save time & money.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:var(--red);margin-top:8px">Subscribe Now <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></a></div>
       </div>
-      <div style="background:linear-gradient(135deg,#1e3a5f,#1a2f4a);border-radius:16px;padding:24px 22px;color:#fff;display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#60a5fa">Bulk Order</div>
-        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.2">Special Rates<br>for Bulk Orders</div>
-        <div style="font-size:.8rem;opacity:.75">Restaurants, caterers and households ordering 5kg+ — contact us for special wholesale pricing.</div>
-        <a href="https://wa.me/923348210348" target="_blank" class="btn btn-wa btn-sm" style="align-self:flex-start;margin-top:6px">WhatsApp Us</a>
+      <div style="display:flex;align-items:flex-start;gap:18px;padding:24px;background:var(--lgry);border-radius:14px;border:1px solid var(--brd)">
+        <div style="width:52px;height:52px;background:#fff;border-radius:12px;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-boxes-stacked" style="color:var(--red);font-size:1.25rem"></i></div>
+        <div><div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--blk);margin-bottom:5px">Bulk & Wholesale</div><p style="font-size:.82rem;line-height:1.6">Special pricing for restaurants, caterers & households ordering 5kg+. Contact us for custom rates.</p><a href="https://wa.me/923348210348" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#25D366;margin-top:8px"><i class="fa-brands fa-whatsapp"></i>WhatsApp Us</a></div>
       </div>
     </div>
+  </section>
+
+  <!-- TODAY'S RATES SECTION -->
+  <section style="background:var(--blk);padding:44px 0" class="sec-sm">
+  <div class="W">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div><div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#faa;margin-bottom:5px">Updated Daily</div><h2 style="color:#fff;font-family:var(--serif)">Today's Rates</h2></div>
+      <span style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:.75rem;padding:6px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.2)"><i class="fa-solid fa-circle-info" style="margin-right:5px;color:#faa"></i>Demo sample rates</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,.12);border-radius:14px;overflow:hidden">
+      ${[
+        {cat:'Chicken',item:'Whole Chicken',rate:620},{cat:'Chicken',item:'Boneless',rate:880},
+        {cat:'Beef',item:'Beef Boneless',rate:950},{cat:'Beef',item:'Beef Bone-In',rate:1100},
+        {cat:'Mutton',item:'Mutton Karahi',rate:2450},{cat:'Veal',item:'Veal Boneless',rate:1650},
+      ].map(r=>`<div style="background:#1a1a1a;padding:20px 16px">
+        <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#faa;margin-bottom:3px">${r.cat}</div>
+        <div style="font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">${r.item}</div>
+        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff">Rs.${r.rate.toLocaleString()}</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.4);margin-top:2px">per kg · demo</div>
+      </div>`).join('')}
+    </div>
+  </div>
   </section>
 
   <!-- SHOP BY CATEGORY -->
@@ -1180,9 +1206,13 @@ function pageCol(catId){
   </div>
   ${vis.length===0?`<div style="text-align:center;padding:56px;color:#aaa"><i class="fa-solid fa-magnifying-glass" style="font-size:2rem;margin-bottom:12px;display:block;color:#ddd"></i><p>No products match this filter.</p><button class="btn btn-out btn-sm" style="margin-top:12px" onclick="_updCol('all',null)">Clear Filter</button></div>`:`<div class="pg">${vis.map(card).join('')}</div>`}
   ${prods.length>state.n?`<div style="text-align:center;margin:32px 0"><button class="btn btn-out" onclick="cs('${catId}').n+=8;nav('col','${catId}')">Load More <i class="fa-solid fa-chevron-down" style="font-size:.75rem"></i></button></div>`:''}
-  <div style="background:var(--lgry);border:1px solid var(--brd);border-radius:12px;padding:22px;margin:36px 0 0">
-    <h3 style="font-family:var(--serif);font-size:1rem;margin-bottom:8px">About Our ${cat.name}</h3>
-    <p style="font-size:.85rem;color:#555">${cat.desc} All products are 100% Zabiha hand-slaughtered, weighed on a certified digital scale at dispatch, and packed fresh the same day. Final billing is based on actual packed weight.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:36px 0 0">
+    ${[
+      {ico:'fa-certificate',c:'#e8192c',bg:'#fff5f5',title:'100% Zabiha Certified',sub:'Every animal hand-slaughtered per Islamic standards'},
+      {ico:'fa-scale-balanced',c:'#2563eb',bg:'#eff6ff',title:'Digital Scale Billing',sub:'Final bill based on actual certified scale weight'},
+      {ico:'fa-snowflake',c:'#0891b2',bg:'#ecfeff',title:'Cold Chain Delivery',sub:'Temperature-controlled bags from butchery to door'},
+      {ico:'fa-ban',c:'#16a34a',bg:'#f0fdf4',title:'Zero Frozen Stock',sub:'All meat prepared and packed fresh same day'},
+    ].map(t=>`<div style="display:flex;align-items:center;gap:12px;background:${t.bg};border:1px solid ${t.bg};border-radius:12px;padding:16px 18px"><i class="fa-solid ${t.ico}" style="color:${t.c};font-size:1.2rem;flex-shrink:0;width:22px"></i><div><div style="font-size:.82rem;font-weight:700;color:#111;margin-bottom:2px">${t.title}</div><div style="font-size:.72rem;color:#666">${t.sub}</div></div></div>`).join('')}
   </div>
   ${rv.length>0?`<div class="rv-sec"><h3>Recently Viewed Products</h3><div class="pg">${rv.map(card).join('')}</div></div>`:''}
   </div>${footer()}`;
@@ -1206,8 +1236,19 @@ function pagePDP(id){
   <div class="pdp">
     <!-- GALLERY -->
     <div class="gal">
-      <div class="gal-main"><img id="mi_${id}" src="${imgs[0]}" alt="${p.name}" onerror="this.src='${FB}'" style="width:100%;height:100%;object-fit:cover"></div>
-      ${imgs.length>1?`<div class="gal-row">${imgs.map((src,i)=>`<div class="gal-th${i===0?' on':''}" onclick="swTh('${id}',${i},'${src}')" data-gth="${id}_${i}"><img src="${src}" alt="${p.name}" onerror="this.src='${FB}'" style="width:100%;height:100%;object-fit:cover"></div>`).join('')}</div>`:''}
+      <div class="gal-main" style="background:#faf8f5;border-radius:18px;overflow:hidden;aspect-ratio:1;border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;padding:0">
+        <div id="mi_${id}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">${svgImg(SVG_MAP[id]||'chicken_whole')}</div>
+      </div>
+      <div class="gal-row" style="margin-top:10px">
+        ${(p.imgs||[p.img]).map((_,i)=>{
+          const altKey=i===0?id:(id+'_alt'+i);
+          const svgKey=SVG_MAP[id]||'chicken_whole';
+          return`<div class="gal-th${i===0?' on':''}" onclick="swTh2('${id}',${i})" data-gth="${id}_${i}" style="cursor:pointer;border-radius:10px;overflow:hidden;width:68px;height:68px;background:#faf8f5;border:2px solid ${i===0?'var(--red)':'var(--brd)'};">${svgImg(svgKey)}</div>`;
+        }).join('')}
+      </div>
+      <div style="background:var(--lgry);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:.77rem;color:#666;line-height:1.6;border:1px solid var(--brd)">
+        <i class="fa-solid fa-circle-info" style="color:var(--red);margin-right:6px"></i><strong style="color:#111">Illustration only.</strong> Actual product appearance may vary. Each order is freshly cut and packed on the day of dispatch.
+      </div>
     </div>
     <!-- INFO -->
     <div class="pi">
@@ -1230,24 +1271,43 @@ function pagePDP(id){
       </div>
       <div style="font-size:.75rem;color:#aaa;text-align:center;margin-bottom:4px"><i class="fa-solid fa-lock" style="margin-right:4px;color:var(--red)"></i>100% Zabiha · Cash on Delivery · Scale-Weighed Billing</div>
       `:`<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px;margin-bottom:22px"><strong style="color:#991b1b;display:block;margin-bottom:4px"><i class="fa-solid fa-circle-xmark" style="margin-right:5px"></i>Currently Unavailable</strong><p style="font-size:.82rem;color:#555">Temporarily out of stock. Check back tomorrow or browse <span onclick="nav('col','${p.cat}')" style="color:var(--red);cursor:pointer">${cat.name}</span> for alternatives.</p></div>`}
-      <div class="pi-desc"><h4>About This Product</h4><p style="font-size:.85rem;color:#555;line-height:1.75">${p.desc}</p></div>
-      <div class="pi-acc">
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*Half Kg Pack: 450g Net Weight Approx. <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
-        <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">The Half Kg Pack contains approximately 450 grams of net weight. Actual weight may vary slightly based on the cut and the digital scale reading at dispatch.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">*1 Kg Pack: 900g Net Weight Approx. <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
-        <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">The 1 Kg Pack contains approximately 900 grams of net weight. Actual weight is recorded on the shop's certified digital scale at the time of packing.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Estimated Delivery: Next Day <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
-        <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">Orders placed before 3 PM are dispatched the same day and delivered next day across Karachi in our temperature-controlled bags. Delivery timings are demo placeholders.</p></div>
-        <button class="pi-acc-hd" onclick="this.nextElementSibling.classList.toggle('open')">Storage Instructions <i class="fa-solid fa-chevron-down" style="font-size:.75rem;color:#aaa;transition:transform .22s"></i></button>
-        <div class="pi-acc-body"><p style="font-size:.82rem;color:#555;padding-top:12px">Refrigerate immediately upon receipt. Use within 24 hours for best freshness. If storing longer, freeze immediately and use within 3 months. Do not refreeze defrosted meat.</p></div>
+      <!-- PRODUCT INFO TABS -->
+      <div style="border:1px solid var(--brd);border-radius:12px;overflow:hidden;margin-bottom:18px">
+        <div style="display:flex;border-bottom:1px solid var(--brd);background:var(--lgry)">
+          ${['Description','Pack Info','Delivery','Storage'].map((t,i)=>`<button onclick="pdpTab(this,'ptab${id}_${i}')" class="pdp-tab${i===0?' ptab-on':''}" style="flex:1;padding:11px 8px;font-size:.77rem;font-weight:700;color:${i===0?'var(--red)':'#777'};background:${i===0?'#fff':'transparent'};border:none;border-right:1px solid var(--brd);cursor:pointer;transition:.18s" id="ptab${id}_${i}_btn">${t}</button>`).join('')}
+        </div>
+        <div id="ptab${id}_0" style="padding:16px 18px;display:block"><p style="font-size:.85rem;color:#444;line-height:1.75">${p.desc}</p></div>
+        <div id="ptab${id}_1" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--lgry);border-radius:8px;font-size:.82rem"><span style="color:#666">Half Kg Pack</span><span style="font-weight:700;color:var(--blk)">≈ 450g Net Weight</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--lgry);border-radius:8px;font-size:.82rem"><span style="color:#666">1 Kg Pack</span><span style="font-weight:700;color:var(--blk)">≈ 900g Net Weight</span></div>
+            <p style="font-size:.78rem;color:#999;margin-top:4px"><i class="fa-solid fa-circle-info" style="margin-right:4px;color:var(--red)"></i>Actual weight is recorded on certified digital scale at packing. Final bill reflects real weight.</p>
+          </div>
+        </div>
+        <div id="ptab${id}_2" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:.82rem">
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Orders before 3 PM — Same day dispatch</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Delivered next day across Karachi</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Temperature-controlled insulated delivery bag</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Cash on Delivery — no advance payment</span></div>
+            <p style="font-size:.75rem;color:#bbb;margin-top:4px">Delivery timings are demo placeholders and will be confirmed before launch.</p>
+          </div>
+        </div>
+        <div id="ptab${id}_3" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:.82rem">
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-temperature-low" style="color:#0891b2;width:16px"></i><span>Refrigerate immediately upon receipt</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-clock" style="color:#0891b2;width:16px"></i><span>Use within 24 hours for best freshness</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-snowflake" style="color:#0891b2;width:16px"></i><span>Freeze immediately for storage up to 3 months</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-ban" style="color:#e8192c;width:16px"></i><span>Do not refreeze once defrosted</span></div>
+          </div>
+        </div>
       </div>
-      <div class="pi-trust">
-        <span><i class="fa-solid fa-circle-check"></i> 100% Zabiha hand-slaughtered</span>
-        <span><i class="fa-solid fa-circle-check"></i> Weighed on certified digital scale</span>
-        <span><i class="fa-solid fa-circle-check"></i> Cash on Delivery only</span>
-        <span><i class="fa-solid fa-circle-check"></i> Zero frozen stock</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#f0fdf4;border-radius:8px;border:1px solid #bbf7d0"><i class="fa-solid fa-circle-check" style="color:#16a34a;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#166534">100% Zabiha hand-slaughtered</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#eff6ff;border-radius:8px;border:1px solid #bfdbfe"><i class="fa-solid fa-scale-balanced" style="color:#2563eb;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#1e40af">Certified digital scale billing</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#ecfeff;border-radius:8px;border:1px solid #a5f3fc"><i class="fa-solid fa-snowflake" style="color:#0891b2;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#155e75">Cold chain delivery</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#fff5f5;border-radius:8px;border:1px solid #fcc"><i class="fa-solid fa-ban" style="color:var(--red);font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#991b1b">Zero frozen stock</span></div>
       </div>
-      <div class="pi-note"><i class="fa-solid fa-circle-info" style="margin-right:5px"></i>Final bill may differ slightly from estimate — based on actual packed scale weight at dispatch. This is standard practice for all fresh meat orders.</div>
     </div>
   </div>
   <!-- Ask a question -->
@@ -1281,6 +1341,29 @@ function swTh(id,idx,src){
   const mi=document.getElementById('mi_'+id);if(mi)mi.src=src;
   document.querySelectorAll(`[data-gth^="${id}_"]`).forEach(el=>el.classList.toggle('on',el.dataset.gth===`${id}_${idx}`));
 }
+// Product detail tab switcher
+function pdpTab(btn,tabId){
+  const prefix=tabId.replace(/_\d+$/,'');
+  for(let i=0;i<4;i++){
+    const t=document.getElementById(prefix+'_'+i);
+    const b=document.getElementById(prefix+'_'+i+'_btn');
+    if(t){t.style.display='none'}
+    if(b){b.style.color='#777';b.style.background='transparent';b.style.fontWeight='600'}
+  }
+  const active=document.getElementById(tabId);
+  if(active){active.style.display='block'}
+  btn.style.color='var(--red)';btn.style.background='#fff';btn.style.fontWeight='800';
+}
+
+// Product detail gallery switch using SVG
+function swTh2(id,idx){
+  const wrap=document.getElementById('mi_'+id);
+  if(wrap){wrap.innerHTML=svgImg(SVG_MAP[id]||'chicken_whole')}
+  document.querySelectorAll(`[data-gth^="${id}_"]`).forEach((el,i)=>{
+    el.style.borderColor=i===idx?'var(--red)':'var(--brd)';
+  });
+}
+
 function pdpAdd(id){
   const qty=pdpQty[id]||1;
   for(let i=0;i<qty;i++)addCart(id,selW[id]||prod(id)?.wts[0]);
