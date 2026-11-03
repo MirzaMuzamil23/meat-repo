@@ -66,11 +66,16 @@ header{position:sticky;top:37px;z-index:100;background:#fff;border-bottom:1px so
 .logo-name{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--blk)}
 .logo-sub{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
 nav.desktop{display:flex;align-items:center;gap:4px;flex:1;justify-content:center}
-nav.desktop a{font-size:.8rem;font-weight:600;color:#444;padding:7px 13px;border-radius:6px;transition:.18s;white-space:nowrap;cursor:pointer}
+nav.desktop a{font-size:.8rem;font-weight:600;color:#444;padding:7px 13px;border-radius:6px;transition:.18s;white-space:nowrap}
 nav.desktop a:hover,nav.desktop a.on{color:var(--blk);background:var(--lgry)}
 nav.desktop a.feast{color:var(--red);background:#fff5f5;border:1px solid #fcc}
 nav.desktop a.feast:hover{background:#ffe4e4}
 .hd-right{display:flex;align-items:center;gap:10px}
+.cart-ico-btn{position:relative;width:40px;height:40px;background:var(--lgry);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;flex-shrink:0}
+.cart-ico-btn:hover{background:var(--brd)}
+.cart-ico-btn svg{width:20px;height:20px;stroke:var(--blk);fill:none;stroke-width:1.8}
+#cart-badge{position:absolute;top:5px;right:5px;transform:translate(50%,-50%);background:var(--red);color:#fff;font-size:.6rem;font-weight:800;min-width:16px;height:16px;border-radius:99px;display:none;align-items:center;justify-content:center;padding:0 3px}
+#cart-badge.show{display:flex}
 .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;cursor:pointer}
 .hamburger span{width:20px;height:2px;background:var(--blk);border-radius:2px;display:block}
 
@@ -78,9 +83,9 @@ nav.desktop a.feast:hover{background:#ffe4e4}
 .mob-nav{display:none;position:fixed;inset:0;background:#fff;z-index:300;flex-direction:column;padding:22px;overflow-y:auto}
 .mob-nav.open{display:flex}
 .mob-nav-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.mob-x{width:36px;height:36px;background:var(--lgry);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mob-x{width:36px;height:36px;background:var(--lgry);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .mob-x i{font-size:15px;color:var(--blk)}
-.mob-nav a{display:block;font-size:1rem;font-weight:600;padding:14px 0;border-bottom:1px solid var(--brd);color:var(--blk);cursor:pointer}
+.mob-nav a{display:block;font-size:1rem;font-weight:600;padding:14px 0;border-bottom:1px solid var(--brd);color:var(--blk)}
 .mob-nav a:last-child{border:none}
 
 /* ── HERO SLIDER ── */
@@ -88,30 +93,41 @@ nav.desktop a.feast:hover{background:#ffe4e4}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;pointer-events:none;display:flex;align-items:center}
 .slide.active{opacity:1;pointer-events:auto;position:relative}
 .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.1) 100%)}
 .slide-content{position:relative;z-index:2;max-width:1280px;width:100%;margin:0 auto;padding:72px 24px}
+.slide-tag{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:18px}
+.slide h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;line-height:1.08;max-width:600px;margin-bottom:14px}
+.slide p{font-size:.9rem;color:rgba(255,255,255,.75);max-width:480px;line-height:1.7;margin-bottom:26px}
+.slide-btns{display:flex;gap:12px;flex-wrap:wrap}
 .slide-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
 .sdot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.35);cursor:pointer;transition:.3s}
 .sdot.on{background:#fff;width:22px}
-.slide-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;color:#fff;border:none}
+/* Slide arrows */
+.slide-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;color:#fff}
 .slide-arr:hover{background:var(--red)}
 .slide-arr.prev{left:16px}.slide-arr.next{right:16px}
 
-/* ── BUTTONS & SECTION ── */
+/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;padding:12px 24px;border-radius:8px;transition:.18s;cursor:pointer;border:2px solid transparent;font-size:.84rem;white-space:nowrap}
 .btn-red{background:var(--red);color:#fff;border-color:var(--red)}.btn-red:hover{background:var(--red2)}
 .btn-blk{background:var(--blk);color:#fff;border-color:var(--blk)}.btn-blk:hover{background:#333}
 .btn-out{background:transparent;color:var(--blk);border-color:var(--blk)}.btn-out:hover{background:var(--blk);color:#fff}
+.btn-wt{background:#fff;color:var(--red);border-color:#fff}.btn-wt:hover{background:#f5f5f5}
 .btn-wa{background:#25D366;color:#fff}.btn-wa:hover{background:#1fbb5a}
 .btn-sm{padding:7px 16px;font-size:.76rem}
 .btn-lg{padding:15px 32px;font-size:.92rem}
 .btn-full{width:100%}
+.btn:disabled{opacity:.42;cursor:not-allowed}
 
+/* ── SECTION ── */
 .sec{padding:60px 0}.sec-sm{padding:44px 0}
 .W{max-width:1280px;margin:0 auto;padding:0 22px}
 .sec-hd{margin-bottom:32px}
 .sec-hd.center{text-align:center}
 .sec-eye{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
 .sec-hd h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--blk);margin-bottom:9px}
+.sec-hd p{font-size:.88rem;color:var(--gry);max-width:520px;line-height:1.7}
+.sec-hd.center p{margin:0 auto}
 
 /* ── OFFER TICKERS ── */
 .tickers{background:#fff5f5;border-top:1px solid #fcc;border-bottom:1px solid #fcc;padding:12px 0;overflow:hidden}
@@ -123,74 +139,390 @@ nav.desktop a.feast:hover{background:#ffe4e4}
 /* ── CATEGORY CARDS ── */
 .catg{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .cat-card{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:3/4;display:block;cursor:pointer}
+.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.cat-card:hover img{transform:scale(1.07)}
 .cat-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.05) 55%)}
 .cat-lbl{position:absolute;bottom:14px;left:14px;right:14px}
 .cat-lbl b{font-family:var(--serif);font-size:1.05rem;color:#fff;display:block;margin-bottom:2px}
 .cat-lbl small{font-size:.7rem;color:rgba(255,255,255,.72)}
 
-/* ── PRODUCT CARDS GRID (4 to 5 per line) ── */
-.pg, .bs-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
-
+/* ── PRODUCT CARD — Tawaqqo Style (white bg, clean grid) ── */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:22px}
 .pc{display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--brd)}
 .pc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
-.pc-img{position:relative;aspect-ratio:1;background:#faf8f5;overflow:hidden;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:center}
-.pc-img svg{width:100%;height:100%;object-fit:contain;}
+.pc-img{position:relative;aspect-ratio:1;background:#fff;overflow:hidden;border-bottom:1px solid var(--brd)}
+.pc-img img{width:100%;height:100%;object-fit:contain;object-position:center;padding:8px;transition:transform .4s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
 .pc-disc{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:.68rem;font-weight:800;padding:4px 9px;border-radius:99px;z-index:2}
 .pc-sold-ov{position:absolute;inset:0;background:rgba(255,255,255,.78);display:flex;align-items:center;justify-content:center;z-index:2}
 .pc-sold-ov span{background:#555;color:#fff;font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:99px}
 .pc-body{padding:13px 14px 14px}
 .pc-name{font-size:.87rem;font-weight:700;color:var(--blk);margin-bottom:6px;line-height:1.35}
 .pc-price{font-size:.88rem;color:var(--red);font-weight:800;margin-bottom:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.pc-rate{font-size:.7rem;color:var(--gry)}
-.pc-arrow{width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;border:none}
-.pc-arrow:hover{background:var(--red2);transform:scale(1.08)}
+.pc-price s{color:#aaa;font-weight:400;font-size:.77rem}
+.pc-rate{font-size:.7rem;color:var(--gry);margin-bottom:10px}
+.pc-btn{width:100%;padding:9px 10px;border:1.5px solid var(--brd);border-radius:8px;font-size:.78rem;font-weight:700;background:#fff;color:var(--blk);transition:.18s;cursor:pointer;text-align:center}
+.pc-btn:hover{border-color:var(--blk);background:var(--blk);color:#fff}
+/* Arrow circle button — Image 1 style */
+.pc-arrow{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;border:none}
+.pc-arrow:hover{background:#a0100a;transform:scale(1.1)}
 
-/* ── RESPONSIVE OVERHAUL ── */
-@media(max-width: 1200px){
-  .pg, .bs-row { grid-template-columns: repeat(4, 1fr); }
-}
-@media(max-width: 900px){
-  .pg, .bs-row { grid-template-columns: repeat(3, 1fr); }
+/* ── MOBILE RESPONSIVE OVERHAUL ── */
+@media(max-width:1080px){
   .catg{grid-template-columns:repeat(3,1fr)}
-  nav.desktop{display:none}.hamburger{display:flex}
+  .nl-grid{grid-template-columns:1fr 1fr}
+  .co-layout{grid-template-columns:1fr}
+  .co-sidebar{position:static}
+  .done-grid{grid-template-columns:1fr}
+  .pdp{grid-template-columns:1fr;gap:24px}
+  .gal{position:static}
+  .hero{grid-template-columns:1fr;min-height:380px}
+  .hero-img{display:none}
+  .hero-txt{padding:52px 28px}
+  .slide-content{padding:48px 28px!important}
 }
-@media(max-width: 600px){
-  .pg, .bs-row { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
-  .catg { grid-template-columns: repeat(2, 1fr) !important; }
-  .sec{padding:32px 0}
-  .pc-body{padding:10px}
-  .pc-name{font-size:.8rem}
-  .slide-content{padding:36px 20px !important}
-  .hd{height:54px}
-  .logo-name{font-size:1.05rem}
+@media(max-width:720px){
+  :root{--hh:56px}
+  .catg{grid-template-columns:repeat(2,1fr);gap:10px}
+  nav.desktop{display:none}
+  .hamburger{display:flex}
+  .nl-grid{grid-template-columns:1fr;gap:22px}
+  .pg{grid-template-columns:repeat(2,1fr);gap:10px}
+  .bs-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .sec{padding:36px 0}
+  .sec-sm{padding:28px 0}
+  .frow{grid-template-columns:1fr}
+  .hero,.slide{min-height:320px!important}
+  .slide-content{padding:32px 20px!important}
+  .W{padding:0 14px}
+  /* force 2-col products on mobile */
+  .pg,.bs-row{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  /* product card compact on mobile */
+  .pc-body{padding:10px 11px 11px}
+  .pc-name{font-size:.8rem;margin-bottom:4px}
+  .pc-price{font-size:.82rem}
+  .pc-rate{font-size:.64rem}
+  .pc-arrow{width:30px;height:30px}
+  /* nav header compact */
+  .hd{height:54px;gap:10px}
+  .logo-name{font-size:1rem}
   .logo-sub{display:none}
+  /* hero text compact */
+  .slide h1,[style*="FRESH CHICKEN"],[style*="PREMIUM BEEF"]{font-size:2rem!important}
+  /* category grid 2x3 on mobile */
+  .catg{grid-template-columns:repeat(2,1fr)!important}
+  /* rates grid 2 col */
+  [style*="repeat(auto-fill,minmax(160px"]{grid-template-columns:repeat(2,1fr)!important}
+  /* trust badges 1 col */
+  [style*="repeat(auto-fill,minmax(220px"]{grid-template-columns:1fr!important}
+  /* reviews 1 col */
+  .reviews-grid{grid-template-columns:1fr!important}
+  /* wa cta stacked */
+  .wa-cta,[style*="f0fdf4"]{flex-direction:column!important;padding:24px 18px!important}
+  /* footer cols 1 */
+  .fg{grid-template-columns:1fr!important;gap:20px!important}
+  /* pdp tabs scroll */
+  [id^="ptab"]{overflow-x:auto}
+  /* checkout */
+  .co-layout{padding:24px 0 48px}
+  /* done grid */
+  .done-grid{grid-template-columns:1fr!important}
+  /* dev bar compact */
+  .dev-bar-left span:not(.dev-tag){display:none}
+  .dev-bar-mid .dev-btn span{display:none}
+}
+@media(max-width:420px){
+  .pg,.bs-row{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .pc-body{padding:8px 9px 9px}
+  .pc-name{font-size:.76rem}
+  .slide-content{padding:24px 16px!important}
+  .catg{grid-template-columns:1fr 1fr!important}
+  .W{padding:0 12px}
 }
 
-/* ── DRAWER & OVERLAY ── */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:400;opacity:0;visibility:hidden;transition:.22s}
+/* ── BESTSELLER GRID ── */
+.bs-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}
+@media(max-width:720px){.bs-row{grid-template-columns:repeat(2,1fr);gap:13px}}
+@media(max-width:420px){.bs-row{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+/* ── REVIEWS ── */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.rv{background:var(--lgry);border-radius:14px;padding:22px}
+.rv-stars{color:#f59e0b;font-size:.85rem;margin-bottom:10px}
+.rv-text{font-size:.85rem;color:#444;line-height:1.7;margin-bottom:14px}
+.rv-author{display:flex;align-items:center;gap:10px}
+.rv-ava{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rv-name{font-size:.82rem;font-weight:700;color:var(--blk)}
+.rv-loc{font-size:.7rem;color:var(--gry)}
+
+/* ── WHY US ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:22px}
+.wi{text-align:center;padding:24px 18px}
+.wi-ico{width:52px;height:52px;border-radius:50%;background:#fff5f5;border:2px solid #fcc;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.wi-ico i{color:var(--red);font-size:1.1rem}
+.wi h4{font-size:.9rem;font-weight:700;color:var(--blk);margin-bottom:6px}
+.wi p{font-size:.78rem;color:var(--gry);line-height:1.6}
+
+/* ── HOW IT WORKS ── */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:22px;counter-reset:st}
+.hw{position:relative;padding-left:46px;counter-increment:st}
+.hw::before{content:counter(st);position:absolute;left:0;top:0;width:32px;height:32px;background:var(--red);color:#fff;font-size:.8rem;font-weight:800;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.hw h4{font-size:.88rem;font-weight:700;color:var(--blk);margin-bottom:5px}
+.hw p{font-size:.78rem;color:var(--gry);line-height:1.65}
+
+/* ── DELIVERY AREAS ── */
+.areas{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px}
+.ac{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:9px 16px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.88);display:flex;align-items:center;gap:8px;justify-content:center}
+.ac::before{content:'';width:7px;height:7px;border-radius:50%;background:#34d399;flex-shrink:0}
+
+/* ── COLLECTION BANNER ── */
+.col-bn{background:#111;color:#fff;padding:52px 0;position:relative;overflow:hidden;min-height:200px}
+.col-bg{position:absolute;right:0;top:0;bottom:0;width:42%;opacity:.2}
+.col-bg img{width:100%;height:100%;object-fit:cover}
+.col-inn{position:relative;z-index:2}
+.col-eye{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#faa;margin-bottom:8px}
+.col-bn h1{font-family:var(--serif);color:#fff;font-size:2.2rem;margin-bottom:8px}
+.col-bn p{color:rgba(255,255,255,.65);font-size:.88rem;max-width:500px;line-height:1.7}
+
+/* ── CRUMB ── */
+.crumb{font-size:.75rem;color:#aaa;display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:14px 0 3px}
+.crumb a{color:#aaa;cursor:pointer}.crumb a:hover{color:var(--blk)}
+.crumb span{font-size:.65rem}
+
+/* ── FILTER BAR ── */
+.fbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--brd);margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.fcnt{font-size:.78rem;color:#aaa}.fcnt strong{color:var(--blk)}
+.fgrp{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.fpill{font-size:.74rem;font-weight:600;padding:5px 14px;border-radius:99px;border:1px solid var(--brd);color:#888;background:#fff;cursor:pointer;transition:.18s}
+.fpill:hover,.fpill.on{background:var(--blk);color:#fff;border-color:var(--blk)}
+.fsrt{font-size:.74rem;padding:5px 14px;border-radius:99px;border:1px solid var(--brd);color:#888;background:#fff;cursor:pointer;appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
+
+/* ── PRODUCT DETAIL ── */
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:52px;padding:36px 0;align-items:start}
+.gal{position:sticky;top:calc(68px + 37px + 16px)}
+.gal-main{border-radius:16px;overflow:hidden;background:#fff;aspect-ratio:1;border:1px solid var(--brd)}
+.gal-main img{width:100%;height:100%;object-fit:contain;padding:16px}
+.gal-row{display:flex;gap:9px;margin-top:10px}
+.gal-th{width:68px;height:68px;border-radius:10px;overflow:hidden;border:2px solid var(--brd);cursor:pointer;background:#fff;flex-shrink:0;transition:border-color .18s}
+.gal-th img{width:100%;height:100%;object-fit:contain;padding:4px}
+.gal-th.on{border-color:var(--red)}
+.pi-cat{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gry);margin-bottom:7px}
+.pi h1{font-family:var(--serif);font-size:1.85rem;color:var(--blk);margin-bottom:11px;line-height:1.2}
+.pi-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.bdg{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:.67rem;font-weight:700}
+.bdg-stk{background:#ecfdf5;color:#166534}
+.bdg-out{background:#fef2f2;color:#991b1b}
+.bdg-best{background:var(--blk);color:#fff}
+.bdg-sea{background:#fff5f5;color:var(--red)}
+.pi-rate{margin-bottom:20px}
+.pi-price{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--red)}
+.pi-per{font-size:.82rem;color:var(--gry);margin-left:5px}
+.wlbl{font-size:.82rem;font-weight:700;color:var(--blk);margin-bottom:9px;display:flex;justify-content:space-between;align-items:center}
+.wopts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.wbtn{padding:10px 18px;border:2px solid var(--brd);border-radius:8px;font-size:.82rem;font-weight:600;color:#666;background:#fff;cursor:pointer;transition:.18s}
+.wbtn:hover{border-color:#888;color:var(--blk)}
+.wbtn.on{border-color:var(--red);background:var(--red);color:#fff}
+.pcalc{background:#fff5f5;border:1px solid #fcc;border-radius:10px;padding:16px 18px;margin-bottom:20px}
+.pcalc small{font-size:.72rem;color:#a00;display:block;margin-bottom:3px}
+.pamt{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--red)}
+.pnote{font-size:.7rem;color:#a00;margin-top:3px}
+.qty-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.qty-lbl{font-size:.82rem;font-weight:700;color:var(--blk)}
+.qty-ctrl{display:inline-flex;align-items:center;gap:0;border:1.5px solid var(--brd);border-radius:8px;overflow:hidden}
+.qb{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--blk);cursor:pointer;transition:.15s;background:#fff}
+.qb:hover{background:var(--lgry)}
+.qn{width:36px;text-align:center;font-size:.9rem;font-weight:700;color:var(--blk)}
+.pi-acts{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.pi-acts .btn{padding:14px 22px}
+.pi-desc{border-top:1px solid var(--brd);padding-top:18px;margin-bottom:18px}
+.pi-desc h4{font-size:.87rem;font-weight:700;color:var(--blk);margin-bottom:8px}
+.pi-acc{border:1px solid var(--brd);border-radius:10px;overflow:hidden;margin-top:12px}
+.pi-acc-hd{width:100%;text-align:left;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-size:.84rem;font-weight:700;color:var(--blk);cursor:pointer;border-bottom:1px solid var(--brd)}
+.pi-acc-hd:last-of-type{border-bottom:none}
+.pi-acc-body{padding:0 18px;max-height:0;overflow:hidden;transition:max-height .3s ease}
+.pi-acc-body.open{max-height:300px;padding-bottom:14px}
+.pi-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+.pi-trust span{font-size:.75rem;color:var(--gry);display:flex;align-items:center;gap:5px}
+.pi-trust span i{color:#22c55e}
+.pi-note{background:#fff5f5;border:1px solid #fcc;border-radius:8px;padding:12px 15px;margin-top:12px;font-size:.75rem;color:#b91c1c;line-height:1.6}
+
+/* ── CART DRAWER ── */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:400;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s}
 .ov.open{opacity:1;visibility:visible}
-#cart-dr{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);background:#fff;z-index:401;transform:translateX(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+#cart-dr{position:fixed;top:0;right:0;bottom:0;width:min(430px,100vw);background:#fff;z-index:401;transform:translateX(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 30px rgba(0,0,0,.15)}
 body.dro #cart-dr{transform:none}
 body.dro .ov{opacity:1;visibility:visible}
 body.dro{overflow:hidden}
-.dr-head{padding:18px 22px;border-bottom:1px solid var(--brd);display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff}
+.dr-head{padding:18px 22px;border-bottom:1px solid var(--brd);display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff;flex-shrink:0}
+.dr-head h3{font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.dr-x{width:30px;height:30px;background:rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.dr-x i{color:#fff;font-size:.85rem}
 .dr-body{flex:1;overflow-y:auto;padding:14px 22px}
-.dr-foot{border-top:1px solid var(--brd);padding:18px 22px;background:#fff}
+.empty-cart{display:flex;flex-direction:column;align-items:center;justify-content:center;height:220px;gap:12px;color:#aaa;text-align:center}
+.empty-cart i{font-size:2.5rem;color:var(--brd)}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:start;padding:13px 0;border-bottom:1px solid var(--brd)}
+.ci:last-child{border:none}
+.ci-img{width:64px;height:64px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--brd)}
+.ci-img img{width:100%;height:100%;object-fit:contain;padding:4px}
+.ci-name{font-size:.82rem;font-weight:700;color:var(--blk);margin-bottom:3px}
+.ci-wt{font-size:.72rem;color:#aaa;margin-bottom:7px}
+.qs{display:inline-flex;align-items:center;gap:7px}
+.qb2{width:24px;height:24px;border-radius:5px;border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--blk);cursor:pointer;transition:.15s}
+.qb2:hover{background:var(--lgry)}
+.qn2{font-size:.82rem;font-weight:700;min-width:18px;text-align:center}
+.ci-price{font-size:.9rem;font-weight:800;color:var(--blk);white-space:nowrap}
+.ci-rm{font-size:.68rem;color:#aaa;cursor:pointer;display:block;margin-top:4px}
+.ci-rm:hover{color:var(--red)}
+.dr-foot{border-top:1px solid var(--brd);padding:18px 22px;flex-shrink:0;background:#fff}
+.dr-note{font-size:.7rem;color:#a00;background:#fff5f5;border:1px solid #fcc;padding:8px 12px;border-radius:6px;margin-bottom:12px}
+.tt{display:flex;justify-content:space-between;font-size:.82rem;color:#666;padding:3px 0}
+.tt.grand{font-size:.95rem;font-weight:800;color:var(--blk);padding-top:9px;border-top:1px solid var(--brd);margin-top:5px}
+.dr-btns{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.min-alert{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 13px;font-size:.77rem;color:#92400e;display:none}
+.min-alert.show{display:flex;align-items:center;gap:8px;margin-top:10px}
+
+/* ── CHECKOUT ── */
+.co-layout{display:grid;grid-template-columns:1fr 380px;gap:44px;padding:44px 0 72px;align-items:start}
+.co-form{display:flex;flex-direction:column;gap:26px}
+.co-block{border:1px solid var(--brd);border-radius:14px;padding:26px;background:#fff}
+.co-block h3{font-size:.95rem;font-weight:800;color:var(--blk);margin-bottom:18px;padding-bottom:11px;border-bottom:1px solid var(--brd)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ff{display:flex;flex-direction:column;gap:5px}
+.ff.full{grid-column:1/-1}
+.flbl{font-size:.76rem;font-weight:700;color:var(--blk)}
+.flbl span{color:var(--red);margin-left:2px}
+.fi{padding:10px 13px;border:1.5px solid var(--brd);border-radius:8px;font-size:.84rem;color:var(--blk);background:#fff;transition:border-color .18s;width:100%}
+.fi:focus{outline:none;border-color:var(--blk)}
+.fi.bad{border-color:var(--red)!important}
+.fhint{font-size:.68rem;color:#aaa}
+.ferr{font-size:.68rem;color:var(--red);display:none}
+.ferr.show{display:block}
+.pay-opt{display:flex;align-items:flex-start;gap:14px;padding:16px;border:2px solid var(--blk);border-radius:10px;background:var(--lgry)}
+.pay-ico{width:40px;height:40px;background:var(--blk);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pay-ico i{color:#fff;font-size:1rem}
+.pay-lbl{font-weight:800;font-size:.9rem;color:var(--blk);margin-bottom:3px}
+.pay-sub{font-size:.75rem;color:var(--gry);line-height:1.5}
+.co-sidebar{position:sticky;top:calc(68px + 37px + 16px)}
+.os{background:var(--lgry);border:1px solid var(--brd);border-radius:14px;overflow:hidden}
+.os-hd{padding:18px 22px;border-bottom:1px solid var(--brd);background:#fff}
+.os-hd h3{font-size:.9rem;font-weight:800;color:var(--blk)}
+.os-items{padding:14px 22px;display:flex;flex-direction:column;gap:11px;max-height:280px;overflow-y:auto}
+.os-item{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.os-n{font-size:.82rem;font-weight:700;color:var(--blk)}
+.os-d{font-size:.72rem;color:#aaa}
+.os-p{font-size:.82rem;font-weight:700;color:var(--blk);white-space:nowrap}
+.os-tots{padding:14px 22px;border-top:1px solid var(--brd)}
+.sr{display:flex;justify-content:space-between;font-size:.82rem;color:#777;padding:3px 0}
+.sr.total{font-size:.93rem;font-weight:800;color:var(--blk);padding-top:9px;border-top:1px solid var(--brd);margin-top:4px}
+.min-err{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 13px;font-size:.77rem;color:#991b1b;display:none;align-items:center;gap:8px;margin-bottom:10px}
+.min-err.show{display:flex}
+
+/* ── ORDER CONFIRM ── */
+.done{text-align:center;padding:52px 22px 28px}
+.done-ico{width:68px;height:68px;background:#ecfdf5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.done-ico i{font-size:2rem;color:#16a34a}
+.done-no{font-size:.82rem;font-weight:700;color:var(--red);margin-top:7px}
+.done-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;padding-bottom:72px}
+.dblock{background:#fff;border:1px solid var(--brd);border-radius:14px;padding:22px;margin-bottom:14px}
+.dblock h4{font-size:.82rem;font-weight:800;color:var(--blk);margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--brd)}
+.drow{display:flex;justify-content:space-between;padding:5px 0;font-size:.82rem;border-bottom:1px solid var(--lgry)}
+.drow:last-child{border:none}
+.dl{color:#aaa}.dv{font-weight:700;color:var(--blk);text-align:right;max-width:190px}
+
+/* ── STATIC PAGE ── */
+.sh-hero{background:var(--lgry);border-bottom:1px solid var(--brd);padding:44px 0}
+.sh-hero h1{font-family:var(--serif);font-size:2rem;margin-bottom:7px}
+.pgbody{padding:52px 0}
+.pgbody>div{max-width:800px}
+.pgbody h2{font-family:var(--serif);font-size:1.3rem;margin:28px 0 10px;color:var(--blk)}
+.pgbody h3{font-size:1rem;font-weight:700;margin:20px 0 7px;color:var(--blk)}
+.pgbody p{font-size:.88rem;color:#555;line-height:1.75;margin-bottom:14px}
+.pgbody ul{margin:10px 0 14px 18px}
+.pgbody ul li{list-style:disc;font-size:.87rem;color:#555;margin-bottom:5px;line-height:1.65}
+.ph{background:#fff5f5;border:1px solid #fcc;border-radius:8px;padding:11px 15px;font-size:.77rem;color:#a00;margin:14px 0}
+
+/* ── FAQ ── */
+.faq{border-bottom:1px solid var(--brd)}
+.faq-q{width:100%;text-align:left;padding:18px 0;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:700;color:var(--blk);gap:12px;cursor:pointer}
+.faq-q i{color:#aaa;font-size:.8rem;transition:transform .22s;flex-shrink:0}
+.faq.open .faq-q i{transform:rotate(180deg);color:var(--red)}
+.faq-a{font-size:.85rem;color:#555;line-height:1.75;padding-bottom:16px;display:none}
+.faq.open .faq-a{display:block}
+
+/* ── CONTACT ── */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.ct-items{display:flex;flex-direction:column;gap:22px}
+.ct-item{display:flex;gap:14px;align-items:flex-start}
+.ct-ico{width:42px;height:42px;background:var(--lgry);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ct-ico i{color:var(--red);font-size:.95rem}
+.ct-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-bottom:2px}
+.ct-val{font-size:.88rem;font-weight:600;color:var(--blk)}
+.ct-val a{color:var(--red)}
+.map-ph{background:var(--lgry);border:1px solid var(--brd);border-radius:12px;height:270px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;margin-top:26px;color:#bbb;font-size:.82rem}
+.map-ph i{font-size:2rem;color:var(--brd)}
+
+/* ── NEWSLETTER FOOTER ── */
+.nl-sec{background:#3d3d3d;color:#fff;padding:52px 0}
+.nl-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.nl-brand p{font-size:.83rem;color:rgba(255,255,255,.55);margin-top:12px;line-height:1.68}
+.nl-form{display:flex;gap:0;margin-top:16px;border-radius:8px;overflow:hidden}
+.nl-input{flex:1;padding:12px 14px;border:none;font-size:.83rem;background:#fff;color:var(--blk);outline:none}
+.nl-btn{padding:12px 20px;background:var(--red);color:#fff;font-size:.83rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:.18s;border:none}
+.nl-btn:hover{background:var(--red2)}
+.nl-col h4{color:#fff;font-size:.77rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:13px}
+.nl-col ul li a{display:block;font-size:.83rem;color:rgba(255,255,255,.52);padding:4px 0;cursor:pointer;transition:.18s}
+.nl-col ul li a:hover{color:#fff}
+.nl-col .ct-row{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.nl-col .ct-row i{color:var(--red);font-size:.9rem;width:14px;flex-shrink:0}
+.nl-col .ct-row span{font-size:.8rem;color:rgba(255,255,255,.65)}
+.nl-col .ct-row a{color:#4ade80;font-size:.8rem;font-weight:600}
+.socials{display:flex;gap:10px;margin-top:14px}
+.soc{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s}
+.soc:hover{background:var(--red)}
+.soc i{color:#fff;font-size:.85rem}
+.nl-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:44px;display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:12px}
+.nl-bottom-links{display:flex;gap:18px}
+.nl-bottom-links a{color:rgba(255,255,255,.35);cursor:pointer;transition:.18s}
+.nl-bottom-links a:hover{color:#fff}
 
 /* ── TOAST ── */
-#toast{position:fixed;bottom:24px;right:24px;z-index:600;background:var(--blk);color:#fff;padding:12px 16px;border-radius:8px;font-size:.83rem;display:flex;align-items:center;gap:9px;box-shadow:0 4px 20px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);transition:.22s;pointer-events:none}
+#toast{position:fixed;bottom:24px;right:24px;z-index:600;background:var(--blk);color:#fff;padding:12px 16px;border-radius:8px;font-size:.83rem;display:flex;align-items:center;gap:9px;box-shadow:0 4px 20px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s;pointer-events:none;max-width:340px}
 #toast.show{opacity:1;transform:translateY(0)}
 #toast.ok{background:#16a34a}
 #toast.err{background:var(--red)}
 
-/* ── FOOTER ── */
-.nl-sec{background:#1a1a1a;color:#fff;padding:52px 0}
-.nl-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
-@media(max-width:768px){.nl-grid{grid-template-columns:1fr;gap:24px}}
+/* ── RV ── */
+.rv-sec{padding:36px 0;border-top:1px solid var(--brd)}
+.rv-sec h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:18px;color:var(--blk)}
+
+/* ── DEMO NOTICE ── */
+.demo-notice{background:#fff5f5;border-bottom:2px solid var(--red);text-align:center;padding:8px 22px;font-size:.75rem;color:#a00;font-weight:600}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1080px){
+  .catg{grid-template-columns:repeat(3,1fr)}
+  .nl-grid{grid-template-columns:1fr 1fr}
+  .co-layout{grid-template-columns:1fr}
+  .co-sidebar{position:static}
+  .done-grid{grid-template-columns:1fr}
+  .pdp{grid-template-columns:1fr;gap:28px}
+  .gal{position:static}
+  .ct-grid{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .catg{grid-template-columns:repeat(2,1fr)}
+  nav.desktop{display:none}.hamburger{display:flex}
+  .nl-grid{grid-template-columns:1fr}
+  .pg{grid-template-columns:repeat(2,1fr);gap:14px}
+  .sec{padding:44px 0}
+  .frow{grid-template-columns:1fr}
+  .hero{min-height:380px}
+  .slide-content{padding:50px 20px}
+  .dev-bar-right{display:none}
+}
+@media(max-width:440px){
+  .pg{grid-template-columns:1fr 1fr;gap:10px}
+}
 </style>
 </head>
 <body>
@@ -199,62 +531,65 @@ body.dro{overflow:hidden}
 <div class="dev-bar" id="dev-bar">
   <div class="dev-bar-left">
     <span class="dev-tag">Karachi Prototype</span>
-    <span style="color:#aaa;font-size:11px" class="hidden-sm">100% Zabiha Fresh Meat · Scale Weight Billed</span>
+    <span style="color:#aaa;font-size:11px" class="hidden-sm">100% Zabiha Fresh Meat · Daily Scale Weight Billed</span>
   </div>
   <div class="dev-bar-mid">
     <button class="dev-btn active" id="btn-desk" onclick="setView('desktop')">
-      <i class="fa-solid fa-laptop"></i> Laptop View
+      <i class="fa-solid fa-laptop" style="font-size:12px"></i> Laptop View
     </button>
     <button class="dev-btn" id="btn-mob" onclick="setView('mobile')">
-      <i class="fa-solid fa-mobile-screen-button"></i> Mobile View
+      <i class="fa-solid fa-mobile-screen-button" style="font-size:12px"></i> Mobile View
     </button>
   </div>
   <div class="dev-bar-right">
     <a href="https://wa.me/923348210348" target="_blank"><i class="fa-brands fa-whatsapp"></i> 0334-8210348</a>
+    <span style="color:#333">|</span>
+    <span style="color:#f59e0b;font-weight:700"><i class="fa-solid fa-truck-fast" style="margin-right:4px"></i>Cash on Delivery</span>
   </div>
 </div>
 
 <!-- MAIN VIEWPORT -->
 <div id="vw" class="desktop">
 
-  <!-- ANNOUNCEMENT BAR -->
+  <!-- ANN BAR -->
   <div class="ann-bar">
-    <i class="fa-solid fa-circle-check"></i>
-    <span>Fresh Next Day Delivery &nbsp;·&nbsp; <strong>Free Delivery on orders above Rs. 3,000</strong></span>
+    <i class="fa-solid fa-circle-check" style="font-size:13px"></i>
+    <span>We Deliver Fresh, We Deliver Next Day &nbsp;·&nbsp; <strong>Free Delivery on orders above Rs. 3,000</strong></span>
+    <i class="fa-solid fa-circle-check" style="font-size:13px"></i>
   </div>
 
   <!-- HEADER -->
   <header>
-    <div class="W hd">
-      <div class="logo" onclick="nav('home')">
-        <div class="logo-ico">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </div>
-        <div class="logo-txt">
-          <div class="logo-name">Nabdullah Meat Hub</div>
-          <div class="logo-sub">Karachi Premium Meat</div>
-        </div>
+  <div class="W hd">
+    <div class="logo" onclick="nav('home')">
+      <div class="logo-ico">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
       </div>
-      <nav class="desktop">
-        <a onclick="nav('home')" id="n-home">Home</a>
-        <a onclick="nav('col','chicken')" id="n-chicken">Chicken</a>
-        <a onclick="nav('col','beef')" id="n-beef">Beef</a>
-        <a onclick="nav('col','veal')" id="n-veal">Veal</a>
-        <a onclick="nav('col','mutton')" id="n-mutton">Mutton</a>
-        <a onclick="nav('col','feast')" id="n-feast" class="feast"><i class="fa-solid fa-fire"></i> Winter Feast</a>
-      </nav>
-      <div class="hd-right">
-        <button class="btn btn-red btn-sm" onclick="openDr()"><i class="fa-solid fa-bag-shopping"></i> Bag (<span id="cart-cnt">0</span>)</button>
-        <div class="hamburger" onclick="openMobNav()"><span></span><span></span><span></span></div>
+      <div class="logo-txt">
+        <div class="logo-name">Nabdullah Meat Hub</div>
+        <div class="logo-sub">Karachi Premium Meat</div>
       </div>
     </div>
+    <nav class="desktop" id="desk-nav">
+      <a onclick="nav('home')" id="n-home">Home</a>
+      <a onclick="nav('col','chicken')" id="n-chicken">Chicken</a>
+      <a onclick="nav('col','beef')" id="n-beef">Beef</a>
+      <a onclick="nav('col','veal')" id="n-veal">Veal</a>
+      <a onclick="nav('col','mutton')" id="n-mutton">Mutton</a>
+      <a onclick="nav('col','feast')" id="n-feast" class="feast"><i class="fa-solid fa-fire" style="font-size:10px"></i> Winter Feast</a>
+    </nav>
+    <div class="hd-right">
+      <div class="hamburger" onclick="openMobNav()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
   </header>
 
   <!-- MOBILE NAV -->
   <nav class="mob-nav" id="mob-nav">
     <div class="mob-nav-hd">
       <div class="logo" onclick="nav('home');closeMobNav()">
-        <div class="logo-name">Nabdullah Meat Hub</div>
+        <div class="logo-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="logo-txt"><div class="logo-name">Nabdullah Meat Hub</div></div>
       </div>
       <div class="mob-x" onclick="closeMobNav()"><i class="fa-solid fa-xmark"></i></div>
     </div>
@@ -263,7 +598,11 @@ body.dro{overflow:hidden}
     <a onclick="nav('col','beef');closeMobNav()">Beef</a>
     <a onclick="nav('col','veal');closeMobNav()">Veal</a>
     <a onclick="nav('col','mutton');closeMobNav()">Mutton</a>
-    <a onclick="nav('col','feast');closeMobNav()" style="color:var(--red)"><i class="fa-solid fa-fire"></i> Winter Feast</a>
+    <a onclick="nav('col','feast');closeMobNav()" style="color:var(--red)"><i class="fa-solid fa-fire" style="margin-right:5px"></i>Winter Feast</a>
+    <a onclick="openDr();closeMobNav()" style="display:flex;justify-content:space-between;align-items:center"><span><i class="fa-solid fa-bag-shopping" style="margin-right:8px;color:var(--red)"></i>My Bag</span><span id="mob-cart-count" style="background:var(--red);color:#fff;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:99px;display:none"></span></a>
+    <a onclick="nav('pg','about');closeMobNav()">About Us</a>
+    <a onclick="nav('pg','contact');closeMobNav()">Contact</a>
+    <a onclick="nav('pg','faqs');closeMobNav()">FAQs</a>
   </nav>
 
   <!-- CART DRAWER -->
@@ -271,233 +610,1085 @@ body.dro{overflow:hidden}
   <aside id="cart-dr">
     <div class="dr-head">
       <h3><i class="fa-solid fa-bag-shopping"></i> Shopping Bag</h3>
-      <div style="cursor:pointer" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></div>
+      <div class="dr-x" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></div>
     </div>
     <div class="dr-body" id="dr-body"></div>
     <div class="dr-foot" id="dr-foot" style="display:none">
-      <div style="display:flex;justify-content:space-between;font-weight:800;margin-bottom:14px">
-        <span>Total Estimated</span><span id="dr-tot">Rs. 0</span>
+      <div class="dr-note"><i class="fa-solid fa-circle-info" style="margin-right:5px"></i>Final bill is based on actual packed scale weight at dispatch.</div>
+      <div class="tt"><span>Subtotal</span><span id="dr-sub">—</span></div>
+      <div class="tt"><span>Delivery</span><span>Calculated at checkout</span></div>
+      <div class="tt grand"><span>Estimated Total</span><span id="dr-tot">—</span></div>
+      <div class="dr-btns">
+        <button class="btn btn-red btn-full" onclick="nav('checkout');closeDr()">Proceed to Checkout</button>
+        <button class="btn btn-out btn-full" onclick="closeDr()">Continue Shopping</button>
       </div>
-      <button class="btn btn-red btn-full" onclick="nav('checkout');closeDr()">Proceed to Checkout</button>
+      <div class="min-alert" id="dr-min"><i class="fa-solid fa-triangle-exclamation"></i><span>Minimum order is Rs. 1,000</span></div>
     </div>
   </aside>
 
-  <!-- MAIN APP CONTAINER -->
+  <!-- APP MAIN -->
   <main id="app"></main>
 
-</div>
+</div><!-- /vw -->
 
 <div id="toast"></div>
 
 <script>
 // ══════════════════════════════════════
-//  SVG GENERATOR (Guaranteed Images Display)
+//  DATA
 // ══════════════════════════════════════
+const fmt=n=>'Rs. '+Math.round(n).toLocaleString('en-PK');
+const wl=g=>g>=1000?g/1000+' Kg Pack':g+' g Pack';
+const cp=(r,g)=>Math.round(r*g/1000);
+// Tawaqqo-style product images — black plate on light bg
+// Professional category-matched product images (light/white background, black plate style like Tawaqqo)
+// ─── PROFESSIONAL WHITE-BACKGROUND PRODUCT IMAGES (like HalalHarvest / PrimeCuts screenshots) ───
+// All images: clean white/cream background, product clearly visible, professional food photography
+// ─── INLINE SVG MEAT ILLUSTRATIONS ───
+// 100% guaranteed to work everywhere — no external network needed
 function svgImg(type){
   const svgs={
-    chicken_whole:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="18" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115) rotate(-15)"><ellipse rx="68" ry="48" fill="#e8c4a0"/><ellipse rx="54" ry="36" fill="#d4a882"/><ellipse cx="22" cy="-8" rx="28" ry="20" fill="#c49070"/><ellipse cx="-28" cy="8" rx="22" ry="16" fill="#dab898"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Whole Chicken</text></svg>`,
-    chicken_breast:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="100" ry="16" fill="rgba(0,0,0,.07)"/><path d="M90,160 C80,140 85,100 110,85 C135,70 175,72 195,90 C215,108 210,150 190,162 C170,174 100,175 90,160Z" fill="#e8c4a0"/><path d="M100,150 C95,130 100,100 120,88 C140,77 170,80 185,95 C198,110 192,145 175,156 C158,167 105,168 100,150Z" fill="#d4a882"/><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Breast</text></svg>`,
-    chicken_leg:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="95" ry="15" fill="rgba(0,0,0,.07)"/><g transform="translate(148,118)"><path d="M-25,-55 C-30,-70 -20,-78 0,-75 C20,-72 30,-60 28,-45 C26,-30 10,0 5,20 C0,40 -5,52 -8,55 C-12,55 -15,40 -18,20 C-22,0 -20,-40 -25,-55Z" fill="#d4a882"/><ellipse cx="0" cy="-65" rx="18" ry="14" fill="#c49070"/><rect x="-4" y="52" width="8" height="22" rx="3" fill="#e8d5c0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Leg</text></svg>`,
-    beef_boneless:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-78,-22 C-80,-45 -50,-58 0,-55 C50,-52 82,-40 80,-18 C78,5 50,35 0,38 C-50,40 -76,20 -78,-22Z" fill="#c0392b"/><path d="M-65,-18 C-66,-38 -42,-50 0,-47 C42,-44 66,-32 65,-14 C64,5 42,30 0,33 C-42,35 -64,16 -65,-18Z" fill="#e74c3c"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Prime Beef Boneless</text></svg>`,
-    beef_bone:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-72,-28 C-75,-50 -45,-65 0,-62 C45,-59 76,-45 75,-24 C74,-3 48,32 0,36 C-48,40 -70,18 -72,-28Z" fill="#a93226"/><rect x="-15" y="-32" width="30" height="15" rx="5" fill="#d4c8b8"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef with Bone</text></svg>`,
-    mutton_karahi:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-55,-20 C-45,-48 45,-50 58,-22 C68,-2 55,30 25,40 C0,48 -30,42 -48,22 C-60,8 -62,-5 -55,-20Z" fill="#8e1f14"/><path d="M-42,-14 C-32,-40 32,-42 46,-16 C56,2 44,28 18,38 C-5,46 -28,38 -42,20 C-52,6 -50,-2 -42,-14Z" fill="#a93226"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Karahi Cut</text></svg>`,
-    veal_boneless:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-76,-20 C-78,-45 -46,-60 0,-58 C46,-56 78,-42 78,-18 C78,8 50,38 0,42 C-50,45 -74,22 -76,-20Z" fill="#e8a0a0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Veal Boneless</text></svg>`,
-    bbq_chicken:`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,112)"><path d="M-55,-30 C-40,-58 40,-60 58,-32 C70,-12 60,25 30,42 C8,54 -25,48 -45,28 C-62,12 -68,-8 -55,-30Z" fill="#8b4513"/><path d="M-42,-22 C-28,-48 28,-50 45,-24 C56,-8 48,22 22,38 C-2,52 -28,44 -42,26 C-54,10 -54,-6 -42,-22Z" fill="#b5651d"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">BBQ Tikka Cut</text></svg>`
+    // CHICKEN — peach/cream tones on white tray
+    chicken_whole:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="18" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115) rotate(-15)"><ellipse rx="68" ry="48" fill="#e8c4a0"/><ellipse rx="54" ry="36" fill="#d4a882"/><ellipse cx="22" cy="-8" rx="28" ry="20" fill="#c49070"/><ellipse cx="-28" cy="8" rx="22" ry="16" fill="#dab898"/></g><ellipse cx="195" cy="82" rx="14" ry="10" fill="#c49070"/><ellipse cx="95" cy="95" rx="12" ry="8" fill="#d4a882"/><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Whole Chicken</text></svg>`,
+    chicken_breast:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="100" ry="16" fill="rgba(0,0,0,.07)"/><path d="M90,160 C80,140 85,100 110,85 C135,70 175,72 195,90 C215,108 210,150 190,162 C170,174 100,175 90,160Z" fill="#e8c4a0"/><path d="M100,150 C95,130 100,100 120,88 C140,77 170,80 185,95 C198,110 192,145 175,156 C158,167 105,168 100,150Z" fill="#d4a882"/><path d="M120,100 Q150,88 172,102" stroke="#c49070" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M108,128 Q148,115 182,126" stroke="#c49070" stroke-width="2" fill="none" stroke-linecap="round"/><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Breast</text></svg>`,
+    chicken_leg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="95" ry="15" fill="rgba(0,0,0,.07)"/><g transform="translate(148,118)"><path d="M-25,-55 C-30,-70 -20,-78 0,-75 C20,-72 30,-60 28,-45 C26,-30 10,0 5,20 C0,40 -5,52 -8,55 C-12,55 -15,40 -18,20 C-22,0 -20,-40 -25,-55Z" fill="#d4a882"/><ellipse cx="0" cy="-65" rx="18" ry="14" fill="#c49070"/><rect x="-4" y="52" width="8" height="22" rx="3" fill="#e8d5c0"/><ellipse cx="0" cy="75" rx="8" ry="5" fill="#d4c4b0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Leg / Tikka</text></svg>`,
+    chicken_wings:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="105" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(90,115)"><path d="M0,0 C-10,-30 10,-55 35,-52 C50,-50 55,-30 48,-10 C40,10 20,22 0,18 C-15,15 -8,25 0,0Z" fill="#d4a882"/><path d="M0,18 C8,35 25,42 38,35 C52,28 55,12 48,-10" fill="#c49070" opacity=".6"/></g><g transform="translate(190,110)"><path d="M0,0 C10,-28 -5,-52 -32,-50 C-48,-48 -55,-28 -47,-10 C-38,10 -18,22 0,18 C15,15 8,25 0,0Z" fill="#d4a882"/><path d="M0,18 C-8,35 -25,42 -38,35 C-52,28 -55,12 -47,-10" fill="#c49070" opacity=".6"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Wings</text></svg>`,
+    chicken_cut:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-50,-30 C-55,-50 -30,-62 0,-60 C30,-58 55,-48 55,-28 C55,-8 35,25 10,32 C-15,38 -45,28 -55,8 C-60,-5 -47,-15 -50,-30Z" fill="#e0ba95"/><path d="M-20,-15 C-10,-35 15,-40 35,-30 C48,-22 45,5 25,18 C5,30 -25,24 -30,8 C-35,-5 -28,-2 -20,-15Z" fill="#c8956b"/><circle cx="-30" cy="5" r="10" fill="#b87d55"/><circle cx="20" cy="-10" r="9" fill="#c8956b"/><circle cx="-5" cy="20" r="11" fill="#b87d55"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Chicken Karahi Cut</text></svg>`,
+    // BEEF — rich deep red on white
+    beef_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-78,-22 C-80,-45 -50,-58 0,-55 C50,-52 82,-40 80,-18 C78,5 50,35 0,38 C-50,40 -76,20 -78,-22Z" fill="#c0392b"/><path d="M-65,-18 C-66,-38 -42,-50 0,-47 C42,-44 66,-32 65,-14 C64,5 42,30 0,33 C-42,35 -64,16 -65,-18Z" fill="#e74c3c"/><path d="M-45,-5 C-20,-20 20,-22 45,-8" stroke="#ff8080" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-55,10 C-25,-5 25,-7 52,8" stroke="#ff9090" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-35,-15 C-10,-28 12,-26 35,-14" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".2"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Prime Beef Boneless</text></svg>`,
+    beef_bone:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="115" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-72,-28 C-75,-50 -45,-65 0,-62 C45,-59 76,-45 75,-24 C74,-3 48,32 0,36 C-48,40 -70,18 -72,-28Z" fill="#a93226"/><path d="M-58,-22 C-60,-42 -35,-55 0,-52 C35,-49 60,-36 58,-18 C56,2 36,28 0,32 C-36,35 -56,14 -58,-22Z" fill="#c0392b"/><path d="M-42,-8 C-18,-22 18,-24 42,-10" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/><rect x="-15" y="-32" width="30" height="15" rx="5" fill="#d4c8b8"/><ellipse cx="0" cy="-34" rx="12" ry="5" fill="#e8ddd0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef with Bone</text></svg>`,
+    beef_mince:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,118)"><path d="M-80,-15 C-82,-38 -50,-55 0,-52 C50,-49 82,-33 82,-12 C82,10 55,40 0,43 C-55,45 -78,22 -80,-15Z" fill="#922b21"/><g opacity=".9">${Array.from({length:40},(_,i)=>{const x=Math.sin(i*2.3)*62*(0.5+i%3*0.17),y=Math.cos(i*1.7)*32*(0.4+i%4*0.15),r=2.5+i%3*1.2;return`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${['#c0392b','#a93226','#e74c3c','#8e1f14'][i%4]}"/>`}).join('')}</g></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef / Mutton Qeema</text></svg>`,
+    beef_nihari:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-65,-38 C-40,-58 40,-58 65,-38 C80,-22 78,10 60,30 C40,50 -40,50 -60,30 C-78,10 -82,-18 -65,-38Z" fill="#a93226"/><path d="M-50,-28 C-28,-46 28,-46 50,-28 C65,-14 62,12 46,28 C28,44 -28,44 -46,28 C-62,12 -62,-12 -50,-28Z" fill="#c0392b"/><ellipse cx="0" cy="0" rx="30" ry="20" fill="#922b21" opacity=".5"/><rect x="-8" y="-42" width="16" height="30" rx="6" fill="#d4c0a8"/><ellipse cx="0" cy="-44" rx="10" ry="6" fill="#e8d8c5"/><path d="M-35,-10 C-10,-22 10,-20 35,-8" stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Beef Nihari Bong Cut</text></svg>`,
+    // MUTTON — deep red goat meat
+    mutton_karahi:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-55,-20 C-45,-48 45,-50 58,-22 C68,-2 55,30 25,40 C0,48 -30,42 -48,22 C-60,8 -62,-5 -55,-20Z" fill="#8e1f14"/><path d="M-42,-14 C-32,-40 32,-42 46,-16 C56,2 44,28 18,38 C-5,46 -28,38 -42,20 C-52,6 -50,-2 -42,-14Z" fill="#a93226"/><circle cx="-15" cy="-5" r="16" fill="#922b21"/><circle cx="18" cy="8" r="14" fill="#8e1f14"/><circle cx="-2" cy="22" r="12" fill="#a93226"/><circle cx="28" cy="-12" r="10" fill="#7a1810"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Karahi Cut</text></svg>`,
+    mutton_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-75,-18 C-78,-42 -45,-58 0,-55 C45,-52 78,-38 78,-15 C78,10 50,38 0,42 C-50,45 -72,20 -75,-18Z" fill="#a93226"/><path d="M-60,-12 C-62,-34 -34,-48 0,-45 C34,-42 62,-28 60,-8 C58,14 36,34 0,37 C-36,40 -58,18 -60,-12Z" fill="#c0392b"/><path d="M-42,-2 C-18,-18 18,-20 42,-5" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-52,12 C-22,-4 22,-6 52,10" stroke="#e55345" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-38,-12 C-12,-26 14,-24 38,-12" stroke="#fff" stroke-width="2" fill="none" opacity=".15"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Boneless Mix</text></svg>`,
+    mutton_chops:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(88,118)"><path d="M0,-42 C12,-55 28,-52 32,-38 C36,-24 28,0 22,28 C18,45 10,52 4,52 C-2,52 -8,42 -10,28 C-15,8 -12,-28 0,-42Z" fill="#a93226"/><ellipse cx="14" cy="-46" rx="16" ry="12" fill="#d4c0a8"/><rect x="10" y="-52" width="8" height="18" rx="3" fill="#e8d5c0"/></g><g transform="translate(148,112)"><path d="M0,-40 C12,-54 28,-50 32,-36 C36,-22 28,5 22,30 C18,48 10,54 4,54 C-2,54 -8,44 -10,30 C-15,8 -12,-26 0,-40Z" fill="#8e1f14"/><ellipse cx="14" cy="-44" rx="15" ry="11" fill="#d4c0a8"/><rect x="10" y="-50" width="8" height="16" rx="3" fill="#e8d5c0"/></g><g transform="translate(208,118)"><path d="M0,-38 C12,-52 26,-48 30,-34 C34,-20 26,8 20,32 C16,48 8,54 2,54 C-4,54 -8,42 -10,28 C-14,6 -12,-24 0,-38Z" fill="#c0392b"/><ellipse cx="12" cy="-42" rx="14" ry="10" fill="#d4c0a8"/><rect x="8" y="-48" width="8" height="16" rx="3" fill="#e8d5c0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Mutton Chops</text></svg>`,
+    // VEAL — pale pink tender
+    veal_boneless:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="112" ry="17" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-76,-20 C-78,-45 -46,-60 0,-58 C46,-56 78,-42 78,-18 C78,8 50,38 0,42 C-50,45 -74,22 -76,-20Z" fill="#e8a0a0"/><path d="M-62,-14 C-64,-38 -38,-52 0,-50 C38,-48 64,-34 62,-12 C60,10 38,32 0,36 C-38,38 -60,16 -62,-14Z" fill="#f0b8b8"/><path d="M-44,-4 C-18,-20 18,-22 44,-8" stroke="#e88888" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><path d="M-55,12 C-24,-4 24,-6 55,10" stroke="#e89898" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/><path d="M-38,-14 C-12,-28 14,-26 38,-14" stroke="#fff" stroke-width="2" fill="none" opacity=".2"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Fresh Veal Boneless</text></svg>`,
+    veal_bone:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,115)"><path d="M-68,-30 C-42,-58 42,-60 68,-30 C82,-14 80,14 62,32 C42,52 -42,52 -62,32 C-80,14 -82,-10 -68,-30Z" fill="#e8a0a0"/><path d="M-52,-22 C-30,-48 30,-50 52,-22 C65,-8 62,16 46,30 C28,46 -28,46 -46,30 C-62,16 -64,-8 -52,-22Z" fill="#f0b8b8"/><ellipse cx="0" cy="0" rx="28" ry="18" fill="#e8a0a0" opacity=".5"/><rect x="-8" y="-44" width="16" height="28" rx="6" fill="#d4c0a8"/><ellipse cx="0" cy="-46" rx="10" ry="6" fill="#e8d8c5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Veal with Bone</text></svg>`,
+    // WINTER FEAST — BBQ golden/charred
+    bbq_chicken:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="108" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(150,112)"><path d="M-55,-30 C-40,-58 40,-60 58,-32 C70,-12 60,25 30,42 C8,54 -25,48 -45,28 C-62,12 -68,-8 -55,-30Z" fill="#8b4513"/><path d="M-42,-22 C-28,-48 28,-50 45,-24 C56,-8 48,22 22,38 C-2,52 -28,44 -42,26 C-54,10 -54,-6 -42,-22Z" fill="#b5651d"/><path d="M-28,-12 C-8,-28 12,-26 28,-14" stroke="#d2691e" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-38,8 C-12,-8 12,-10 38,5" stroke="#cd853f" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-22,22 C0,12 22,14 35,22" stroke="#daa520" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">BBQ Chicken Tikka</text></svg>`,
+    bbq_mutton:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="#faf8f5"/><ellipse cx="150" cy="200" rx="110" ry="16" fill="rgba(0,0,0,.07)"/><g transform="translate(100,118)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="16" cy="-48" rx="17" ry="13" fill="#d2b48c"/><rect x="12" y="-56" width="9" height="20" rx="3" fill="#e8d0b0"/><path d="M2,-28 C8,-40 20,-38 28,-26" stroke="#cd853f" stroke-width="2.5" fill="none" stroke-linecap="round"/></g><g transform="translate(158,110)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="16" cy="-46" rx="16" ry="12" fill="#d2b48c"/><rect x="12" y="-54" width="9" height="18" rx="3" fill="#e8d0b0"/></g><g transform="translate(210,118)"><path d="M0,-40 C14,-54 28,-50 32,-35 C36,-20 28,6 22,30 C18,48 8,54 2,54 C-4,54 -8,42 -10,28 C-15,6 -14,-26 0,-40Z" fill="#8b4513"/><ellipse cx="14" cy="-44" rx="15" ry="11" fill="#d2b48c"/><rect x="10" y="-52" width="8" height="18" rx="3" fill="#e8d0b0"/></g><text x="150" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Seasoned BBQ Chops</text></svg>`,
   };
   return svgs[type]||svgs['chicken_whole'];
 }
 
-// ══════════════════════════════════════
-//  DATA & STATE
-// ══════════════════════════════════════
-const fmt=n=>'Rs. '+Math.round(n).toLocaleString('en-PK');
+// Convert SVG to data URL for use as img src
+function svgUrl(type){
+  const svg=svgImg(type);
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+// Map product ids to their SVG types
+const SVG_MAP={
+  ch1:'chicken_whole', ch2:'chicken_breast', ch3:'chicken_leg',
+  ch4:'beef_mince',    ch5:'chicken_whole',  ch6:'chicken_leg',
+  ch7:'chicken_cut',   ch8:'chicken_wings',
+  bf1:'beef_boneless', bf2:'beef_bone',      bf3:'beef_mince',  bf4:'beef_nihari',
+  mt1:'mutton_karahi', mt2:'mutton_boneless',mt3:'beef_mince',  mt4:'mutton_chops',
+  vl1:'veal_boneless', vl2:'veal_bone',
+  wf1:'bbq_chicken',   wf2:'bbq_mutton',
+};
+
+// Build IMGS from SVGs
+const IMGS={};
+Object.keys(SVG_MAP).forEach(id=>{ IMGS[id]=svgUrl(SVG_MAP[id]); });
+
+// Hero backgrounds — dark gradients (no external images needed)
+const HERO_BKGS=[
+  'linear-gradient(135deg,#1a0a08 0%,#3d1410 50%,#2a0e0c 100%)',
+  'linear-gradient(135deg,#0d1a0d 0%,#1f3d1a 50%,#0a1a0a 100%)',
+  'linear-gradient(135deg,#0e0a1a 0%,#2a1a3d 50%,#1a0e2a 100%)',
+  'linear-gradient(135deg,#1a0808 0%,#3d1a1a 50%,#2a0808 100%)',
+];
+
+const FB=svgUrl('chicken_whole');
+const im=(src,alt)=>`<img src="${src}" alt="${alt||''}" style="width:100%;height:100%;object-fit:contain;padding:8px">`;
+
+const CATS={
+  chicken:{name:'Chicken',desc:'Farm-fresh whole chicken and specialty cuts — sourced and prepared daily. 100% Zabiha hand-slaughtered.',img:null},
+  beef:{name:'Beef',desc:'Hand-selected prime beef in traditional and modern cuts. Bone-in, boneless, qeema, nihari and more.',img:null},
+  veal:{name:'Veal',desc:'Tender milk-fed veal — a premium separate category with its own inventory. Delicate flavour, zero tough fiber.',img:null},
+  mutton:{name:'Mutton',desc:'Full range of traditional desi goat mutton cuts for karahi, biryani, and BBQ — cut fresh daily.',img:null},
+  feast:{name:'Winter Feast',desc:'Seasonal marinated and BBQ-ready cuts for winter gatherings and celebrations. Limited availability.',img:null,seasonal:true}
+};
+
+// Category card SVGs — beautiful illustrated meat icons on gradient bg
+const CATSVG={
+  chicken:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3e0"/><stop offset="1" stop-color="#ffe0b2"/></linearGradient></defs><rect width="240" height="320" fill="url(#cg)"/><g transform="translate(120,155)"><ellipse rx="70" ry="52" fill="#e8c4a0"/><ellipse rx="56" ry="40" fill="#d4a882"/><ellipse cx="24" cy="-10" rx="30" ry="22" fill="#c49070"/><ellipse cx="-30" cy="10" rx="24" ry="18" fill="#dab898"/><ellipse cx="0" cy="-8" rx="16" ry="12" fill="#c49070"/></g><ellipse cx="185" cy="92" rx="16" ry="12" fill="#c49070"/><ellipse cx="58" cy="105" rx="14" ry="10" fill="#d4a882"/><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#5d3a1a">Chicken</text></svg>`,
+  beef:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fce4e4"/><stop offset="1" stop-color="#ffcdd2"/></linearGradient></defs><rect width="240" height="320" fill="url(#bg2)"/><g transform="translate(120,155)"><path d="M-78,-25 C-80,-48 -50,-62 0,-58 C50,-54 82,-42 80,-20 C78,6 50,38 0,42 C-50,44 -76,22 -78,-25Z" fill="#c0392b"/><path d="M-63,-18 C-64,-40 -38,-52 0,-49 C38,-46 64,-34 62,-16 C60,4 38,30 0,33 C-38,36 -62,16 -63,-18Z" fill="#e74c3c"/><path d="M-42,-5 C-18,-22 18,-24 42,-10" stroke="#ff8080" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#7b241c">Beef</text></svg>`,
+  veal:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fce4ec"/><stop offset="1" stop-color="#f8bbd0"/></linearGradient></defs><rect width="240" height="320" fill="url(#vg)"/><g transform="translate(120,155)"><path d="M-76,-22 C-78,-46 -46,-60 0,-57 C46,-54 78,-40 78,-18 C78,8 50,38 0,42 C-50,44 -74,20 -76,-22Z" fill="#e8a0a0"/><path d="M-60,-14 C-62,-36 -36,-50 0,-47 C36,-44 62,-30 60,-10 C58,10 36,30 0,34 C-36,37 -58,16 -60,-14Z" fill="#f0b8b8"/><path d="M-42,-4 C-18,-20 18,-22 42,-8" stroke="#e88888" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".5"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#880e4f">Veal</text></svg>`,
+  mutton:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efebe9"/><stop offset="1" stop-color="#d7ccc8"/></linearGradient></defs><rect width="240" height="320" fill="url(#mg)"/><g transform="translate(120,155)"><path d="M-58,-22 C-48,-50 48,-52 60,-24 C70,-4 58,32 28,42 C2,50 -32,44 -50,24 C-64,8 -66,-6 -58,-22Z" fill="#8e1f14"/><path d="M-44,-14 C-34,-42 34,-44 48,-18 C58,2 46,30 20,40 C-4,48 -30,40 -44,22 C-56,8 -54,-2 -44,-14Z" fill="#a93226"/><circle cx="-16" cy="-5" r="14" fill="#922b21"/><circle cx="18" cy="8" r="12" fill="#8e1f14"/><circle cx="-2" cy="20" r="10" fill="#a93226"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="20" fill="#4a0e0a">Mutton</text></svg>`,
+  feast:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e1"/><stop offset="1" stop-color="#ffecb3"/></linearGradient></defs><rect width="240" height="320" fill="url(#fg)"/><g transform="translate(80,148)"><path d="M0,-44 C14,-58 30,-54 34,-38 C38,-22 30,5 24,32 C20,50 10,56 4,56 C-2,56 -8,46 -10,32 C-16,8 -14,-30 0,-44Z" fill="#8b4513"/><ellipse cx="15" cy="-48" rx="16" ry="12" fill="#d2b48c"/><rect x="11" y="-56" width="9" height="20" rx="3" fill="#e8d0b0"/></g><g transform="translate(138,140)"><path d="M0,-42 C14,-56 30,-52 34,-36 C38,-20 30,8 24,34 C20,52 10,58 4,58 C-2,58 -8,48 -10,34 C-16,10 -14,-28 0,-42Z" fill="#a0522d"/><ellipse cx="15" cy="-46" rx="15" ry="11" fill="#d2b48c"/><rect x="11" y="-54" width="9" height="18" rx="3" fill="#e8d0b0"/></g><g transform="translate(192,148)"><path d="M0,-40 C14,-54 28,-50 32,-35 C36,-20 28,6 22,30 C18,48 8,54 2,54 C-4,54 -8,42 -10,28 C-15,6 -14,-26 0,-40Z" fill="#8b4513"/><ellipse cx="13" cy="-44" rx="14" ry="10" fill="#d2b48c"/><rect x="9" y="-52" width="8" height="18" rx="3" fill="#e8d0b0"/></g><text x="120" y="290" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#5d2e0a">Winter Feast</text></svg>`,
+};
+const CATIMGS={
+  chicken:svgUrl?svgUrl('chicken_whole'):'',
+  beef:svgUrl?svgUrl('beef_boneless'):'',
+  veal:svgUrl?svgUrl('veal_boneless'):'',
+  mutton:svgUrl?svgUrl('mutton_karahi'):'',
+  feast:svgUrl?svgUrl('bbq_chicken'):''
+};
 
 const P=[
-  {id:'ch1',cat:'chicken',name:'Fresh Chicken Meat Cut',rate:620,disc:23,avail:1,svg:'chicken_whole'},
-  {id:'ch2',cat:'chicken',name:'Chicken Boneless Breast',rate:880,disc:13,avail:1,svg:'chicken_breast'},
-  {id:'ch3',cat:'chicken',name:'Chicken Leg Tikka Cut',rate:1170,disc:13,avail:1,svg:'chicken_leg'},
-  {id:'bf1',cat:'beef',name:'Fresh Prime Beef Boneless',rate:950,disc:5,avail:1,svg:'beef_boneless'},
-  {id:'bf2',cat:'beef',name:'Fresh Beef with Bone',rate:1100,disc:0,avail:1,svg:'beef_bone'},
-  {id:'mt1',cat:'mutton',name:'Fresh Mutton Karahi Cut',rate:2450,disc:18,avail:1,svg:'mutton_karahi'},
-  {id:'vl1',cat:'veal',name:'Fresh Veal Boneless',rate:1650,disc:0,avail:1,svg:'veal_boneless'},
-  {id:'wf1',cat:'feast',name:'BBQ Chicken Tikka (Marinated)',rate:950,disc:0,avail:1,svg:'bbq_chicken'}
+  // CHICKEN
+  {id:'ch1',cat:'chicken',name:'Fresh Chicken Meat Cut',rate:620,wts:[500,1000,1500,2000],avail:1,best:1,feat:1,disc:23,img:IMGS.ch1,imgs:[IMGS.ch1,IMGS.ch7,IMGS.ch6],desc:'Farm-raised, 100% hand-slaughtered fresh chicken thoroughly cleaned, skinless, and portioned into 12-14 karahi cuts. Weighed on digital scale at dispatch.'},
+  {id:'ch2',cat:'chicken',name:'Chicken Boneless Breast',rate:880,wts:[500,1000,2000],avail:1,best:1,feat:1,disc:13,img:IMGS.ch2,imgs:[IMGS.ch2,IMGS.ch1],desc:'Lean double-filleted chicken boneless meat trimmed of all fat. Perfect for handi, tikka, rolls, and meal preps.'},
+  {id:'ch3',cat:'chicken',name:'Chicken Leg Tikka Cut',rate:1170,wts:[500,1000,1500],avail:1,best:0,feat:0,disc:13,img:IMGS.ch3,imgs:[IMGS.ch3],desc:'Bone-in chicken leg portions cut specifically for tikka and BBQ marination. Rich in natural flavour.'},
+  {id:'ch4',cat:'chicken',name:'Chicken Qeema (Mince)',rate:900,wts:[500,1000,2000],avail:1,best:0,feat:0,disc:0,img:IMGS.ch4,imgs:[IMGS.ch4],desc:'Double-minced lean breast meat, freshly processed under chill conditions. Ideal for kababs, samosas, and keema karahi.'},
+  {id:'ch5',cat:'chicken',name:'Desi Chicken Full Meat',rate:1430,wts:[500,1000],avail:1,best:0,feat:0,disc:4,img:IMGS.ch5,imgs:[IMGS.ch5],desc:'Authentic farm desi chicken, full meat with bone. Richer flavour than commercial breeds, excellent for slow-cooked curries.'},
+  {id:'ch6',cat:'chicken',name:'Chicken Thigh Cut (Bone-in)',rate:515,wts:[500,1000,2000],avail:1,best:0,feat:0,disc:12,img:IMGS.ch6,imgs:[IMGS.ch6],desc:'Plump bone-in thigh pieces ideal for karahi, grilling, and steam roasting. Stays moist during high-heat cooking.'},
+  {id:'ch7',cat:'chicken',name:'Chicken Karahi Cut',rate:463,wts:[500,1000,1500,2000],avail:1,best:1,feat:1,disc:22,img:IMGS.ch7,imgs:[IMGS.ch7,IMGS.ch1],desc:'Classic karahi-style bone-in pieces, medium-sized for quick and flavourful home karahi. Perfect portion sizes.'},
+  {id:'ch8',cat:'chicken',name:'Chicken Wings',rate:520,wts:[500,1000],avail:0,best:0,feat:0,disc:0,img:IMGS.ch8,imgs:[IMGS.ch8],desc:'Fresh whole chicken wings, cleaned and trimmed. Great for frying, saucing, and BBQ parties.'},
+  // BEEF
+  {id:'bf1',cat:'beef',name:'Fresh Prime Beef Boneless',rate:950,wts:[500,1000,2000],avail:1,best:1,feat:1,disc:5,img:IMGS.bf1,imgs:[IMGS.bf1,IMGS.bf2],desc:'100% fat-trimmed boneless beef from prime local cattle. Undercut and round portions perfect for karahi, handi, and stews.'},
+  {id:'bf2',cat:'beef',name:'Fresh Beef with Bone',rate:1100,wts:[500,1000,2000,3000],avail:1,best:1,feat:1,disc:0,img:IMGS.bf2,imgs:[IMGS.bf2,IMGS.bf1],desc:'Fresh local cattle beef with marrow bone, cut into medium curry portions for rich traditional salan and paya.'},
+  {id:'bf3',cat:'beef',name:'Beef Qeema (Mince)',rate:1300,wts:[500,1000,2000],avail:1,best:0,feat:0,disc:8,img:IMGS.bf3,imgs:[IMGS.bf3],desc:'Finely ground boneless beef mince prepared fresh per order. Excellent for keema karahi, seekh kabab, and stuffed dishes.'},
+  {id:'bf4',cat:'beef',name:'Beef Nihari Bong Cut',rate:1450,wts:[1000,2000],avail:1,best:0,feat:0,disc:0,img:IMGS.bf4,imgs:[IMGS.bf4],desc:'Select shank muscle with fresh bone marrow pipes for traditional slow-cooked nihari. Rich, gelatinous stock.'},
+  // MUTTON
+  {id:'mt1',cat:'mutton',name:'Fresh Mutton Karahi Cut',rate:2450,wts:[500,1000,2000],avail:1,best:1,feat:1,disc:18,img:IMGS.mt1,imgs:[IMGS.mt1,IMGS.mt2],desc:'Fresh desi goat mutton cut into medium curry pieces — shoulder, rib, and leg cuts for the ultimate karahi experience.'},
+  {id:'mt2',cat:'mutton',name:'Fresh Mutton Boneless Mix',rate:1500,wts:[500,1000],avail:1,best:1,feat:1,disc:14,img:IMGS.mt2,imgs:[IMGS.mt2,IMGS.mt1],desc:'Premium boneless mutton mix, hand-trimmed and ready for handi, korma, and grill dishes. Zero bone, pure meat.'},
+  {id:'mt3',cat:'mutton',name:'Fresh Mutton Qeema',rate:2650,wts:[500,1000],avail:1,best:0,feat:0,disc:13,img:IMGS.mt3,imgs:[IMGS.mt3],desc:'Freshly minced desi goat mutton for kofta, qeema karahi, and stuffed parathas. Minced fresh per order.'},
+  {id:'mt4',cat:'mutton',name:'Mutton Chops (Chaamp)',rate:2800,wts:[500,1000],avail:1,best:0,feat:0,disc:10,img:IMGS.mt4,imgs:[IMGS.mt4],desc:'Prime goat rib chops cleaned and flattened for green masala marination and BBQ grilling.'},
+  // VEAL
+  {id:'vl1',cat:'veal',name:'Fresh Veal Boneless',rate:1650,wts:[500,1000,2000],avail:1,best:1,feat:1,disc:0,img:IMGS.vl1,imgs:[IMGS.vl1,IMGS.vl2],desc:'Exceptionally tender milk-fed young cattle meat, pale pink in colour with zero tough fiber. Cooks quickly, stays moist.'},
+  {id:'vl2',cat:'veal',name:'Veal with Bone',rate:1350,wts:[500,1000,2000],avail:1,best:0,feat:0,disc:0,img:IMGS.vl2,imgs:[IMGS.vl2],desc:'Fresh bone-in veal cuts offering depth of flavour for slow-cooked dishes, stews, and traditional karahi.'},
+  // WINTER FEAST
+  {id:'wf1',cat:'feast',name:'BBQ Chicken Tikka (Marinated)',rate:950,wts:[500,1000,1500],avail:1,best:0,feat:1,disc:0,img:IMGS.wf1,imgs:[IMGS.wf1],desc:'Pre-marinated quarter chicken leg and breast pieces in spicy yogurt tikka mix. BBQ-ready, just grill and serve.'},
+  {id:'wf2',cat:'feast',name:'Seasoned Mutton Chops BBQ',rate:2800,wts:[500,1000],avail:1,best:0,feat:0,disc:0,img:IMGS.wf2,imgs:[IMGS.wf2],desc:'Raw goat chops marinated in papaya, mustard oil, and ground aromatic spices. Winter BBQ centrepiece.'}
 ];
 
-let cart=[];
+const AREAS=[
+  {id:'clif',n:'Clifton (Blocks 1-9)',fee:150},
+  {id:'dha',n:'DHA Phase 1-8',fee:150},
+  {id:'pechs',n:'PECHS / Tariq Road',fee:200},
+  {id:'gul',n:'Gulshan-e-Iqbal',fee:250},
+  {id:'johar',n:'Gulistan-e-Johar',fee:250},
+  {id:'nn',n:'North Nazimabad',fee:300},
+  {id:'bahria',n:'Bahria Town Karachi',fee:450},
+  {id:'bah',n:'Bahadurabad',fee:200},
+  {id:'naz',n:'Nazimabad',fee:300},
+  {id:'fb',n:'FB Area',fee:250},
+  {id:'fed',n:'Federal B Area',fee:250},
+  {id:'malir',n:'Malir Cantt',fee:350},
+  {id:'kchs',n:'KCHS',fee:200},
+  {id:'def',n:'Defence Housing',fee:150},
+  {id:'kars',n:'Karachi South',fee:200}
+];
+const SLOTS=['10:00 AM – 1:00 PM','1:00 PM – 4:00 PM','4:00 PM – 7:00 PM','7:00 PM – 9:00 PM'];
+const MINO=1000;
+
+// ══════════════════════════════════════
+//  DEVICE VIEWPORT
+// ══════════════════════════════════════
+function setView(mode){
+  const vw=document.getElementById('vw');
+  const bd=document.getElementById('btn-desk'),bm=document.getElementById('btn-mob');
+  if(mode==='mobile'){
+    vw.className='mobile';
+    bm.className='dev-btn active';bd.className='dev-btn';
+  } else {
+    vw.className='desktop';
+    bd.className='dev-btn active';bm.className='dev-btn';
+  }
+}
+
+// ══════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════
+let cart=[];try{cart=JSON.parse(localStorage.getItem('fb_cart2')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('fb_cart2',JSON.stringify(cart))}catch(e){}};
 const prod=id=>P.find(p=>p.id===id);
-
-function updBadge(){
-  document.getElementById('cart-cnt').textContent=cart.reduce((s,i)=>s+i.qty,0);
-}
-
-function addCart(id){
-  const p=prod(id);
-  if(!p)return;
-  const ex=cart.find(x=>x.id===id);
-  if(ex)ex.qty++;else cart.push({id,qty:1});
-  updBadge();openDr();
-  toast(p.name+' added to bag','ok');
-}
-
-// ══════════════════════════════════════
-//  HERO SVG
-// ══════════════════════════════════════
-function heroSvg(type){
-  return`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
-    <defs><radialGradient id="rg_${type}" cx="0.85" cy="0.35" r="0.65"><stop offset="0" stop-color="#c0392b" stop-opacity="0.75"/><stop offset="1" stop-color="#0d0d0d" stop-opacity="0"/></radialGradient></defs>
-    <rect width="1200" height="520" fill="#0d0d0d"/>
-    <rect width="1200" height="520" fill="url(#rg_${type})"/>
-  </svg>`;
-}
-
-const SLIDES=[
-  {mainTitle:'FRESH CHICKEN',subRed:'Premium Quality · 100% Halal',subWht:'Farm Fresh Daily Delivered',bg:'s1',cat:'chicken'},
-  {mainTitle:'PREMIUM BEEF',subRed:'Quality Cuts · Tender & Fresh',subWht:'Best Quality Guaranteed',bg:'s2',cat:'beef'},
-  {mainTitle:'DESI MUTTON',subRed:'Farm Fresh · 100% Zabiha',subWht:'Karachi\'s Favourite Karahi Cut',bg:'s3',cat:'mutton'},
-  {mainTitle:'WINTER FEAST',subRed:'Marinated & BBQ Ready',subWht:'Seasonal Special Cuts',bg:'s4',cat:'feast'}
-];
-
+const sub=()=>cart.reduce((s,i)=>{const p=prod(i.id);return p?s+cp(p.rate,i.wt)*i.qty:s},0);
+const dfee=aid=>{const a=AREAS.find(x=>x.id===aid);return a?a.fee:200};
+let F={},selW={},lastOrd=null;
+try{lastOrd=JSON.parse(localStorage.getItem('fb_lastord2')||'null')}catch(e){}
 let heroIdx=0,heroTimer=null;
-function startHero(){
-  heroIdx=0;updateHero();
-  if(heroTimer)clearInterval(heroTimer);
-  heroTimer=setInterval(()=>{heroIdx=(heroIdx+1)%SLIDES.length;updateHero()},4500);
-}
-function updateHero(){
-  const el=document.getElementById('hero-slides');
-  if(!el)return;
-  el.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===heroIdx));
-  document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===heroIdx));
-}
-function goSlide(i){heroIdx=i;updateHero();}
+const CS={};
+function cs(c){if(!CS[c])CS[c]={f:'all',s:'feat',n:10};return CS[c]}
+
+// RV
+const getRV=()=>{try{return JSON.parse(localStorage.getItem('fb_rv')||'[]')}catch(e){return[]}};
+function rvAdd(id){let rv=getRV().filter(x=>x!==id);rv.unshift(id);try{localStorage.setItem('fb_rv',JSON.stringify(rv.slice(0,8)))}catch(e){}}
 
 // ══════════════════════════════════════
-//  VIEWS & CARDS
+//  CART
 // ══════════════════════════════════════
-function card(p){
-  const minP=Math.round(p.rate*0.5);
-  return`<div class="pc" onclick="addCart('${p.id}')">
-    <div class="pc-img">${svgImg(p.svg)}${p.disc?`<div class="pc-disc">-${p.disc}%</div>`:''}</div>
-    <div class="pc-body">
-      <div class="pc-name">${p.name}</div>
-      <div class="pc-price">From ${fmt(minP)}</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
-        <div class="pc-rate">${fmt(p.rate)}/kg</div>
-        <button class="pc-arrow"><i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
-  </div>`;
+function updBadge(){
+  const n=cart.reduce((s,i)=>s+i.qty,0);
+  // header badge (may not exist)
+  const el=document.getElementById('cart-badge');
+  if(el){el.textContent=n>0?n:'';el.className=n>0?'show':'';}
+  // mobile nav count
+  const mc=document.getElementById('mob-cart-count');
+  if(mc){mc.textContent=n>0?n+' items':'';mc.style.display=n>0?'inline':'none';}
 }
-
-function pageHome(){
-  return`
-  <!-- HERO SLIDER -->
-  <section class="hero">
-    <div id="hero-slides">
-      ${SLIDES.map((s,i)=>`<div class="slide${i===0?' active':''}">
-        <div class="slide-bg" style="background-image:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(heroSvg(s.bg))}')"></div>
-        <div class="slide-content">
-          <h1 style="font-family:'Inter',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">${s.mainTitle}</h1>
-          <div style="font-size:1rem;font-weight:700;color:var(--red);margin-bottom:4px">${s.subRed}</div>
-          <div style="font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:24px">${s.subWht}</div>
-          <button class="btn btn-red" onclick="nav('col','${s.cat}')">Shop Now →</button>
-        </div>
-      </div>`).join('')}
-    </div>
-    <div class="slide-dots">${SLIDES.map((_,i)=>`<div class="sdot${i===0?' on':''}" onclick="goSlide(${i})"></div>`).join('')}</div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="tickers">
-    <div class="ticker-track">
-      ${['Free Delivery above Rs. 3,000','100% Zabiha Hand-Slaughtered','Next-Day Delivery Karachi','Billed on Actual Scale Weight'].flatMap(t=>[t,t]).map(t=>`<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`).join('')}
-    </div>
-  </div>
-
-  <div class="W">
-    <!-- PRODUCTS SECTION (4-5 Cards per Line Grid) -->
-    <section class="sec">
-      <div class="sec-hd">
-        <div class="sec-eye">Fresh Daily</div>
-        <h2>All Products</h2>
-      </div>
-      <div class="pg">${P.map(card).join('')}</div>
-    </section>
-  </div>
-  
-  <footer class="nl-sec">
-    <div class="W" style="text-align:center">
-      <p style="font-size:.85rem;color:#aaa">© 2026 Nabdullah Meat Hub, Karachi. Single HTML File Responsive Store.</p>
-    </div>
-  </footer>`;
-}
-
-function pageCol(catId){
-  const prods=P.filter(p=>p.cat===catId);
-  return`<div class="W" style="padding-top:40px">
-    <div class="sec-hd">
-      <div class="sec-eye">Collection</div>
-      <h2 style="text-transform:capitalize">${catId} Meat</h2>
-    </div>
-    <div class="pg">${prods.map(card).join('')}</div>
-  </div>`;
+function addCart(id,wt,qty=1){
+  const p=prod(id);
+  if(!p||!p.avail){toast('This product is currently unavailable.','err');return false}
+  const key=id+'_'+wt;
+  const ex=cart.find(x=>x.key===key);
+  ex?ex.qty+=qty:cart.push({key,id,wt,qty});
+  save();updBadge();openDr();
+  toast(p.name+' added to cart','ok');
+  rvAdd(id);return true;
 }
 
 // ══════════════════════════════════════
-//  ROUTER & DRAWER CONTROLS
+//  DRAWER
 // ══════════════════════════════════════
-function nav(view,param=null){
-  const app=document.getElementById('app');
-  if(view==='home')app.innerHTML=pageHome();
-  else if(view==='col')app.innerHTML=pageCol(param);
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(view==='home')startHero();
-}
-
-function openDr(){
-  renderDr();document.body.classList.add('dro');
-}
+function openDr(){renderDr();document.body.classList.add('dro')}
 function closeDr(){document.body.classList.remove('dro')}
 
 function renderDr(){
   const body=document.getElementById('dr-body');
   const foot=document.getElementById('dr-foot');
+  if(!body)return;
   if(!cart.length){
-    body.innerHTML='<p style="text-align:center;color:#aaa;padding:40px 0">Bag is empty</p>';
+    body.innerHTML=`<div class="empty-cart"><i class="fa-solid fa-bag-shopping"></i><p style="font-size:.85rem;color:#aaa">Your bag is empty</p><button class="btn btn-out btn-sm" onclick="closeDr()">Continue Shopping</button></div>`;
     foot.style.display='none';return;
   }
   foot.style.display='block';
-  let tot=0;
-  body.innerHTML=cart.map(i=>{
-    const p=prod(i.id);
-    const cost=p.rate*0.5*i.qty;
-    tot+=cost;
-    return`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee">
-      <div><b>${p.name}</b><br><small>Qty: ${i.qty}</small></div>
-      <div>${fmt(cost)}</div>
-    </div>`;
+  body.innerHTML=cart.map((item,x)=>{
+    const p=prod(item.id);if(!p)return'';
+    const lp=cp(p.rate,item.wt)*item.qty;
+    return`<div class="ci"><div class="ci-img">${im(p.img,p.name)}</div><div><div class="ci-name">${p.name}</div><div class="ci-wt">${wl(item.wt)} · ${fmt(p.rate)}/kg</div><div class="qs"><button class="qb2" onclick="adjCart(${x},-1)">−</button><span class="qn2">${item.qty}</span><button class="qb2" onclick="adjCart(${x},1)">+</button></div><span class="ci-rm" onclick="rmCart(${x})">Remove</span></div><div class="ci-price">${fmt(lp)}</div></div>`;
   }).join('');
-  document.getElementById('dr-tot').textContent=fmt(tot);
+  const s=sub();
+  document.getElementById('dr-sub').textContent=fmt(s);
+  document.getElementById('dr-tot').textContent=fmt(s);
+  const ma=document.getElementById('dr-min');
+  ma.className=s<MINO?'min-alert show':'min-alert';
 }
 
-function openMobNav(){document.getElementById('mob-nav').classList.add('open')}
-function closeMobNav(){document.getElementById('mob-nav').classList.remove('open')}
+function adjCart(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);save();updBadge();renderDr()}
+function rmCart(i){cart.splice(i,1);save();updBadge();renderDr()}
 
+// ══════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════
 function toast(msg,type=''){
   const el=document.getElementById('toast');
-  el.textContent=msg;
-  el.className='show '+type;
-  setTimeout(()=>el.className='',2500);
+  el.innerHTML=`<i class="fa-solid fa-${type==='ok'?'check':'circle-exclamation'}"></i>${msg}`;
+  el.className=type?'show '+type:'show';
+  clearTimeout(toast._t);
+  toast._t=setTimeout(()=>el.className='',2800);
 }
 
-function setView(mode){
-  const vw=document.getElementById('vw');
-  vw.className=mode;
-  document.getElementById('btn-desk').className='dev-btn '+(mode==='desktop'?'active':'');
-  document.getElementById('btn-mob').className='dev-btn '+(mode==='mobile'?'active':'');
+// ══════════════════════════════════════
+//  MOBILE NAV
+// ══════════════════════════════════════
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.body.style.overflow='hidden'}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow=''}
+
+// ══════════════════════════════════════
+//  ROUTER
+// ══════════════════════════════════════
+let curView='home',curParam=null;
+function nav(view,param=null){
+  curView=view;curParam=param;
+  if(heroTimer){clearInterval(heroTimer);heroTimer=null}
+  document.getElementById('app').innerHTML=renderView();
+  updBadge();
+  window.scrollTo({top:0,behavior:'smooth'});
+  // nav active state
+  ['home','chicken','beef','veal','mutton','feast'].forEach(k=>{
+    const el=document.getElementById('n-'+k);
+    if(el)el.classList.toggle('on',(view==='home'&&k==='home')||(view==='col'&&param===k));
+  });
+  if(view==='home')startHero();
 }
 
-// Init
+function renderView(){
+  if(curView==='home')return pageHome();
+  if(curView==='col')return pageCol(curParam);
+  if(curView==='pdp')return pagePDP(curParam);
+  if(curView==='checkout')return pageCheckout();
+  if(curView==='done')return pageConfirm();
+  if(curView==='pg')return pagePG(curParam);
+  return pageHome();
+}
+
+// ══════════════════════════════════════
+//  HERO SLIDER
+// ══════════════════════════════════════
+// Hero slides — professional butchery & fresh meat backgrounds (like HalalHarvest / PrimeCuts screenshots)
+// Inline SVG hero backgrounds — beautiful dark gradients with meat illustrations
+// ── HERO BACKGROUNDS — Image 3 & 4 style: pure black + right red radial glow ──
+// Each slide: black left side (text area) + dark meat bg right + red radial glow right edge
+function heroSvg(type){
+  // All use same structure: #0d0d0d base, red radial glow top-right, meat SVG illustration right side
+  const meatIll={
+    s1:/* chicken peach shapes */`<g transform="translate(820,260)" opacity=".32"><ellipse rx="155" ry="105" fill="#c8a080"/><ellipse rx="118" ry="78" fill="#b08060"/><ellipse cx="50" cy="-18" rx="65" ry="45" fill="#a07050"/><ellipse cx="-60" cy="20" rx="48" ry="36" fill="#c09070"/><ellipse cx="20" cy="-25" rx="35" ry="28" fill="#b08868"/></g>`,
+    s2:/* beef dark red shapes */`<g transform="translate(820,260)" opacity=".35"><ellipse rx="150" ry="100" fill="#8b1a0a"/><ellipse rx="118" ry="78" fill="#a0201a"/><ellipse cx="0" cy="0" rx="80" ry="55" fill="#b83020" opacity=".7"/><path d="M-80,-25 C-82,-50 -50,-65 0,-62 C50,-59 82,-45 80,-22 C78,5 50,40 0,44 C-50,46 -78,22 -80,-25Z" fill="#c03828" opacity=".6"/></g>`,
+    s3:/* mutton red */`<g transform="translate(820,260)" opacity=".35"><ellipse rx="148" ry="98" fill="#6e1208"/><ellipse rx="115" ry="75" fill="#8b1a10"/><circle cx="-40" cy="-8" r="55" fill="#a02018" opacity=".7"/><circle cx="45" cy="15" r="48" fill="#7a1410" opacity=".7"/><circle cx="0" cy="38" r="38" fill="#922214" opacity=".6"/></g>`,
+    s4:/* veal/feast pink-brown */`<g transform="translate(820,260)" opacity=".32"><path d="M0,-44 C18,-60 42,-56 46,-38 C50,-20 40,12 30,44 C22,64 12,72 4,72 C-4,72 -12,60 -15,44 C-22,12 -18,-30 0,-44Z" fill="#8b4513" transform="translate(-80,0)"/><path d="M0,-42 C18,-58 42,-54 46,-36 C50,-18 40,14 30,46 C22,66 12,74 4,74 C-4,74 -12,62 -15,46 C-22,14 -18,-28 0,-42Z" fill="#a05020" transform="translate(20,0)"/><path d="M0,-40 C18,-56 42,-52 46,-34 C50,-16 40,16 30,48 C22,68 12,76 4,76 C-4,76 -12,64 -15,48 C-22,16 -18,-26 0,-40Z" fill="#8b4513" transform="translate(120,5)"/></g>`,
+  };
+  const meat=meatIll[type]||meatIll['s1'];
+  return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="rg_${type}" cx="0.85" cy="0.35" r="0.65">
+        <stop offset="0" stop-color="#c0392b" stop-opacity="0.75"/>
+        <stop offset="0.45" stop-color="#8b1a10" stop-opacity="0.4"/>
+        <stop offset="1" stop-color="#0d0d0d" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="520" fill="#0d0d0d"/>
+    <rect width="1200" height="520" fill="url(#rg_${type})"/>
+    ${meat}
+  </svg>`;
+}
+
+const SLIDES=[
+  {
+    mainTitle:'FRESH CHICKEN',
+    subRed:'Premium Quality · 100% Halal',
+    subWht:'Farm Fresh Daily Delivered',
+    bgSvg:'s1', btn:'Shop Now →', cat:'chicken'
+  },
+  {
+    mainTitle:'PREMIUM BEEF',
+    subRed:'Quality Cuts · Tender & Fresh',
+    subWht:'Best Quality Guaranteed',
+    bgSvg:'s2', btn:'Order Now →', cat:'beef'
+  },
+  {
+    mainTitle:'DESI MUTTON',
+    subRed:'Farm Fresh · 100% Zabiha',
+    subWht:'Karachi\'s Favourite Karahi Cut',
+    bgSvg:'s3', btn:'Shop Now →', cat:'mutton'
+  },
+  {
+    mainTitle:'WINTER FEAST',
+    subRed:'Marinated & BBQ Ready',
+    subWht:'Seasonal Special Cuts',
+    bgSvg:'s4', btn:'Shop Feast →', cat:'feast'
+  }
+];
+
+function startHero(){
+  heroIdx=0;updateHero();
+  heroTimer=setInterval(()=>{heroIdx=(heroIdx+1)%SLIDES.length;updateHero()},4500);
+}
+function updateHero(){
+  const el=document.getElementById('hero-slides');
+  if(!el)return;
+  el.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===heroIdx);
+  });
+  document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===heroIdx));
+}
+function goSlide(i){heroIdx=i;updateHero();clearInterval(heroTimer);heroTimer=setInterval(()=>{heroIdx=(heroIdx+1)%SLIDES.length;updateHero()},4500)}
+function prevSlide(){heroIdx=(heroIdx-1+SLIDES.length)%SLIDES.length;goSlide(heroIdx)}
+function nextSlide(){heroIdx=(heroIdx+1)%SLIDES.length;goSlide(heroIdx)}
+
+// ══════════════════════════════════════
+//  PRODUCT CARD
+// ══════════════════════════════════════
+function card(p){
+  const discTag=p.disc>0?`<div class="pc-disc">-${p.disc}%</div>`:'';
+  const soldOv=!p.avail?`<div class="pc-sold-ov"><span>Sold Out</span></div>`:'';
+  const minW=Math.min(...p.wts);
+  const minP=cp(p.rate,minW);
+  const origP=p.disc>0?Math.round(minP/(1-p.disc/100)):0;
+  // Arrow circle button — Image 1 style
+  const arrowBtn=!p.avail
+    ?`<div style="width:36px;height:36px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-ban" style="color:#999;font-size:.75rem"></i></div>`
+    :`<div class="pc-arrow" onclick="event.stopPropagation();nav('pdp','${p.id}')" title="View Product"><i class="fa-solid fa-arrow-right" style="font-size:.75rem"></i></div>`;
+  return`<div class="pc" onclick="nav('pdp','${p.id}')">
+    <div class="pc-img">${im(p.img,p.name)}${discTag}${soldOv}</div>
+    <div class="pc-body">
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-price">${p.disc>0?`From ${fmt(minP)} <s style="font-size:.77rem;color:#bbb;font-weight:400">${fmt(origP)}</s>`:`From ${fmt(minP)}`}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+        <div class="pc-rate">${fmt(p.rate)}/kg <em style="font-size:.63rem;color:#ddd">(demo)</em></div>
+        ${arrowBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════
+//  FOOTER
+// ══════════════════════════════════════
+function footer(){
+  return`<footer>
+  <div class="nl-sec"><div class="W"><div class="nl-grid">
+    <div class="nl-brand">
+      <div class="logo" style="cursor:default">
+        <div class="logo-ico"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="logo-txt"><div class="logo-name" style="color:#fff">Nabdullah Meat Hub</div><div class="logo-sub">Karachi Premium Meat</div></div>
+      </div>
+      <p>Sign up to get 10% OFF on your first order and stay up to date with the latest product releases, special offers and more.</p>
+      <div class="nl-form">
+        <input class="nl-input" id="nl-email" placeholder="Enter your email" type="email">
+        <button class="nl-btn" onclick="nlSub()">Subscribe now</button>
+      </div>
+      <div class="socials" style="margin-top:18px">
+        <div class="soc"><i class="fa-brands fa-facebook-f"></i></div>
+        <div class="soc"><i class="fa-brands fa-instagram"></i></div>
+        <div class="soc"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="soc"><i class="fa-brands fa-tiktok"></i></div>
+      </div>
+    </div>
+    <div class="nl-col">
+      <h4>Quick Link</h4>
+      <ul>
+        <li><a onclick="nav('pg','about')">About Us</a></li>
+        <li><a onclick="nav('pg','faqs')">FAQs</a></li>
+        <li><a onclick="nav('pg','privacy')">Privacy Policy</a></li>
+        <li><a onclick="nav('pg','terms')">Terms & Conditions</a></li>
+        <li><a onclick="nav('pg','shipping')">Shipping & Return Policy</a></li>
+      </ul>
+    </div>
+    <div class="nl-col">
+      <h4>Contact Us</h4>
+      <div class="ct-row"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-phone"></i><span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-envelope"></i><span>Email: <a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-location-dot"></i><span>[Shop Address, Karachi — Placeholder]</span></div>
+      <div class="ct-row"><i class="fa-solid fa-clock"></i><span>Daily 7:00 AM – 9:00 PM</span></div>
+    </div>
+    <div class="nl-col">
+      <h4>Bulk Order</h4>
+      <div class="ct-row"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp: <a href="https://wa.me/923348210348">0334-8210348</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-phone"></i><span>UAN: <a href="tel:03332987295">0333-2987295</a></span></div>
+      <div class="ct-row"><i class="fa-solid fa-envelope"></i><span><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></span></div>
+      <div style="margin-top:16px">
+        <h4>Meat Collections</h4>
+        <ul>
+          <li><a onclick="nav('col','chicken')">Fresh Chicken</a></li>
+          <li><a onclick="nav('col','beef')">Prime Beef</a></li>
+          <li><a onclick="nav('col','veal')">Milk-Fed Veal</a></li>
+          <li><a onclick="nav('col','mutton')">Desi Mutton</a></li>
+          <li><a onclick="nav('col','feast')" style="color:var(--red)">Winter Feast</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="nl-bottom">
+    <span>© 2025 Nabdullah Meat Hub, Karachi. <em style="opacity:.6">Demo prototype — all rates & contact details are placeholders.</em></span>
+    <div class="nl-bottom-links">
+      <a onclick="nav('pg','privacy')">Privacy Policy</a>
+      <a onclick="nav('pg','terms')">Terms</a>
+      <a onclick="nav('pg','shipping')">Shipping</a>
+    </div>
+  </div>
+  </div></div>
+  </footer>`;
+}
+function nlSub(){const v=document.getElementById('nl-email')?.value.trim();if(!v||!v.includes('@')){toast('Please enter a valid email address.','err');return}toast('Subscribed successfully! 10% off code sent to '+v,'ok');const el=document.getElementById('nl-email');if(el)el.value=''}
+
+// ══════════════════════════════════════
+//  PAGE: HOME
+// ══════════════════════════════════════
+function pageHome(){
+  const bs=P.filter(p=>p.best);
+  const feat=P.filter(p=>p.feat&&p.avail).slice(0,8);
+  const reviews=[
+    {txt:'Absolutely the best quality chicken I\'ve ordered online in Karachi. Arrived cold, packed perfectly, and the weight was spot-on. Will order weekly from now on!',name:'Amna S.',loc:'Clifton',init:'AS',stars:5},
+    {txt:'The mutton karahi cut is exceptional — tender, fresh, and exactly as described. The actual weight billing is honest and fair. Love this transparency.',name:'Faisal R.',loc:'DHA Phase 5',init:'FR',stars:5},
+    {txt:'Ordered beef boneless for a dinner party. Delivery was next day and the meat was vacuum-sealed and chilled perfectly. Our guests were very impressed!',name:'Sana K.',loc:'Gulshan-e-Iqbal',init:'SK',stars:5},
+    {txt:'First time trying veal from here — the milk-fed veal boneless is absolutely premium. Softer than anything I\'ve found at local markets.',name:'Hassan M.',loc:'PECHS',init:'HM',stars:5},
+    {txt:'Winter Feast BBQ tikka was marinated beautifully. Threw it on the grill straight from the pack — perfect for our rooftop BBQ!',name:'Zara T.',loc:'Bahadurabad',init:'ZT',stars:5},
+    {txt:'Superb service. I called via WhatsApp for a custom cut and they accommodated within the same day order. Truly premium meat shop.',name:'Ali B.',loc:'North Nazimabad',init:'AB',stars:5}
+  ];
+  return`
+  <div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo Prototype — All prices are sample rates and do not represent actual market prices.</div>
+
+  <!-- HERO SLIDER -->
+  <section class="hero" style="position:relative;min-height:460px">
+    <div id="hero-slides" style="position:relative;min-height:460px">
+      ${SLIDES.map((s,i)=>`<div class="slide${i===0?' active':''}">
+        <div class="slide-bg" style="background-image:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(heroSvg(s.bgSvg))}')"></div>
+        <div class="slide-content" style="padding:60px 40px 60px 48px">
+          <h1 style="font-family:'Inter',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:10px">${s.mainTitle}</h1>
+          <div style="font-size:clamp(.82rem,1.6vw,1rem);font-weight:700;color:var(--red);margin-bottom:4px;letter-spacing:.01em">${s.subRed}</div>
+          <div style="font-size:clamp(.78rem,1.4vw,.92rem);color:rgba(255,255,255,.75);margin-bottom:28px">${s.subWht}</div>
+          <button class="btn btn-red" onclick="nav('col','${s.cat}')" style="padding:13px 28px;font-size:.88rem;font-weight:700;border-radius:6px">${s.btn}</button>
+        </div>
+      </div>`).join('')}
+    </div>
+    <button class="slide-arr prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slide-arr next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="slide-dots" style="bottom:16px">${SLIDES.map((_,i)=>`<div class="sdot${i===0?' on':''}" onclick="goSlide(${i})"></div>`).join('')}</div>
+  </section>
+
+  <!-- OFFER TICKERS -->
+  <div class="tickers">
+    <div class="ticker-track" id="ticker">
+      ${['Free Delivery above Rs. 3,000','100% Zabiha Hand-Slaughtered','Next-Day Delivery across Karachi','Fresh Daily — Zero Frozen Stock','Cash on Delivery Only','Billed on Actual Packed Scale Weight','Vacuum-Sealed & Temperature-Controlled','WhatsApp Order Support 7AM–9PM'].flatMap(t=>[t,t]).map(t=>`<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`).join('')}
+    </div>
+  </div>
+
+  <div class="W">
+
+  <!-- TRUST BADGES -->
+  <section style="padding:22px 0;border-bottom:1px solid var(--brd)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;background:var(--brd)">
+      ${[
+        {ico:'fa-certificate',title:'100% Zabiha',sub:'Hand-slaughtered & certified'},
+        {ico:'fa-truck-fast',title:'Same Day Dispatch',sub:'Order by 3 PM, out today'},
+        {ico:'fa-scale-balanced',title:'Scale-Weighed Billing',sub:'Pay for exact packed weight'},
+        {ico:'fa-headset',title:'24/7 WhatsApp Support',sub:'Always available for you'},
+      ].map(t=>`<div style="background:#fff;padding:20px 22px;display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:50%;background:#fff5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid ${t.ico}" style="color:var(--red);font-size:1rem"></i></div><div><div style="font-size:.84rem;font-weight:700;color:var(--blk)">${t.title}</div><div style="font-size:.73rem;color:var(--gry)">${t.sub}</div></div></div>`).join('')}
+    </div>
+  </section>
+
+
+
+  <!-- TODAY'S RATES SECTION -->
+  <section style="background:var(--blk);padding:44px 0" class="sec-sm">
+  <div class="W">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div><div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#faa;margin-bottom:5px">Updated Daily</div><h2 style="color:#fff;font-family:var(--serif)">Today's Rates</h2></div>
+      <span style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:.75rem;padding:6px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.2)"><i class="fa-solid fa-circle-info" style="margin-right:5px;color:#faa"></i>Demo sample rates</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,.12);border-radius:14px;overflow:hidden">
+      ${[
+        {cat:'Chicken',item:'Whole Chicken',rate:620},{cat:'Chicken',item:'Boneless',rate:880},
+        {cat:'Beef',item:'Beef Boneless',rate:950},{cat:'Beef',item:'Beef Bone-In',rate:1100},
+        {cat:'Mutton',item:'Mutton Karahi',rate:2450},{cat:'Veal',item:'Veal Boneless',rate:1650},
+      ].map(r=>`<div style="background:#1a1a1a;padding:20px 16px">
+        <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#faa;margin-bottom:3px">${r.cat}</div>
+        <div style="font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">${r.item}</div>
+        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff">Rs.${r.rate.toLocaleString()}</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.4);margin-top:2px">per kg · demo</div>
+      </div>`).join('')}
+    </div>
+  </div>
+  </section>
+
+  <!-- SHOP BY CATEGORY -->
+  <section class="sec sec-sm">
+    <div class="sec-hd"><div class="sec-eye">Browse by Type</div><h2>Shop by Category</h2></div>
+    <div class="catg">${['chicken','beef','veal','mutton','feast'].map(c=>`<div class="cat-card" onclick="nav('col','${c}')" style="cursor:pointer">
+      <div style="width:100%;height:100%;position:absolute;inset:0">${CATSVG[c]}</div>
+      <div class="cat-ov"></div>
+      <div class="cat-lbl"><b>${CATS[c].name}</b><small>${P.filter(p=>p.cat===c).length} products</small></div>
+      ${CATS[c].seasonal?'<div style="position:absolute;top:10px;right:10px"><span class="bdg bdg-sea"><i class=\"fa-solid fa-snowflake\" style=\"margin-right:4px\"></i>Seasonal</span></div>':''}
+    </div>`).join('')}</div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="sec">
+    <div class="sec-hd" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+      <div><div class="sec-eye">Most Ordered</div><h2>Best Sellers</h2></div>
+      <button class="btn btn-out btn-sm" onclick="nav('col','chicken')">View All <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i></button>
+    </div>
+    <div class="bs-row">${bs.map(card).join('')}</div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="sec sec-sm" style="background:var(--lgry);margin:0 -22px;padding:44px 22px;border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)">
+    <div class="sec-hd center"><div class="sec-eye">Why Choose Us</div><h2>The Nabdullah Difference</h2></div>
+    <div class="why-grid">
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-shield-halved"></i></div><h4>100% Zabiha Guarantee</h4><p>Every animal is 100% hand-slaughtered as per Islamic Zabiha standards. Certificate available on request.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-scale-balanced"></i></div><h4>Digital Scale Billing</h4><p>Your order is weighed on a certified digital scale at dispatch. Final bill reflects actual packed weight — no estimates.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-snowflake"></i></div><h4>Cold Chain Delivery</h4><p>Orders are packed in temperature-controlled bags and delivered in refrigerated conditions to maintain freshness.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-ban"></i></div><h4>Zero Frozen Stock</h4><p>We never sell frozen or defrosted meat. Every order is prepared fresh the same day from our butchery floor.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-solid fa-truck-fast"></i></div><h4>Next-Day Delivery</h4><p>Order today, receive tomorrow — guaranteed next-day delivery across all major Karachi sectors.</p></div>
+      <div class="wi"><div class="wi-ico"><i class="fa-brands fa-whatsapp"></i></div><h4>WhatsApp Support</h4><p>Our team is available 7AM to 9PM on WhatsApp for custom cuts, bulk orders, and delivery queries.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec">
+    <div class="sec-hd center"><div class="sec-eye">Simple Process</div><h2>How Ordering Works</h2></div>
+    <div class="how-grid">
+      <div class="hw"><h4>Browse & Select</h4><p>Choose from Chicken, Beef, Veal, Mutton, or Winter Feast. Daily rates shown on every product.</p></div>
+      <div class="hw"><h4>Pick Your Weight</h4><p>Select from Half Kg or 1 Kg packs. Estimated price calculates instantly on the product page.</p></div>
+      <div class="hw"><h4>Enter Your Details</h4><p>Provide your name, mobile, and Karachi delivery address. No account needed.</p></div>
+      <div class="hw"><h4>Place Your Order</h4><p>Confirm your order with Cash on Delivery as payment. Receive an order number instantly.</p></div>
+      <div class="hw"><h4>We Weigh & Pack</h4><p>Our butchers cut, weigh on digital scale, and vacuum seal your order under chill conditions.</p></div>
+      <div class="hw"><h4>Receive & Pay Cash</h4><p>Rider delivers in a temperature bag. Pay cash on arrival. Final bill by actual packed weight.</p></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="sec">
+    <div class="sec-hd"><div class="sec-eye">Handpicked</div><h2>Featured Products</h2></div>
+    <div class="pg">${feat.map(card).join('')}</div>
+    <div style="text-align:center;margin-top:32px"><button class="btn btn-out" onclick="nav('col','chicken')">Browse All Products <i class="fa-solid fa-arrow-right" style="font-size:.8rem"></i></button></div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS -->
+  <section class="sec" style="background:var(--lgry);margin:0 -22px;padding:60px 22px;border-top:1px solid var(--brd)">
+    <div class="sec-hd center"><div class="sec-eye">What Customers Say</div><h2>Karachi Loves Nabdullah Meat Hub</h2></div>
+    <div class="reviews-grid">
+      ${reviews.map(r=>`<div class="rv">
+        <div class="rv-stars">${'★'.repeat(r.stars)}</div>
+        <p class="rv-text">"${r.txt}"</p>
+        <div class="rv-author">
+          <div class="rv-ava">${r.init}</div>
+          <div><div class="rv-name">${r.name}</div><div class="rv-loc"><i class="fa-solid fa-location-dot" style="font-size:.65rem;color:var(--red);margin-right:3px"></i>${r.loc}</div></div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </section>
+
+
+
+  <!-- WA CTA -->
+  <section class="sec sec-sm">
+    <div style="background:#f0fdf4;border:2px solid #bbf7d0;border-radius:18px;padding:44px 52px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap">
+      <div><div class="sec-eye">Need Help?</div><h2 style="margin-bottom:8px">Contact us on WhatsApp</h2><p style="max-width:420px">Our team is available daily 7AM to 9PM for custom cuts, bulk orders, and delivery queries. Fast response guaranteed.</p></div>
+      <a href="https://wa.me/923348210348" class="btn btn-wa btn-lg" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="font-size:1.1rem"></i>Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  </div>${footer()}`;
+}
+
+// ══════════════════════════════════════
+//  PAGE: COLLECTION
+// ══════════════════════════════════════
+function pageCol(catId){
+  const cat=CATS[catId];if(!cat)return pageHome();
+  const state=cs(catId);
+  let prods=P.filter(p=>p.cat===catId);
+  if(state.f==='in')prods=prods.filter(p=>p.avail);
+  if(state.f==='out')prods=prods.filter(p=>!p.avail);
+  if(state.s==='price-asc')prods.sort((a,b)=>a.rate-b.rate);
+  else if(state.s==='price-desc')prods.sort((a,b)=>b.rate-a.rate);
+  else if(state.s==='az')prods.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(state.s==='za')prods.sort((a,b)=>b.name.localeCompare(a.name));
+  else if(state.s==='best')prods.sort((a,b)=>(b.best||0)-(a.best||0));
+  else prods.sort((a,b)=>(b.feat||0)-(a.feat||0));
+  const vis=prods.slice(0,state.n);
+  const all=P.filter(p=>p.cat===catId).length;
+  const rv=getRV().filter(id=>{const p=prod(id);return p&&p.cat!==catId}).slice(0,4).map(id=>prod(id)).filter(Boolean);
+  function updCol(f,s){const x=cs(catId);if(f!==null)x.f=f;if(s!==null)x.s=s;nav('col',catId)}
+  window._updCol=updCol;
+  return`<div class="col-bn">
+    <div class="col-bg">${CATSVG[catId]||''}</div>
+    <div class="W col-inn">
+      <div class="crumb" style="color:rgba(255,255,255,.55)"><span onclick="nav('home')" style="cursor:pointer;color:rgba(255,255,255,.55)">Home</span><span>›</span><span style="color:#fff">${cat.name}</span></div>
+      <div class="col-eye">Fresh Daily</div>
+      <h1>${cat.name}</h1>
+      <p>${cat.desc}</p>
+      ${cat.seasonal?'<div style="margin-top:12px"><span class="bdg bdg-sea"><i class="fa-solid fa-snowflake" style="margin-right:4px"></i>Seasonal Collection</span></div>':''}
+    </div>
+  </div>
+  <div class="W">
+  <div class="fbar">
+    <span class="fcnt"><strong>${all}</strong> products in ${cat.name}</span>
+    <div class="fgrp">
+      <span style="font-size:.72rem;font-weight:600;color:#aaa">Filter:</span>
+      ${['all','in','out'].map(f=>`<button class="fpill${state.f===f?' on':''}" onclick="_updCol('${f}',null)">${f==='all'?'All':f==='in'?'In Stock':'Sold Out'}</button>`).join('')}
+      <span style="font-size:.72rem;font-weight:600;color:#aaa;margin-left:4px">Sort:</span>
+      <select class="fsrt" onchange="_updCol(null,this.value)">
+        <option value="feat" ${state.s==='feat'?'selected':''}>Featured</option>
+        <option value="best" ${state.s==='best'?'selected':''}>Best Selling</option>
+        <option value="price-asc" ${state.s==='price-asc'?'selected':''}>Price: Low to High</option>
+        <option value="price-desc" ${state.s==='price-desc'?'selected':''}>Price: High to Low</option>
+        <option value="az" ${state.s==='az'?'selected':''}>A–Z</option>
+        <option value="za" ${state.s==='za'?'selected':''}>Z–A</option>
+      </select>
+      <span class="fcnt">Showing <strong>${vis.length}</strong> of <strong>${prods.length}</strong></span>
+    </div>
+  </div>
+  ${vis.length===0?`<div style="text-align:center;padding:56px;color:#aaa"><i class="fa-solid fa-magnifying-glass" style="font-size:2rem;margin-bottom:12px;display:block;color:#ddd"></i><p>No products match this filter.</p><button class="btn btn-out btn-sm" style="margin-top:12px" onclick="_updCol('all',null)">Clear Filter</button></div>`:`<div class="pg">${vis.map(card).join('')}</div>`}
+  ${prods.length>state.n?`<div style="text-align:center;margin:32px 0"><button class="btn btn-out" onclick="cs('${catId}').n+=8;nav('col','${catId}')">Load More <i class="fa-solid fa-chevron-down" style="font-size:.75rem"></i></button></div>`:''}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:36px 0 0">
+    ${[
+      {ico:'fa-certificate',c:'#e8192c',bg:'#fff5f5',title:'100% Zabiha Certified',sub:'Every animal hand-slaughtered per Islamic standards'},
+      {ico:'fa-scale-balanced',c:'#2563eb',bg:'#eff6ff',title:'Digital Scale Billing',sub:'Final bill based on actual certified scale weight'},
+      {ico:'fa-snowflake',c:'#0891b2',bg:'#ecfeff',title:'Cold Chain Delivery',sub:'Temperature-controlled bags from butchery to door'},
+      {ico:'fa-ban',c:'#16a34a',bg:'#f0fdf4',title:'Zero Frozen Stock',sub:'All meat prepared and packed fresh same day'},
+    ].map(t=>`<div style="display:flex;align-items:center;gap:12px;background:${t.bg};border:1px solid ${t.bg};border-radius:12px;padding:16px 18px"><i class="fa-solid ${t.ico}" style="color:${t.c};font-size:1.2rem;flex-shrink:0;width:22px"></i><div><div style="font-size:.82rem;font-weight:700;color:#111;margin-bottom:2px">${t.title}</div><div style="font-size:.72rem;color:#666">${t.sub}</div></div></div>`).join('')}
+  </div>
+  ${rv.length>0?`<div class="rv-sec"><h3>Recently Viewed Products</h3><div class="pg">${rv.map(card).join('')}</div></div>`:''}
+  </div>${footer()}`;
+}
+
+// ══════════════════════════════════════
+//  PAGE: PRODUCT DETAIL
+// ══════════════════════════════════════
+function pagePDP(id){
+  const p=prod(id);if(!p)return pageHome();
+  rvAdd(id);
+  if(!selW[id])selW[id]=p.wts[0];
+  const w=selW[id];
+  const ep=cp(p.rate,w);
+  const cat=CATS[p.cat];
+  const imgs=p.imgs||[p.img];
+  const related=P.filter(x=>x.cat===p.cat&&x.id!==id&&x.avail).slice(0,5);
+  const qty=1;
+  return`<div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo prototype — prices shown are sample rates only.</div>
+  <div class="W"><div class="crumb"><span onclick="nav('home')" style="cursor:pointer">Home</span><span>›</span><span onclick="nav('col','${p.cat}')" style="cursor:pointer">${cat.name}</span><span>›</span><span>${p.name}</span></div>
+  <div class="pdp">
+    <!-- GALLERY -->
+    <div class="gal">
+      <div class="gal-main" style="background:#faf8f5;border-radius:18px;overflow:hidden;aspect-ratio:1;border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;padding:0">
+        <div id="mi_${id}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">${svgImg(SVG_MAP[id]||'chicken_whole')}</div>
+      </div>
+      <div class="gal-row" style="margin-top:10px">
+        ${(p.imgs||[p.img]).map((_,i)=>{
+          const altKey=i===0?id:(id+'_alt'+i);
+          const svgKey=SVG_MAP[id]||'chicken_whole';
+          return`<div class="gal-th${i===0?' on':''}" onclick="swTh2('${id}',${i})" data-gth="${id}_${i}" style="cursor:pointer;border-radius:10px;overflow:hidden;width:68px;height:68px;background:#faf8f5;border:2px solid ${i===0?'var(--red)':'var(--brd)'};">${svgImg(svgKey)}</div>`;
+        }).join('')}
+      </div>
+      <div style="background:var(--lgry);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:.77rem;color:#666;line-height:1.6;border:1px solid var(--brd)">
+        <i class="fa-solid fa-circle-info" style="color:var(--red);margin-right:6px"></i><strong style="color:#111">Illustration only.</strong> Actual product appearance may vary. Each order is freshly cut and packed on the day of dispatch.
+      </div>
+    </div>
+    <!-- INFO -->
+    <div class="pi">
+      <div class="pi-cat">${cat.name}</div>
+      <h1>${p.name}</h1>
+      <div class="pi-badges">
+        ${p.avail?'<span class="bdg bdg-stk"><i class="fa-solid fa-circle-check" style="margin-right:4px;font-size:.7rem"></i>In Stock</span>':'<span class="bdg bdg-out">Sold Out</span>'}
+        ${p.best?'<span class="bdg bdg-best">Best Seller</span>':''}
+        ${p.cat==='feast'?'<span class="bdg bdg-sea"><i class="fa-solid fa-snowflake" style="margin-right:4px"></i>Seasonal</span>':''}
+      </div>
+      <div class="pi-rate"><span class="pi-price">${fmt(p.rate)}</span><span class="pi-per">/kg · <em style="font-size:.7rem">(demo rate)</em></span></div>
+      ${p.avail?`
+      <div class="wlbl">Select Weight: <span id="winfo_${id}" style="font-weight:400;font-size:.77rem;color:#aaa">${wl(w)} selected</span></div>
+      <div class="wopts" id="wo_${id}">${p.wts.map(wt=>`<button class="wbtn${wt===w?' on':''}" onclick="pickW('${id}',${wt})">${wl(wt)}</button>`).join('')}</div>
+      <div class="pcalc"><small>Estimated Price</small><div class="pamt" id="pp_${id}">${fmt(ep)}</div><div class="pnote" id="pn_${id}">Based on ${wl(w)} at ${fmt(p.rate)}/kg</div></div>
+      <div class="qty-row"><span class="qty-lbl">Quantity:</span><div class="qty-ctrl"><button class="qb" onclick="adjPDPQty(-1,'${id}')">−</button><span class="qn" id="pdp-qty-${id}">${qty}</span><button class="qb" onclick="adjPDPQty(1,'${id}')">+</button></div></div>
+      <div class="pi-acts">
+        <button class="btn btn-red btn-full btn-lg" onclick="pdpAdd('${id}')"><i class="fa-solid fa-bag-shopping"></i> Add to cart</button>
+        <button class="btn btn-blk btn-full btn-lg" onclick="pdpBuy('${id}')">Buy it now</button>
+      </div>
+      <div style="font-size:.75rem;color:#aaa;text-align:center;margin-bottom:4px"><i class="fa-solid fa-lock" style="margin-right:4px;color:var(--red)"></i>100% Zabiha · Cash on Delivery · Scale-Weighed Billing</div>
+      `:`<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px;margin-bottom:22px"><strong style="color:#991b1b;display:block;margin-bottom:4px"><i class="fa-solid fa-circle-xmark" style="margin-right:5px"></i>Currently Unavailable</strong><p style="font-size:.82rem;color:#555">Temporarily out of stock. Check back tomorrow or browse <span onclick="nav('col','${p.cat}')" style="color:var(--red);cursor:pointer">${cat.name}</span> for alternatives.</p></div>`}
+      <!-- PRODUCT INFO TABS -->
+      <div style="border:1px solid var(--brd);border-radius:12px;overflow:hidden;margin-bottom:18px">
+        <div style="display:flex;border-bottom:1px solid var(--brd);background:var(--lgry)">
+          ${['Description','Pack Info','Delivery','Storage'].map((t,i)=>`<button onclick="pdpTab(this,'ptab${id}_${i}')" class="pdp-tab${i===0?' ptab-on':''}" style="flex:1;padding:11px 8px;font-size:.77rem;font-weight:700;color:${i===0?'var(--red)':'#777'};background:${i===0?'#fff':'transparent'};border:none;border-right:1px solid var(--brd);cursor:pointer;transition:.18s" id="ptab${id}_${i}_btn">${t}</button>`).join('')}
+        </div>
+        <div id="ptab${id}_0" style="padding:16px 18px;display:block"><p style="font-size:.85rem;color:#444;line-height:1.75">${p.desc}</p></div>
+        <div id="ptab${id}_1" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--lgry);border-radius:8px;font-size:.82rem"><span style="color:#666">Half Kg Pack</span><span style="font-weight:700;color:var(--blk)">≈ 450g Net Weight</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--lgry);border-radius:8px;font-size:.82rem"><span style="color:#666">1 Kg Pack</span><span style="font-weight:700;color:var(--blk)">≈ 900g Net Weight</span></div>
+            <p style="font-size:.78rem;color:#999;margin-top:4px"><i class="fa-solid fa-circle-info" style="margin-right:4px;color:var(--red)"></i>Actual weight is recorded on certified digital scale at packing. Final bill reflects real weight.</p>
+          </div>
+        </div>
+        <div id="ptab${id}_2" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:.82rem">
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Orders before 3 PM — Same day dispatch</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Delivered next day across Karachi</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Temperature-controlled insulated delivery bag</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-circle-check" style="color:#16a34a;width:16px"></i><span>Cash on Delivery — no advance payment</span></div>
+            <p style="font-size:.75rem;color:#bbb;margin-top:4px">Delivery timings are demo placeholders and will be confirmed before launch.</p>
+          </div>
+        </div>
+        <div id="ptab${id}_3" style="padding:16px 18px;display:none">
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:.82rem">
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-temperature-low" style="color:#0891b2;width:16px"></i><span>Refrigerate immediately upon receipt</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-clock" style="color:#0891b2;width:16px"></i><span>Use within 24 hours for best freshness</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-snowflake" style="color:#0891b2;width:16px"></i><span>Freeze immediately for storage up to 3 months</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="fa-solid fa-ban" style="color:#e8192c;width:16px"></i><span>Do not refreeze once defrosted</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#f0fdf4;border-radius:8px;border:1px solid #bbf7d0"><i class="fa-solid fa-circle-check" style="color:#16a34a;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#166534">100% Zabiha hand-slaughtered</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#eff6ff;border-radius:8px;border:1px solid #bfdbfe"><i class="fa-solid fa-scale-balanced" style="color:#2563eb;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#1e40af">Certified digital scale billing</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#ecfeff;border-radius:8px;border:1px solid #a5f3fc"><i class="fa-solid fa-snowflake" style="color:#0891b2;font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#155e75">Cold chain delivery</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 13px;background:#fff5f5;border-radius:8px;border:1px solid #fcc"><i class="fa-solid fa-ban" style="color:var(--red);font-size:.85rem"></i><span style="font-size:.77rem;font-weight:600;color:#991b1b">Zero frozen stock</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Ask a question -->
+  <div style="border-top:1px solid var(--brd);padding:22px 0;display:flex;align-items:center;gap:10px;font-size:.84rem">
+    <i class="fa-solid fa-circle-question" style="color:#aaa;font-size:1rem"></i>
+    <span style="color:#555">Ask a question</span>
+    <a href="https://wa.me/923348210348" target="_blank" class="btn btn-wa btn-sm" style="margin-left:auto"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+  </div>
+  ${related.length>0?`<section class="sec" style="padding-top:0"><div class="sec-hd"><h2 style="font-size:1.5rem">You Might Also Like</h2></div><div class="bs-row">${related.map(card).join('')}</div></section>`:''}
+  ${getRV().filter(rid=>rid!==id&&prod(rid)&&prod(rid).cat!==p.cat).slice(0,4).map(rid=>prod(rid)).filter(Boolean).length>0?`<div class="rv-sec"><h3>Recently Viewed Products</h3><div class="bs-row">${getRV().filter(rid=>rid!==id&&prod(rid)&&prod(rid).cat!==p.cat).slice(0,4).map(rid=>prod(rid)).filter(Boolean).map(card).join('')}</div></div>`:''}
+  </div>${footer()}`;
+}
+
+let pdpQty={};
+function adjPDPQty(d,id){
+  if(!pdpQty[id])pdpQty[id]=1;
+  pdpQty[id]=Math.max(1,pdpQty[id]+d);
+  const el=document.getElementById('pdp-qty-'+id);
+  if(el)el.textContent=pdpQty[id];
+}
+function pickW(id,w){
+  selW[id]=w;const p=prod(id);if(!p)return;
+  document.querySelectorAll('.wbtn').forEach(b=>b.classList.toggle('on',b.textContent.trim()===wl(w)));
+  const ep=cp(p.rate,w);
+  const pe=document.getElementById('pp_'+id),pn=document.getElementById('pn_'+id),wi=document.getElementById('winfo_'+id);
+  if(pe)pe.textContent=fmt(ep);
+  if(pn)pn.textContent=`Based on ${wl(w)} at ${fmt(p.rate)}/kg`;
+  if(wi)wi.textContent=`${wl(w)} selected`;
+}
+function swTh(id,idx,src){
+  const mi=document.getElementById('mi_'+id);if(mi)mi.src=src;
+  document.querySelectorAll(`[data-gth^="${id}_"]`).forEach(el=>el.classList.toggle('on',el.dataset.gth===`${id}_${idx}`));
+}
+// Product detail tab switcher
+function pdpTab(btn,tabId){
+  const prefix=tabId.replace(/_\d+$/,'');
+  for(let i=0;i<4;i++){
+    const t=document.getElementById(prefix+'_'+i);
+    const b=document.getElementById(prefix+'_'+i+'_btn');
+    if(t){t.style.display='none'}
+    if(b){b.style.color='#777';b.style.background='transparent';b.style.fontWeight='600'}
+  }
+  const active=document.getElementById(tabId);
+  if(active){active.style.display='block'}
+  btn.style.color='var(--red)';btn.style.background='#fff';btn.style.fontWeight='800';
+}
+
+// Product detail gallery switch using SVG
+function swTh2(id,idx){
+  const wrap=document.getElementById('mi_'+id);
+  if(wrap){wrap.innerHTML=svgImg(SVG_MAP[id]||'chicken_whole')}
+  document.querySelectorAll(`[data-gth^="${id}_"]`).forEach((el,i)=>{
+    el.style.borderColor=i===idx?'var(--red)':'var(--brd)';
+  });
+}
+
+function pdpAdd(id){
+  const qty=pdpQty[id]||1;
+  for(let i=0;i<qty;i++)addCart(id,selW[id]||prod(id)?.wts[0]);
+}
+function pdpBuy(id){
+  pdpAdd(id);closeDr();nav('checkout');
+}
+
+// ══════════════════════════════════════
+//  PAGE: CHECKOUT
+// ══════════════════════════════════════
+function pageCheckout(){
+  if(!cart.length)return`<div class="W" style="text-align:center;padding:80px 22px"><h2 style="font-family:var(--serif)">Your bag is empty</h2><p style="margin:12px 0 22px">Add some products before checking out.</p><button class="btn btn-red" onclick="nav('home')">Continue Shopping</button></div>${footer()}`;
+  const s=sub();
+  const aFee=F.area?dfee(F.area):0;
+  const items=cart.map(i=>{const p=prod(i.id);if(!p)return'';return`<div class="os-item"><div><div class="os-n">${p.name}</div><div class="os-d">${wl(i.wt)} × ${i.qty}</div></div><div class="os-p">${fmt(cp(p.rate,i.wt)*i.qty)}</div></div>`}).join('');
+  const aOpts=AREAS.map(a=>`<option value="${a.id}" ${F.area===a.id?'selected':''}>${a.n} — Rs. ${a.fee} delivery (demo)</option>`).join('');
+  const sOpts=SLOTS.map(s=>`<option value="${s}" ${F.slot===s?'selected':''}>${s}</option>`).join('');
+  return`<div class="demo-notice"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Demo — placing an order here does not submit to any real business.</div>
+  <div class="W"><div class="crumb"><span onclick="nav('home')" style="cursor:pointer">Home</span><span>›</span><span>Checkout</span></div>
+  <div class="co-layout">
+    <div class="co-form">
+      <div><h1 style="font-family:var(--serif);font-size:1.85rem;margin-bottom:5px">Checkout</h1><p style="font-size:.87rem;color:#aaa">Complete your delivery details to place your order.</p></div>
+      <div class="co-block"><h3><i class="fa-solid fa-location-dot" style="color:var(--red);margin-right:8px"></i>Delivery Information</h3>
+        <div class="frow">
+          <div class="ff full"><label class="flbl">Full Name <span>*</span></label><input class="fi" id="fN" placeholder="Your full name" value="${(F.name||'')}"><div class="ferr" id="eN">Please enter your full name.</div></div>
+          <div class="ff full"><label class="flbl">Pakistan Mobile Number <span>*</span></label><input class="fi" id="fP" type="tel" placeholder="03XX-XXXXXXX" value="${(F.phone||'')}"><div class="ferr" id="eP">Enter a valid Pakistani mobile number.</div></div>
+          <div class="ff full"><label class="flbl">Delivery Area <span>*</span></label><select class="fi" id="fA" onchange="coArea()"><option value="">Select your Karachi area...</option>${aOpts}</select><div class="fhint">Delivery fee varies by zone.</div><div class="ferr" id="eA">Please select your delivery area.</div></div>
+          <div class="ff full"><label class="flbl">Complete Address <span>*</span></label><textarea class="fi" id="fAd" rows="3" placeholder="House No., Street, Block, Town...">${(F.addr||'')}</textarea><div class="ferr" id="eAd">Please enter your full address (min 10 characters).</div></div>
+          <div class="ff"><label class="flbl">Landmark <span style="color:#aaa;font-weight:400">(Optional)</span></label><input class="fi" id="fL" placeholder="Nearby mosque, park, school..." value="${(F.land||'')}"></div>
+          <div class="ff"><label class="flbl">Preferred Time Slot <span style="color:#aaa;font-weight:400">(Optional)</span></label><select class="fi" id="fS"><option value="">No preference</option>${sOpts}</select><div class="fhint">Demo — subject to confirmation.</div></div>
+          <div class="ff full"><label class="flbl">Order Notes <span style="color:#aaa;font-weight:400">(Optional)</span></label><textarea class="fi" id="fNo" rows="2" placeholder="Special cut instructions, preparation notes...">${(F.notes||'')}</textarea></div>
+        </div>
+      </div>
+      <div class="co-block"><h3><i class="fa-solid fa-credit-card" style="color:var(--red);margin-right:8px"></i>Payment Method</h3>
+        <div class="pay-opt"><div class="pay-ico"><i class="fa-solid fa-money-bill-wave"></i></div><div><div class="pay-lbl">Cash on Delivery (COD)</div><div class="pay-sub">Pay in cash when your order arrives. No card or advance payment required. Final bill based on actual packed scale weight at dispatch.</div></div></div>
+      </div>
+      <div class="min-err" id="minErr"><i class="fa-solid fa-triangle-exclamation"></i><span></span></div>
+      <button class="btn btn-red btn-full btn-lg" id="placeBtn" onclick="placeOrder()"><i class="fa-solid fa-check"></i> Place Order — Cash on Delivery</button>
+      <p style="font-size:.7rem;color:#aaa;text-align:center;margin-top:7px">By placing your order you agree to our <span onclick="nav('pg','terms')" style="color:#555;cursor:pointer;text-decoration:underline">Terms</span> and <span onclick="nav('pg','privacy')" style="color:#555;cursor:pointer;text-decoration:underline">Privacy Policy</span>.</p>
+    </div>
+    <div class="co-sidebar">
+      <div class="os"><div class="os-hd"><h3>Order Summary</h3></div><div class="os-items">${items}</div>
+      <div class="os-tots"><div class="sr"><span>Subtotal</span><span>${fmt(s)}</span></div><div class="sr"><span>Delivery Fee</span><span id="coDel">${F.area?fmt(aFee)+' (demo)':'Select area'}</span></div><div class="sr total"><span>Estimated Total</span><span id="coTot">${F.area?fmt(s+aFee):fmt(s)+'+'}</span></div></div></div>
+      <p style="font-size:.7rem;color:#aaa;margin-top:9px">⚠ Delivery charges are demo placeholders.</p>
+      <button onclick="openDr()" style="display:block;width:100%;text-align:center;font-size:.77rem;color:#aaa;margin-top:9px;background:none;border:none;cursor:pointer;text-decoration:underline">Edit Bag</button>
+    </div>
+  </div></div>${footer()}`;
+}
+
+function coArea(){
+  F.area=document.getElementById('fA')?.value||'';
+  const s=sub(),fee=F.area?dfee(F.area):0;
+  const cd=document.getElementById('coDel'),ct=document.getElementById('coTot');
+  if(cd)cd.textContent=F.area?fmt(fee)+' (demo)':'Select area';
+  if(ct)ct.textContent=F.area?fmt(s+fee):fmt(s)+'+';
+  chkMin();
+}
+function chkMin(){
+  const s=sub();
+  const al=document.getElementById('minErr'),btn=document.getElementById('placeBtn');
+  if(!al||!btn)return;
+  if(s<MINO){al.className='min-err show';al.querySelector('span').textContent=`Minimum order is Rs. 1,000 (demo). Your subtotal is ${fmt(s)}.`;btn.disabled=true}
+  else{al.className='min-err';btn.disabled=false}
+}
+
+function placeOrder(){
+  F.name=document.getElementById('fN')?.value.trim()||'';
+  F.phone=document.getElementById('fP')?.value.trim()||'';
+  F.area=document.getElementById('fA')?.value||'';
+  F.addr=document.getElementById('fAd')?.value.trim()||'';
+  F.land=document.getElementById('fL')?.value.trim()||'';
+  F.slot=document.getElementById('fS')?.value||'';
+  F.notes=document.getElementById('fNo')?.value.trim()||'';
+  let ok=true;
+  [{v:F.name.length>=2,fi:'fN',ei:'eN'},{v:/^0[0-9]{10}$/.test(F.phone.replace(/[\s\-]/g,'')),fi:'fP',ei:'eP'},{v:F.area!=='',fi:'fA',ei:'eA'},{v:F.addr.length>=10,fi:'fAd',ei:'eAd'}].forEach(c=>{
+    const el=document.getElementById(c.fi),er=document.getElementById(c.ei);
+    el?.classList.toggle('bad',!c.v);
+    if(er)er.className=c.v?'ferr':'ferr show';
+    if(!c.v)ok=false;
+  });
+  if(!ok){toast('Please check the highlighted fields.','err');document.querySelector('.fi.bad')?.scrollIntoView({behavior:'smooth',block:'center'});return}
+  if(sub()<MINO){chkMin();return}
+  const btn=document.getElementById('placeBtn');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Placing Order…';
+  const aObj=AREAS.find(a=>a.id===F.area);
+  const s=sub(),fee=dfee(F.area);
+  const ord={no:'FB-'+(100000+Math.random()*899999|0),ts:new Date().toISOString(),customer:{name:F.name,phone:F.phone,area:aObj?.n||F.area,addr:F.addr,land:F.land,slot:F.slot,notes:F.notes},items:cart.map(i=>{const p=prod(i.id);return{name:p?.name,wt:i.wt,qty:i.qty,rate:p?.rate,lp:cp(p?.rate||0,i.wt)*i.qty}}),sub:s,fee,total:s+fee,payment:'Cash on Delivery'};
+  try{localStorage.setItem('fb_lastord2',JSON.stringify(ord))}catch(e){}
+  lastOrd=ord;
+  setTimeout(()=>{cart=[];save();updBadge();nav('done')},800);
+}
+
+// ══════════════════════════════════════
+//  PAGE: CONFIRM
+// ══════════════════════════════════════
+function pageConfirm(){
+  if(!lastOrd)return pageHome();
+  const o=lastOrd;
+  const d=new Date(o.ts);
+  const items=(o.items||[]).map(i=>`<div class="drow"><span class="dl">${i.name} (${wl(i.wt)} × ${i.qty})</span><span class="dv">${fmt(i.lp)}</span></div>`).join('');
+  return`<div class="done"><div class="done-ico"><i class="fa-solid fa-circle-check"></i></div><h1 style="font-family:var(--serif);font-size:2rem">Order Placed!</h1><p style="max-width:460px;margin:8px auto;color:#555">Thank you for your order. Our team will confirm shortly and prepare your fresh meat for delivery.</p><div class="done-no">Order ${o.no}</div></div>
+  <div class="W"><div class="done-grid">
+    <div>
+      <div class="dblock"><h4>Items Ordered</h4>${items}
+        <div class="drow" style="margin-top:7px;padding-top:7px;border-top:1px solid var(--brd)"><span class="dl">Subtotal</span><span class="dv">${fmt(o.sub)}</span></div>
+        <div class="drow"><span class="dl">Delivery Fee</span><span class="dv">${fmt(o.fee)} (demo)</span></div>
+        <div class="drow" style="font-weight:800"><span>Estimated Total</span><span class="dv" style="font-size:1.1rem;color:var(--red)">${fmt(o.total)}</span></div>
+      </div>
+      <div class="dblock" style="background:#fff5f5;border-color:#fcc"><h4 style="color:var(--red)"><i class="fa-solid fa-money-bill-wave" style="margin-right:6px"></i>Cash on Delivery</h4><p style="font-size:.84rem;color:#555">Please have cash ready when your order arrives. The final amount is based on the actual packed scale weight recorded at dispatch, which may differ slightly from the estimate above.</p></div>
+      <div class="dblock"><h4><i class="fa-solid fa-truck-fast" style="color:var(--red);margin-right:6px"></i>Expected Delivery</h4><p style="font-size:.84rem;color:#555">Our team will contact you on WhatsApp to confirm delivery timing. Typical next-day delivery across Karachi.</p><div style="background:var(--lgry);border-radius:8px;padding:9px 12px;font-size:.73rem;color:#aaa;margin-top:9px"><i class="fa-solid fa-circle-info" style="margin-right:4px"></i>Delivery timings are demo placeholders — not confirmed by any business.</div></div>
+    </div>
+    <div>
+      <div class="dblock"><h4>Order Details</h4>
+        <div class="drow"><span class="dl">Order No.</span><span class="dv" style="color:var(--red);font-family:monospace">${o.no}</span></div>
+        <div class="drow"><span class="dl">Date</span><span class="dv">${d.toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</span></div>
+        <div class="drow"><span class="dl">Time</span><span class="dv">${d.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})}</span></div>
+        <div class="drow"><span class="dl">Payment</span><span class="dv">Cash on Delivery</span></div>
+      </div>
+      <div class="dblock"><h4>Delivery Details</h4>
+        <div class="drow"><span class="dl">Name</span><span class="dv">${o.customer.name}</span></div>
+        <div class="drow"><span class="dl">Mobile</span><span class="dv">${o.customer.phone}</span></div>
+        <div class="drow"><span class="dl">Area</span><span class="dv">${o.customer.area}</span></div>
+        <div class="drow"><span class="dl">Address</span><span class="dv">${o.customer.addr}</span></div>
+        ${o.customer.land?`<div class="drow"><span class="dl">Landmark</span><span class="dv">${o.customer.land}</span></div>`:''}
+        ${o.customer.notes?`<div class="drow"><span class="dl">Notes</span><span class="dv">${o.customer.notes}</span></div>`:''}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <a href="https://wa.me/923348210348?text=My order number is ${o.no}" target="_blank" class="btn btn-wa btn-full btn-lg"><i class="fa-brands fa-whatsapp" style="font-size:1.1rem"></i>Contact on WhatsApp</a>
+        <button class="btn btn-out btn-full" onclick="nav('home')">Continue Shopping</button>
+      </div>
+    </div>
+  </div></div>${footer()}`;
+}
+
+// ══════════════════════════════════════
+//  STATIC PAGES
+// ══════════════════════════════════════
+const PAGES={
+  about:{title:'About Us',sub:'Karachi\'s premium Zabiha meat shop — serving fresh cuts every day.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Placeholder content for demo. Final business info will be added before launch.</div>
+<h2>Our Story</h2><p>Nabdullah Meat Hub was founded on one belief: every family in Karachi deserves access to premium quality Zabiha fresh meat — sourced responsibly, cut expertly, and delivered reliably. What began as a traditional neighbourhood butchery has grown into a trusted online meat delivery service.</p>
+<p>We combine the trust of a traditional Karachi butcher shop with the convenience of modern online ordering. Our expert butchers bring decades of experience to every cut, ensuring every product meets the highest standards of freshness, Zabiha compliance, and quality.</p>
+<h2>Our Promise</h2><ul><li>100% Zabiha hand-slaughtered — certificate available on request</li><li>Zero frozen stock — all meat prepared fresh daily</li><li>Digital scale billing — final bill based on certified scale weight, not estimates</li><li>Cold-chain delivery — temperature-controlled bags for every order</li><li>Cash on Delivery only — no advance payment required</li><li>WhatsApp support 7AM to 9PM daily</li></ul>
+<h2>Our Five Categories</h2><ul><li><strong>Chicken</strong> — Farm-fresh whole birds, boneless, and specialty cuts including karahi, biryani, and tikka.</li><li><strong>Beef</strong> — Hand-selected prime beef in traditional and modern Pakistani cuts. Bone-in, boneless, qeema, and nihari.</li><li><strong>Veal</strong> — A dedicated premium category with its own inventory. Milk-fed, pale pink, zero tough fiber.</li><li><strong>Mutton</strong> — Authentic desi goat mutton — karahi cuts, boneless, chops, and qeema.</li><li><strong>Winter Feast</strong> — Seasonal marinated and BBQ-ready cuts for winter gatherings.</li></ul>
+<h2>Estimated Delivery</h2><p>Orders placed before 3 PM are dispatched same day and delivered next day across Karachi in temperature-controlled delivery bags. Exact timing is confirmed by our team via WhatsApp after order placement.</p>`},
+
+  faqs:{title:'FAQs',sub:'Everything you need to know about ordering from Nabdullah Meat Hub.',body:`<div style="max-width:720px">${[
+['Do I need an account to place an order?','No account or registration is required. Simply browse, select products, choose your weight and proceed to checkout with your name, mobile, and delivery address.'],
+['What payment methods do you accept?','Cash on Delivery (COD) only. No credit card, debit card, online banking, or wallet is accepted. Pay the rider in cash when your order arrives.'],
+['How is the final bill calculated?','Your order is weighed on our certified digital scale when packed. The final bill follows the actual packed weight — not the weight you selected. This may differ slightly, but it ensures you pay only for exactly what you receive.'],
+['Why might my bill differ from the estimate?','Fresh meat is a natural product. A 500g selection might pack at 480g or 520g depending on the cut. The digital scale reading at dispatch determines the final bill. We never over- or undercharge.'],
+['Do rates change every day?','Yes. Meat prices move with the market daily. We update all rates every morning. The rate shown on the product page is today\'s rate.'],
+['What does "100% Zabiha" mean?','Every animal is slaughtered by hand according to Islamic Zabiha standards. The animal is blessed, fully conscious, and the jugular vein, carotid artery, and windpipe are cut in one motion. Certificates are available on request.'],
+['What areas of Karachi do you deliver to?','DHA, Clifton, PECHS, Gulshan-e-Iqbal, Gulistan-e-Johar, North Nazimabad, Bahadurabad, Nazimabad, FB Area, Federal B Area, KCHS, Defence Housing, Bahria Town, Malir Cantt, and Karachi South. Delivery charges vary by zone.'],
+['How long does delivery take?','Orders before 3 PM are dispatched same day and delivered next day. You will receive a WhatsApp confirmation with estimated delivery timing.'],
+['Is there a minimum order amount?','Yes, the minimum order is Rs. 1,000 (demo placeholder). If your cart total is below the minimum, you will be notified at checkout.'],
+['Can I order a custom weight?','We offer predefined weight packs (Half Kg and 1 Kg) only. Custom weights are not currently available online. For custom bulk cuts, contact us on WhatsApp.'],
+['What does "Sold Out" mean?','That product\'s daily stock has been exhausted. Check back the next morning — fresh stock is prepared daily.'],
+['Is Veal different from Beef?','Yes. Veal comes from young milk-fed cattle and is completely separate from our beef category — different animals, different inventory, and different pricing. Veal is lighter in colour, more tender, and has a more delicate flavour.'],
+['What is Winter Feast?','Our seasonal collection of marinated BBQ-ready meats for winter gatherings. Limited availability during peak winter season.'],
+['Can I place a bulk order?','Yes — contact us on WhatsApp at 0334-8210348 or email marketing@freshbutcher.pk for bulk or catering orders. Special pricing available for 5kg+.']
+].map((f,i)=>`<div class="faq" id="fq${i}"><button class="faq-q" onclick="ftgl(${i})">${f[0]}<i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">${f[1]}</div></div>`).join('')}
+<div style="text-align:center;margin-top:44px;background:var(--lgry);border:1px solid var(--brd);border-radius:14px;padding:32px">
+<h3 style="font-family:var(--serif);margin-bottom:8px">Still have a question?</h3>
+<p style="margin-bottom:18px;font-size:.87rem;color:#555">Our team responds on WhatsApp within minutes.</p>
+<a href="https://wa.me/923348210348" class="btn btn-wa" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:1rem"></i>Chat on WhatsApp</a>
+</div></div>`},
+
+  contact:{title:'Contact Us',sub:'Get in touch with our team for orders, queries, and bulk requests.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Contact details are demo placeholders. Actual business info will be confirmed before launch.</div>
+<div class="ct-grid">
+<div class="ct-items">
+<h2 style="font-family:var(--serif);margin-bottom:18px">Get in Touch</h2>
+<div class="ct-item"><div class="ct-ico"><i class="fa-brands fa-whatsapp"></i></div><div><div class="ct-lbl">WhatsApp (Orders & Support)</div><div class="ct-val"><a href="https://wa.me/923348210348">0334-8210348</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-phone"></i></div><div><div class="ct-lbl">UAN (Bulk Orders)</div><div class="ct-val"><a href="tel:03332987295">0333-2987295</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="ct-lbl">Orders Email</div><div class="ct-val"><a href="mailto:hello@freshbutcher.pk">hello@freshbutcher.pk</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-briefcase"></i></div><div><div class="ct-lbl">Bulk / Marketing</div><div class="ct-val"><a href="mailto:marketing@freshbutcher.pk">marketing@freshbutcher.pk</a></div></div></div>
+<div class="ct-item"><div class="ct-ico"><i class="fa-solid fa-location-dot"></i></div><div><div class="ct-lbl">Shop Address</div><div class="ct-val">[Shop Address, Karachi — Placeholder]</div></div></div>
+<div class="map-ph"><i class="fa-solid fa-location-dot"></i><p style="text-align:center;max-width:200px">Google Map embedded here once shop address is confirmed.</p></div>
+</div>
+<div>
+<div class="co-block">
+<h3><i class="fa-solid fa-paper-plane" style="color:var(--red);margin-right:8px"></i>Send a Message</h3>
+<div style="display:flex;flex-direction:column;gap:13px">
+<div class="ff"><label class="flbl">Your Name</label><input class="fi" id="ctN" placeholder="Full name"></div>
+<div class="ff"><label class="flbl">Mobile / Email</label><input class="fi" id="ctC" placeholder="03XX-XXXXXXX or email"></div>
+<div class="ff"><label class="flbl">Subject</label><select class="fi" id="ctS"><option>Order query</option><option>Delivery issue</option><option>Bulk / wholesale order</option><option>Product availability</option><option>Custom cut request</option><option>Feedback</option><option>Other</option></select></div>
+<div class="ff"><label class="flbl">Message</label><textarea class="fi" id="ctM" rows="5" placeholder="How can we help you today?"></textarea></div>
+<button class="btn btn-red btn-full" onclick="ctSend()"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+<p style="font-size:.7rem;color:#aaa;text-align:center">Demo — messages are not actually sent in this prototype.</p>
+</div></div></div></div>`},
+
+  privacy:{title:'Privacy Policy',sub:'How we collect, use, and protect your personal information.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Sample privacy policy for demo purposes only. Final legal policy will be reviewed by counsel before launch.</div>
+<p><strong>Last updated:</strong> [Date to be confirmed]</p>
+<h2>1. Information We Collect</h2><p>When you place an order, we collect:</p><ul><li>Full name</li><li>Pakistan mobile number</li><li>Delivery address and Karachi zone</li><li>Order details (products, weights, quantities)</li><li>Optional: landmark, preferred time slot, order notes</li></ul><p>We do not collect payment information as all orders are Cash on Delivery.</p>
+<h2>2. How We Use Your Information</h2><p>We use collected information only to:</p><ul><li>Process and fulfil your order</li><li>Contact you regarding order status, confirmation, and delivery timing via WhatsApp</li><li>Respond to queries submitted via our website or WhatsApp</li></ul>
+<h2>3. Data Sharing</h2><p>We do not sell, trade, or transfer your personal information to third parties for commercial purposes. Order details (name, phone, address) are shared with delivery personnel only for the purpose of completing your delivery.</p>
+<h2>4. Data Retention</h2><p>We retain order information as necessary to manage disputes and legal obligations. You may request deletion by contacting us directly.</p>
+<h2>5. Cookies & Local Storage</h2><p>This website uses browser localStorage to persist your shopping bag and recently viewed products between sessions. No third-party tracking cookies or advertising pixels are used.</p>
+<h2>6. Your Rights</h2><p>You have the right to access, correct, or request deletion of your data. Contact us at hello@freshbutcher.pk.</p>
+<h2>7. Data Security</h2><p>We implement appropriate technical and operational measures to protect your personal information from unauthorised access or disclosure.</p>
+<h2>8. Changes</h2><p>We may update this policy periodically. Changes will be posted on this page with an updated date.</p>
+<h2>9. Contact</h2><p>For privacy queries: <a href="mailto:hello@freshbutcher.pk" style="color:var(--red)">hello@freshbutcher.pk</a> or WhatsApp 0334-8210348.</p>`},
+
+  terms:{title:'Terms & Conditions',sub:'Please read these terms carefully before using our service.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>Sample terms for demo purposes only. Final legal terms will be reviewed by counsel before launch.</div>
+<p><strong>Last updated:</strong> [Date to be confirmed]</p>
+<h2>1. Acceptance</h2><p>By using this website to browse or place an order, you accept these Terms and Conditions. If you do not agree, please do not use this website.</p>
+<h2>2. Products & Availability</h2><p>All products are subject to daily availability. We reserve the right to discontinue, modify, or limit any product at any time. Sold Out status is updated as daily stock is exhausted.</p>
+<h2>3. Pricing</h2><p>All prices are per kilogram and are updated daily based on market conditions. Prices displayed are valid for the current day only and may change the next morning.</p>
+<h2>4. Actual Weight Billing</h2><p>Your order is physically weighed on a certified digital scale when packed. The final invoice is based on the actual packed weight, which may differ slightly from your selected weight. By placing an order, you agree to pay the amount corresponding to the actual packed scale weight.</p>
+<h2>5. Payment</h2><p>Cash on Delivery (COD) only. No advance payment required. Payment is due to the delivery rider upon receipt. No digital payments are accepted.</p>
+<h2>6. Minimum Order</h2><p>A minimum order value of Rs. 1,000 applies (demo placeholder). If your subtotal falls below this, checkout will not proceed.</p>
+<h2>7. Delivery</h2><p>Delivery within Karachi zones only. Charges vary by zone. We aim for next-day delivery but do not guarantee exact delivery times. All timings are subject to order volume and operational conditions.</p>
+<h2>8. Order Cancellation</h2><p>Orders may only be cancelled before preparation begins. Contact us immediately via WhatsApp. Once preparation begins, cancellation may not be possible.</p>
+<h2>9. Returns & Refunds</h2><p>We do not accept returns of fresh perishable products. Genuine quality issues must be reported via WhatsApp within 2 hours of delivery with a photograph. Each case is reviewed individually.</p>
+<h2>10. Zabiha Guarantee</h2><p>All animals are 100% hand-slaughtered as per Islamic Zabiha requirements. Certificates available on request.</p>
+<h2>11. Limitation of Liability</h2><p>Nabdullah Meat Hub shall not be liable for indirect, incidental, or consequential damages. Total liability shall not exceed the value of the specific order in question.</p>
+<h2>12. Governing Law</h2><p>These Terms are governed by the laws of Pakistan. Disputes are subject to the jurisdiction of courts in Karachi.</p>`},
+
+  shipping:{title:'Shipping & Return Policy',sub:'Delivery information and our policy on returns and order issues.',body:`<div class="ph"><i class="fa-solid fa-circle-info" style="margin-right:6px"></i>All figures below are demo placeholders. Final values confirmed before launch.</div>
+<h2>Delivery Coverage</h2><p>We deliver to selected zones across Karachi including DHA, Clifton, PECHS, Gulshan, Johar, North Nazimabad, Bahadurabad, Nazimabad, FB Area, Federal B Area, KCHS, Defence, Bahria Town, Malir Cantt, and Karachi South. Select your zone at checkout to see the delivery charge.</p>
+<h2>Delivery Charges</h2><p>Charges range from Rs. 150 (Clifton, DHA, Defence) to Rs. 450 (Bahria Town) per order. All charges shown at checkout are demo placeholders. Orders above Rs. 3,000 qualify for a free temperature bag.</p>
+<h2>Delivery Timings</h2><p>Orders placed before 3:00 PM are dispatched same day and delivered next day. Orders after 3:00 PM are dispatched next morning for next-afternoon delivery. Our team confirms timing via WhatsApp after order placement. All timings are demo placeholders.</p>
+<h2>Temperature-Controlled Delivery</h2><p>All orders are packed in our proprietary temperature-controlled insulated delivery bags. This maintains the cold chain from our butchery to your door without requiring dry ice or refrigerated vehicles.</p>
+<h2>Order Preparation</h2><p>Your order is cut, weighed on a certified digital scale, and vacuum-sealed after placement. Preparation takes 1–3 hours depending on order volume.</p>
+<h2>Actual Weight Billing</h2><p>The price shown at checkout is an estimate. The final bill is based on the actual packed weight recorded at the time of sealing. This may differ by a small amount and is standard practice for fresh meat retail worldwide.</p>
+<h2>Returns Policy</h2><p>We do not accept returns of fresh or perishable products once dispatched. For genuine quality concerns:</p><ul><li>Contact us on WhatsApp before the rider leaves your premises</li><li>Or within 2 hours of delivery with a photograph</li><li>Each case is reviewed individually and resolved promptly</li></ul>
+<h2>Order Cancellation</h2><p>Cancel free of charge before preparation begins. Contact via WhatsApp immediately. Once preparation begins, cancellation may result in a partial charge for preparation costs.</p>
+<h2>Damaged or Wrong Orders</h2><p>Report immediately via WhatsApp with a photograph. We will arrange a replacement or refund for verified cases within 24 hours.</p>
+<h2>Contact for Delivery Issues</h2><p>WhatsApp: 0334-8210348 (7AM–9PM daily). We respond within 30 minutes during business hours.</p>`}
+};
+
+function pagePG(key){
+  const pg=PAGES[key];if(!pg)return pageHome();
+  return`<div class="sh-hero"><div class="W"><div class="crumb"><span onclick="nav('home')" style="cursor:pointer">Home</span><span>›</span><span>${pg.title}</span></div><h1 style="font-family:var(--serif);font-size:2rem;margin-bottom:7px">${pg.title}</h1><p style="font-size:.88rem;color:#777">${pg.sub}</p></div></div><div class="W"><div class="pgbody">${pg.body}</div></div>${footer()}`;
+}
+
+function ftgl(i){document.getElementById('fq'+i)?.classList.toggle('open')}
+function ctSend(){const n=document.getElementById('ctN')?.value.trim(),m=document.getElementById('ctM')?.value.trim();if(!n||!m){toast('Please fill in all fields.','err');return}toast('Message sent! (Demo — not actually submitted)','ok');if(document.getElementById('ctN'))document.getElementById('ctN').value='';if(document.getElementById('ctM'))document.getElementById('ctM').value=''}
+
+// ══════════════════════════════════════
+//  KEYBOARD & INIT
+// ══════════════════════════════════════
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDr();closeMobNav()}});
 nav('home');
 </script>
 </body>
